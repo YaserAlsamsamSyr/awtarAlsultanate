@@ -1,0 +1,209 @@
+.h1-delivery{
+    width: 100%;
+    text-align: center;
+    background-color:#B89761 ;
+    font-size: 25px;
+    padding:5px 0px;
+}
+.h1-delivery a{
+    text-decoration-line:none;
+    color: #4a4a4a;
+}
+.shipping-card .first-row .section-one .div-btn-remove-shipping{
+    display: inline-block;
+    width:10%;
+}
+.shipping-card .first-row .section-one .remove-from-shipping{
+    border-width:2px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-radius: 180px;
+    color: #ffffff;
+    background-color: black;
+    padding-top: 2px;
+}
+.shipping-card .first-row .section-one .remove-from-shipping:hover{
+    transition-duration: 0.7s;
+    border-color: #B89761;
+    color: #B89761;
+}
+.shipping-card .first-row .section-one img{
+    width: 40%;   
+}
+.shipping-card .first-row .section-one a{
+    margin-right:20px;
+}
+.shipping-card .first-row .section-tow p{
+      color:#b6b3b3;
+      padding-top: 20px;
+}
+.shipping-card .first-row .section-tow .select-quantity button{
+    background-color: black;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #ffffff;
+    color: #706f6f;
+    width: 12%;
+    height: 30px;
+}
+.shipping-card .first-row .section-tow .select-quantity input{
+    background-color: black;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #ffffff;
+    color: #4a4a4a;
+    width: 16%;
+    height: 30px;
+    padding-bottom: 2px;
+    margin: 0px -1px;
+    text-align: center;
+    z-index: 2;
+}
+.shipping-card .first-row .section-tow .select-quantity .min-btn{
+    margin-left: 1px;
+    border-left:0px;
+}
+.shipping-card .first-row .section-tow p a{
+    text-decoration-line:none;
+    color:#b6b3b3;
+}
+.shipping-card .first-row .section-tow p a:hover{
+    transition-duration: 0.7s;
+    color: #B89761;
+}
+/* remove scroll from input type number */
+.shipping-card .first-row .section-tow .select-quantity input::-webkit-outer-spin-button,
+.shipping-card .first-row .section-tow .select-quantity input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.shipping-card .first-row .section-tow .select-quantity input[type=number] {
+  -moz-appearance: textfield;
+}
+.shipping-card .second-row .update-card{
+    padding-top: 40px;
+}
+.shipping-card .first-row{
+    margin-top:40px;
+    margin-bottom: 40px;
+}
+.shipping-card .second-row .update-card .inpt-ok{
+    border-width: 0px;
+    background-color: #B89761;
+    color: #ffffff;
+    height:50px;
+} 
+.shipping-card .second-row .update-card .inpt-ok:hover{
+    background-color: #c98013;
+}
+.shipping-card .third-row h6{
+    color:#ffffff;
+    text-align: center;
+}
+.shipping-card .third-row hr{
+    color:#ffffff;
+    border-width: 5px;
+    border-top-color:white;
+}
+.shipping-card .third-row .info-card h4{
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.shipping-card .third-row .info-card p{
+    font-size: 16px;
+    color: #888383;
+}
+.shipping-card .third-row .info-card .h4-2{
+    margin-top: 15px;
+}
+.shipping-card .third-row a{
+    border-width: 0px;
+    background-color: #B89761;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    width: 90%;
+    height:40px;
+    margin-right: 5%;
+    margin-top:  20px;
+    padding-top: 10px;
+}
+
+.shipping-card .third-row a:hover{
+    background-color: #c98013;
+}
+@media (max-width: 450.98px) {
+    .shipping-card .first-row .section-tow{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: -30px;
+    }
+    .shipping-card .first-row .section-tow .select-quantity .plus-btn{
+        display: inline-block;
+        width: 30px;
+    }
+    .shipping-card .first-row .section-tow .select-quantity .min-btn{
+        display: inline-block;
+        margin-right: 5px;
+        width: 30px;
+    }
+    .shipping-card .first-row .section-tow .select-quantity input{
+        display: inline-block;
+        width: 60px !important;
+    }
+}
+@media (max-width: 575.98px) {
+    .shipping-card .second-row .update-card .inpt-ok{
+          height:40px;
+          font-size: 12px;
+    }
+    .h1-delivery a{
+        font-size: 18px;
+    }
+    .shipping-card .first-row .section-tow .select-quantity button{
+        width: 24%;
+    }
+    .shipping-card .first-row .section-tow .select-quantity input{
+        width: 26%;
+    }
+}
+@media (max-width: 991.98px) {
+    .shipping-card .section-tow{
+        margin-top: 30px;
+    }
+    .shipping-card .first-row .section-tow .select-quantity button{
+        width: 16%;
+    }
+    .shipping-card .first-row .section-tow .select-quantity input{
+        width: 20%;
+    }
+}
+@media (max-width: 767.98px) {
+    .shipping-card .first-row .section-tow .select-quantity button{
+        width: 16%;
+    }
+    .shipping-card .first-row .section-tow .select-quantity input{
+        width: 20%;
+    }
+    .shipping-card .first-row .section-one{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .shipping-card .first-row .section-one .div-btn-remove-shipping{
+         margin:50px 0px;
+    }
+    .shipping-card .first-row .section-one a{
+           margin-right: -20px;
+    }
+    .shipping-card .first-row .section-one a img{
+        width:250px;
+        height:280px;
+    }
+    .shipping-card .first-row .section-tow{
+       padding-right: 50px;
+    }
+}
+/*  */

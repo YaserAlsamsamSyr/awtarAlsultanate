@@ -1,0 +1,30 @@
+.bill{
+    border:1px solid white;
+    padding: 20px;
+    margin: 20px 0px;
+    width:70%;
+    height:auto;
+}
+.bill h4{
+     color: white;
+}
+.bill p{
+    color: rgb(119, 94, 94);
+}
+.bill h3{
+    color: #b7982b;
+    padding-top: 20px;
+}
+.row .bill .order-info{
+    width:100%;
+}
+
+.row .bill .order-info p{
+    padding-top: 10px;
+}
+.row .bill .order-info h4{
+    margin-top:50px;
+}
+.row .bill .order-info .part-2{
+    padding-bottom: 80px;
+}

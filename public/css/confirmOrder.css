@@ -1,0 +1,92 @@
+.h1-delivery{
+    width: 100%;
+    text-align: center;
+    background-color:#B89761 ;
+    font-size: 25px;
+    padding:5px 0px;
+}
+.h1-delivery a{
+    text-decoration-line:none;
+    color: #4a4a4a;
+}
+.msg .alert{
+    text-align: center;
+    background-color: rgb(240, 93, 93);
+    color: #ffffff;
+    border-width: 0px;
+}
+.confirmOrder{
+    margin-top: 60px;
+}
+.confirmOrder h5{
+    color:#ffffff;
+    font-size: 15px;
+    padding-bottom: 6px;
+    border-bottom:1px solid #ffffff ;
+}
+.confirmOrder .bill p{
+    color: #a8a5a5;
+}
+.confirmOrder .bill .H6{
+    color: #ffffff;
+}
+.confirmOrder .bill .H6,
+.confirmOrder .bill p{
+    padding-top: 50px;
+}
+.confirmOrder .inpt-sub{
+    width:90%;
+    background-color: #B89761;
+    color: #ffffff;
+    height:55px;
+    border-width: 0px;
+    margin-top: 20px;
+}
+.confirmOrder .inpt-sub:hover{
+    background-color: #da9932;
+}
+.confirmOrder .second-part{
+    padding-right:40px;
+}
+.confirmOrder .first-part select,
+.confirmOrder .first-part input,
+.confirmOrder .bill textarea{
+        background-color: black;
+        border:1px solid #ffffff;
+        color: #ffffff;
+        height: 40px;
+        border-radius: 4px;
+}
+.confirmOrder .first-part div{
+    margin-top: 15px;
+}
+.confirmOrder .first-part p{
+    color: #6b6969;
+}
+.confirmOrder .first-part .last-name{
+    margin-right: 6%;
+}
+.confirmOrder .first-part .full-name .first-name,
+.confirmOrder .first-part .full-name .last-name
+{
+    width:47%;
+}
+.confirmOrder .first-part .notics textarea{
+    height:100%;
+}
+@media (max-width: 767.98px) {
+    .confirmOrder .second-part{
+        padding-right:12px;
+        padding-top: 40px;
+    }
+}
+@media (max-width: 575.98px) {
+    .confirmOrder .inpt-sub{
+        margin-right: 4%;
+    }
+    .confirmOrder{
+        padding-left: 10px;
+        
+        padding-right: 10px;
+    }
+}

@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\View\View;
+use App\Models\Category;
 
 class PasswordResetLinkController extends Controller
 {
@@ -15,7 +16,8 @@ class PasswordResetLinkController extends Controller
      */
     public function create(): View
     {
-        return view('auth.forgot-password');
+        $category=Category::select('id','category')->get();
+        return view('awtar.resetPassword',['categories'=>$category]);
     }
 
     /**

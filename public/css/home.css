@@ -1,0 +1,281 @@
+body{
+    background-image: url('../images/footerAndNav/e.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+.video{
+    width:100%;
+    background-color: black;
+    position: relative;
+}
+.video .ps{
+    position:absolute;
+    color: white;
+    width:auto;
+    padding-left:30px;
+    right:40px;
+    top:200px;
+}
+/* .video p span{} */
+.video p{
+    font-size: 25px;
+    width:auto;
+    line-height: 2.5;
+}
+.video .ps a{
+    background-color: #B89761;
+    color:white;
+    border:0px;
+    text-decoration: none;
+    width:10%;
+    border-radius: 5px;
+    text-align: center;
+}
+.video .ps a:hover{
+    color:black;
+}
+.gold-section{
+    position: relative;
+    height: 190PX;
+    background-color: transparent;
+}
+.gold-section .elementor-background-overlay {
+    background-color: transparent;
+    background-image: linear-gradient(180deg, rgb(15, 12, 4) 4%, #75531c 80%, #996a1f 100%);
+    opacity: 0.6;
+    height: 190PX;
+    width: 100%;
+    top: 5;
+    left: 0;
+    position: absolute;
+}
+footer{
+    background-color: black;
+}
+.empty{
+    height: 250px;
+    background-color: black;
+}
+
+
+/* slideshow */
+.img-slider{
+    background-color: black;
+    width:100%;
+}
+/* Slideshow container */
+.slideshow-container {
+    max-width: 100%;
+    position: relative;
+    height:550px;
+  }
+  
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  }
+  /* Caption text */
+  .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 35%;
+    top:40%;
+    right:5%;
+    text-align: center;
+    align-items: center;
+  }
+  .img-slider .fade .text a{
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #B89761;
+    color:white;
+    display: block;
+    text-decoration: none;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-top: 30px;
+    width:30%;
+  }
+  .img-slider .fade .text h2{
+        color:white;
+  }
+  .img-slider .fade .text p{
+   color:white;  
+  }
+  .img-slider .fade .text a:hover{
+    border: 0px;
+    color:rgb(102, 96, 96);
+  }
+  /* The dots/bullets/indicators */
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #1d1c1c;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    opacity: 0.2;
+  }
+  .active, .dot:hover{
+    background-color: #e2ad56;
+  }  
+  /* Fading animation */
+  .fade {
+    animation-name: fade;
+    animation-duration: 20s;
+  }
+  .img-slider .fade img{
+     width:100%;
+     height:570px;
+  }
+  .slideshow-container .circle{
+    margin-top: -50px;
+  }
+  /*  */
+  .today-perfume{
+    background-color: black;
+    padding: 70px 20px;
+    align-items: center;
+  }
+  .today-perfume h2{
+        color:#B89761;
+  }
+  /*  */
+  /* list image */
+  .list-img {
+    background-color: black;
+  }
+  .list-img .d-flex img{
+      height:257px;
+      width:386px;
+  }
+  .empty2{
+    height:100px;
+  }
+  /*  */
+
+  .preview1 .row .col-md-8,
+  .preview2 .col-md-7{
+      text-align: center;
+      padding-top: 40px;
+  }
+  .preview1 .row .col-md-8 h1,
+  .preview2 .col-md-7 h1{
+    padding-bottom:20px;
+    color: #B89761;
+  }
+  .preview1 .row .col-md-8 h4,
+  .preview2 .col-md-7 h4{
+     color: white;
+  }
+  .preview1 .row .col-md-4 a img,
+  .preview2 .container .row .col-md-3 a img{
+       width:360px;
+       height:380px;
+}
+
+.preview2 .container .row .col-md-7{
+    padding-right: 0px;
+}
+  /*  */
+  @keyframes fade {
+           0%{opacity: 0}
+           25%{opacity: 0.9}
+           75%{opacity: 0.9}
+           100%{opacity: 0}
+  }
+
+
+  @media (max-width: 1200px) {
+    .video p{
+        font-size: 20px;
+        top:270px;
+    }
+    .img-slider .fade .text a{
+        width:40%;
+      }
+      .preview1 .row .col-md-8 h4{
+        font-size: 19px;
+     }
+     .preview1 .row .col-md-4 a img{
+          width:250px;
+          height:300px;
+   }
+}
+@media (max-width: 991.98px) {
+    .video p{
+        font-size: 20px;
+        top:270px;
+    }
+    .video .ps a{
+        width: 16%;
+    }
+    .img-slider .fade .text{
+        width: 45%;
+    }
+    .img-slider .fade .text a{
+        width:50%;
+      }
+      .list-img .d-flex img{
+        width:390px;
+    }
+    .preview2 .container .row .col-md-3 a img{
+        width:250px;
+        height:290px;
+    }
+}
+@media (max-width: 767.98px) {
+    .video p{
+        font-size: 16px;
+    }
+    .today-perfume .view-products .col-lg-3 img{
+        width:30%;
+        height:50%;
+    }
+    .today-perfume .view-products .col-lg-3{
+        height:600px
+    }
+    .list-img,.preview1,.preview2{
+        display: none;
+    }
+}
+@media (max-width: 575.98px) {
+    .video p{
+        font-size: 13px;
+    }
+    .video .ps a{
+        width: 23%;
+    }
+    .img-slider .fade .text{
+        width: 55%;
+    }
+    .img-slider .fade .text a{
+        width:60%;
+      }
+      .today-perfume .view-products .col-lg-3 img{
+        width:50%;
+        height:60%;
+    }
+}
+@media (max-width: 400px) {
+  .today-perfume .view-products .col-lg-3 img{
+      width:60%;
+      height:60%;
+   }
+}
+@media (max-width: 350px) {
+    .video .ps a{
+        width: 30%;
+    }
+    .img-slider .fade .text{
+        width: 60%;
+    }
+    .img-slider .fade .text a{
+        width:70%;
+      }
+}

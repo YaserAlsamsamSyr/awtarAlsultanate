@@ -1,0 +1,537 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+html , body{
+background-color: #000000;
+}
+body{
+    font-family: "El Messiri", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+}
+header nav{
+    background-color: #000000;
+}
+header .navbar img {
+    height: 80px;
+    width:auto;
+    padding-top:0px;
+}
+header .navbar img:hover ,
+header .navbar .sh:hover img ,
+footer .icons .logo img:hover{
+    transition-delay: 0.07s;
+    opacity: 0.5;
+}
+header nav .shipping-icon{
+    width:45%;
+    height:18px;
+}
+header nav .msg-icon{
+    width:45%;
+    height:20px;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+header nav .nav-part-2 .border-nav-part-2-element:focus {
+    border-color: #ffffff;
+}
+header nav .nav-part-2 .border-nav-part-2-element:hover{
+    transition-delay: 0.07s;
+    color: #b89761 !important;
+    border-color: #b89761;
+}
+header nav .nav-part-2 .border-nav-part-2-element{
+    width:100%;
+    height: 80px;
+    padding-top:30px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000000;
+}
+header nav .nav-part-2 .nav-item{
+    margin-left:5px;
+    margin-right:5px;
+}
+header nav .nav-part-2 .dropdown-hidden:hover{
+    transition-delay: 0.07s;
+    border-bottom-color: black;
+}
+header nav .nav-part-2 .dropdown-hidden{
+    position: relative;
+}
+header nav .nav-part-2 .dropdown-hidden:focus{
+    position: relative;
+    border-bottom-width: 0px;
+}
+header nav .nav-part-2 .dropdown-hidden .dropdown-menu-item{
+    position: absolute;
+}
+header nav .nav-part-2 .dropdown-hidden .dropdown-menu-item:hover{
+    transition-delay: 0.07s;
+      background-color: black;
+}
+header nav .nav-part-2 .text-color{
+    color: #AAAAAA;
+}
+header nav .dropdown:hover .dropdown-menu{
+    transition-delay: 0.07s;
+    display: block;
+    border-top-width: 2px;
+    border-top-color: #b89761;
+    border-radius: 0px;
+    width:100%;
+}
+header nav .dropdown .arrow {
+    border: solid #AAAAAA;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-right:4px;
+    margin-bottom: 5px;
+}
+header nav .nav-part-2 .dropdown-hidden:hover .arrow{
+    transition-delay: 0.07s;
+    border-color:#dd9933;
+}
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+header nav .nav-part-2 .dropdown-menu-border .dropdown-menu-item{
+    text-align: right;
+}
+header nav .nav-part-2 .dropdown-menu-border .dropdown-menu-item{
+    background-color: black;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+}
+header nav .nav-part-2 .dropdown-menu-border .dropdown-menu-item:hover {
+    transition-delay: 0.07s;
+    color: #b89761;
+}
+header nav .nav-part-2 .dropdown-menu-border .dropdown-menu-item:focus {
+    border-color: #b89761;
+}
+header nav .nav-part-2 .icon-handbag:before {
+    content: "\e035";
+}
+header nav .nav-part-2 .with-in{
+    padding-top: 27px;
+}
+header nav input{
+    background-color: #000000;
+    border:0px;
+    color:#AAAAAA;
+}
+/*FOOTER*/
+footer{
+    color:#ffffff;
+    padding-top:100px;
+}
+footer h5{
+    font-size: 18px;
+}
+footer .row .about-awtar img{
+    width:14%;
+    height:46px;
+    border-width:2px;
+    border-style: solid;
+    border-color: #b89761;  
+}
+footer .row .about-awtar .d-flex{
+    margin:15px;
+}
+footer .row .about-awtar .desc{
+    margin-right:15px;
+}
+footer .row .about-awtar .h5{
+    padding-right: 35px;
+    padding-bottom: 10px;
+}
+footer .row .about-awtar .margin-top {
+    margin-top: -5px;
+}
+footer .row .about-awtar .item-call{
+    margin-top: -12px;
+}
+footer .row .h5-padding{
+    padding-bottom: 20px;
+}
+footer .row .about-awtar .desc-hover:hover{
+    transition-delay: 0.07s;
+    color:#b89761;
+}
+footer .row .products h5{
+    padding-right: 24px;
+}
+footer .row .products a{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000000;
+    font-size: 14px;
+    width:50%;
+    text-align: center;
+}
+footer .row .products a:hover{
+    transition-delay: 0.07s;
+    color:#b89761;
+}
+footer .row .products a:focus{
+    border-color: #b89761;
+}
+footer .row .sub-page p{
+    font-size: 14px;
+    margin-right:10px;
+}
+footer .row .sub-page .border-circle{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-radius: 180px;
+    width:10px;
+    height:10px;
+    margin-top: 5px;
+}
+footer .row .sub-page .d-flex{
+    height:30px;
+}
+footer .row .sub-page .d-flex:hover .p-content{
+    color:#b89761;
+}
+footer .row .sub-page .d-flex:hover{
+    animation-name: goRight;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+footer .row .icons .logo-img{
+    width:65%;
+    height:80px;
+}
+footer .row .icons .logo{
+    text-align: left;
+    width: 100%;
+}
+/* icons */
+footer .row .icons .social-icons * {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+footer .row .icons .social-icons *:focus,
+footer .row .icons .social-icons *:active {
+outline: none !important;
+-webkit-tap-highlight-color: transparent;
+}
+footer .row .icons .social-icons .icon {
+position: relative;
+background: #000000;
+border-radius: 50%;
+border-width: 2px;
+border-style: solid;
+border-color: #dbc7a7;
+padding: 15px;
+margin: 10px;
+width: 50px;
+height: 50px;
+font-size: 18px;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+cursor: pointer;
+transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+-webkit-border-radius: 50%;
+-moz-border-radius: 50%;
+-ms-border-radius: 50%;
+-o-border-radius: 50%;
+-webkit-transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+-moz-transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+-ms-transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+-o-transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+footer .row .icons .social-icons .tooltip {
+position: absolute;
+top: 0;
+font-size: 14px;
+background: #fff;
+color: #ffffff;
+padding: 5px 8px;
+box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+opacity: 0;
+pointer-events: none;
+border-radius: 4px;
+transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+-webkit-transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+-moz-transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+-ms-transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+-o-transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+-ms-border-radius: 4px;
+-o-border-radius: 4px;
+}
+
+footer .row .icons .social-icons .tooltip::before {
+position: absolute;
+content: "";
+height: 8px;
+width: 8px;
+background: #fff;
+bottom: -3px;
+left: 50%;
+transform: translate(-50%) rotate(45deg);
+transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+-webkit-transform: translate(-50%) rotate(45deg);
+-moz-transform: translate(-50%) rotate(45deg);
+-ms-transform: translate(-50%) rotate(45deg);
+-o-transform: translate(-50%) rotate(45deg);
+-webkit-transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+-moz-transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+-ms-transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+-o-transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+footer .row .icons .social-icons .icon:hover .tooltip {
+top: -45px;
+opacity: 1;
+visibility: visible;
+pointer-events: auto;
+}
+
+footer .row .icons .social-icons .icon:hover span,
+footer .row .icons .social-icons .icon:hover .tooltip {
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.01);
+}
+
+footer .row .icons .social-icons .facebook:hover,
+footer .row .icons .social-icons .facebook:hover .tooltip,
+footer .row .icons .social-icons .facebook:hover .tooltip::before {
+background: #b89761;
+color: #fff;
+border-color: blue;
+}
+
+footer .row .icons .social-icons .twitter:hover,
+footer .row .icons .social-icons .twitter:hover .tooltip,
+footer .row .icons .social-icons .twitter:hover .tooltip::before {
+background: #b89761;
+color: #fff;
+border-color: rgb(56, 243, 250);
+}
+
+footer .row .icons .social-icons .instagram:hover,
+footer .row .icons .social-icons .instagram:hover .tooltip,
+footer .row .icons .social-icons .instagram:hover .tooltip::before {
+background: #b89761;
+color: #fff;
+border-color: rgb(255, 48, 255);
+}
+
+footer .row .icons .social-icons .youtube:hover,
+footer .row .icons .social-icons .youtube:hover .tooltip,
+footer .row .icons .social-icons .youtube:hover .tooltip::before {
+background: #b89761;
+color: #fff;
+border-color: rgb(255, 17, 17);
+}
+
+footer .row .icons .social-icons .whatsapp:hover,
+footer .row .icons .social-icons .whatsapp:hover .tooltip,
+footer .row .icons .social-icons .whatsapp:hover .tooltip::before {
+background: #b89761;
+color: #fff;
+border-color:green;
+}
+footer .row .icons .social-icons .tiktok:hover,
+footer .row .icons .social-icons .tiktok:hover .tooltip,
+footer .row .icons .social-icons .tiktok:hover .tooltip::before {
+background: #b89761;
+color: #fff;
+border-color:rgb(33, 34, 33);
+}
+footer .row .icons .social-icons .icon .fa-tiktok{
+    color:#f3c984;
+}
+footer .row .icons .social-icons .icon:hover .fa-tiktok{
+    color:rgb(33, 34, 33);
+}
+footer .row .icons .social-icons .fa{
+    padding-top: 8px;
+    color:#b89761;
+}
+footer .row .icons .social-icons .icon:hover .fa-facebook{
+    color:blue;
+}
+footer .row .icons .social-icons .icon:hover .fa-instagram{
+    color: rgb(255, 48, 255);
+}
+footer .row .icons .social-icons .icon:hover .fa-youtube-play{
+    color: rgb(255, 17, 17);
+}
+footer .row .icons .social-icons .icon:hover .fa-twitter{
+    color: rgb(56, 243, 250);
+}
+footer .row .icons .social-icons .icon:hover .fa-whatsapp{
+    color:green;
+}
+footer .row .icons .social-icons .icon:hover{
+    animation-name: goBottom;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function:linear;
+}
+/*  */
+/* Copyright */
+footer .Copyright{
+    text-align: center;
+    background-color: #212121;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    
+}
+footer .Copyright p{
+    color: #777777;
+    padding-top: 10px;
+}
+.a-small{
+    visibility: hidden;
+    position: relative;
+}
+.a-large{
+    margin-top:10px;
+    visibility:visible;
+    position: relative;
+}
+.db button .navbar-toggler-icon{
+   background-image: url('../images/footerAndNav/menu.png');
+}
+.a-large p,
+.a-small p{
+    position: absolute;
+    color: white;
+}
+.a-small p{
+    left: 17%;
+    top:18%;
+}
+.a-large p{
+    left: 22%;
+    top:43%;
+}
+/*  */
+/* end of footer */
+/* The animation code */
+@keyframes goRight {
+         50% {padding-right:10px;}
+         100% {padding-right:-10px;}
+  }
+  @keyframes goBottom {
+    50% {margin-top:-5px;}
+    100% {margin-bottom:5px;}
+}
+/* responsive */
+@media (max-width: 991.98px) {
+    .a-large{
+        visibility: hidden;
+    }
+    .a-small{
+        visibility: visible;
+        margin-top: 10px;
+    }
+    /* header .navbar .a-small{
+       paddin
+    } */
+    footer .row .products a{
+        text-align: right;
+    }
+    footer .row .products .d-flex{
+        width:300px;
+    }
+    /* for footer */
+    footer .row .h5-padding-md{
+        padding-top: 30px;
+    }
+    footer .row .products h5{
+        padding-right: 0;
+    }
+    footer .row .about-awtar .h5{
+        padding-right: 0;
+    }
+    footer .row .icons .logo-img{
+        width:50%;
+        height:60px;
+    }
+    footer .Copyright{
+        margin-bottom: 28px;
+    }
+    /*  */ 
+}
+@media (max-width: 767.98px) {
+    header .navbar .a-small{
+       margin-top: 10px;
+    }
+    nav .nav-container{
+        margin-right: 0px;
+    }
+    .footer{
+        margin-right: 40px !important;
+    }
+    .footer .logo{
+        margin-left:-120px;
+    }
+    /* for footer */
+    footer .row .h5-padding-md{
+        padding-top: 40px;
+    }
+    footer .row .products h5{
+        padding-top: 20px;
+    }
+    footer .row .about-awtar .h5{
+        padding-right: 0;
+    }
+    footer .row .icons .logo-img{
+        width:30%;
+        height:60px;
+    }
+    footer .row .about-awtar img{
+        width:10%;
+        height:40px;
+    }
+    /*  */
+}
+@media (max-width:706px) {
+    .footer{
+        margin-right: 20px !important;
+    }
+    body{
+        margin-left: -100px;
+    }
+
+}
+@media (max-width:590px) {
+body{
+    margin-left:-120px;
+}
+    html{   
+        width:80%;
+    }
+    footer .about-awtar,
+    footer .products,
+    footer .sub-page,
+    footer .icons,
+    .footer{
+             width:90%;
+    }
+    footer .icons .logo .logo-img{
+        width:150px;
+        height:80px;
+    }
+}

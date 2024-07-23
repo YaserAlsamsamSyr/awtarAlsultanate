@@ -53,7 +53,9 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-
+    // 'twilio_auth_token'=>env('TWILIO_AUTH_TOKEN'),
+    // 'twilio_sid'=>env('TWILIO_SID'),
+    // 'twilio_whatsapp_number'=>env('TWILIO_WHATSAPP_NUMBER'),
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

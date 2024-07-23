@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Models\Category;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -16,7 +17,9 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        $category=Category::select('id','category')->get();
+        
+        return view('awtar.login',['categories'=>$category]);
     }
 
     /**
@@ -25,10 +28,13 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
+        
         $request->session()->regenerate();
-
-        return redirect()->intended(route('dashboard', absolute: false));
+        $accType = Auth::user()->accountType;
+        if($accType=="aaddmmii0n0n"){
+            return redirect()->intended(route('adminHome', absolute: false));;
+        }
+        return redirect()->intended(route('index', absolute: false));
     }
 
     /**
@@ -42,6 +48,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect()->route('index');
     }
 }

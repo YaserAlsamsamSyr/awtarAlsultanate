@@ -1,0 +1,116 @@
+/* login form */
+.login .alert{
+    text-align: center;
+    background-color: rgb(240, 93, 93);
+    color: #ffffff;
+    border-width: 0px;
+}
+.login .login-container{
+    width: 100%;
+    text-align: center;
+}
+.login .login-container h1{
+    color: #414040;
+    font-weight: 800;
+    font-size: 70px;
+    margin-top: 30px;
+}
+.login .login-form{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ffffff;
+    background-color: #000000;
+    padding: 25px;
+    width:40%;
+    margin-top: 5px;
+}
+.login .login-form .p-login{
+      color:#414040;
+}
+.login .login-form .submit-with-remember .forget-pass{
+    color:#ffffff;
+}
+.login .login-form .submit-with-remember .forget-pass:hover{
+    transition-delay: 0.07s;
+    color:#b89761;
+}
+.login .login-form .circle{
+    color:red;
+    margin-right: 2px;
+    margin-top: -5px;
+}
+.login .login-form .text{
+    height:30px;
+}
+.login .login-form .em-pas-input{
+    color: #ffffff;
+    background-color: #000000;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ffffff;
+    width:100%;
+    height:40px;
+}
+.login .login-form .passowrd-text {
+    margin-top:26px ;
+}
+.login .login-form .submit-with-remember{
+    align-items: center;
+}
+.login .login-form .submit-with-remember .submit{
+    color: #ffffff;
+    background-color: #ddb97f;
+    border-width: 0px;
+    width:25%;
+    height:40px;
+    margin-top:-10px;
+
+}
+.login .login-form .submit-with-remember .submit:hover{
+    transition-delay: 0.07s;
+    background-color: #f0a62e;
+}
+.login .login-form  .submit-with-remember{
+      margin-top:40px;
+      justify-content:space-around;
+}
+.login .login-form  .no-thing{
+    width:20%;
+}
+/*  */
+/* responsive */
+@media (max-width: 1142px) {
+    .login .login-form  .no-thing{
+        display:none;
+    }
+    .login .login-form .submit-with-remember .submit{
+     width: 50%;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .login .login-form{
+        width: 50%;
+    }
+}
+@media (max-width: 767.98px) {
+    .login .login-text{
+        font-size: 35px !important;
+    }
+}
+@media (max-width:706px) {
+    .login .login-form{
+        width: 60%;
+    }
+}
+@media (max-width:590px) {    
+    .login .login-form{
+        width: 70%;
+    }
+}
+@media (max-width:590px) {
+    /* login form */
+        .login .login-form{
+            width: 80%;
+        }
+}
