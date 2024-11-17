@@ -124,7 +124,7 @@ class HomeController extends Controller
                 $customer->phone=$req->phone;
                 $customer->notics=$req->notics;
                 $cusId=$user->customers()->save($customer);
-
+                // get email and ubove info then get card and send them
                 $category=$req->session()->get('card');
                 $req->session()->get('quan');
                 $a=array();
@@ -136,11 +136,10 @@ class HomeController extends Controller
                 $req->session()->forget('card');
                 return redirect()->route('index');
         }
-
         public function myOrders(){
              $myCustomers=User::find(auth()->id())->customers()->get();
              $category=Category::select('id','category')->get();
-             if (empty($myCustomers))
+             if (sizeof($myCustomers)==0)
                   return view('awtar.order',['orders'=>[],'categories'=>$category]);
              $allOrder=array($myCustomers[0]->products()->select('name')->get());
              for($i=1;$i<count($myCustomers);$i++){
