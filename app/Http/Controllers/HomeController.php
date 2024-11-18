@@ -14,7 +14,6 @@ use App\Http\Requests\CustomerRequest;
 class HomeController extends Controller
 {
     public function home() {
-        return "ddd";
         $pros = Product::orderBy('id', 'desc')->take(6)->with('imgs')->get();
         $category=Category::select('id','category')->get();
         if (!empty($pros) && count($pros)>=6) {
@@ -31,7 +30,7 @@ class HomeController extends Controller
                 return view('awtar.index',['categories'=>$category,'alrohId'=>$alroh,'slider'=>$slider,'products'=>$pros]);
             }
         }
-        return view('awtar.index',['categories'=>$category,'alrohId'=>'','slider'=>[],'products'=>[]]);
+        return view('awtar.index',['categories'=>[],'alrohId'=>'','slider'=>[],'products'=>[]]);
     }
 
     public function login(){
