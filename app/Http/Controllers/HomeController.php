@@ -14,6 +14,7 @@ use App\Http\Requests\CustomerRequest;
 class HomeController extends Controller
 {
     public function home() {
+        return "ddd";
         $pros = Product::orderBy('id', 'desc')->take(6)->with('imgs')->get();
         $category=Category::select('id','category')->get();
         if (!empty($pros) && count($pros)>=6) {
