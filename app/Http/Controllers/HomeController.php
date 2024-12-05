@@ -59,7 +59,7 @@ class HomeController extends Controller
             $req->session()->put('card',[$newPro]);
             $req->session()->put('quan',$req->quantity);
         }
-        return redirect(config('APP_URL')."/product/".$req->proId);
+        return redirect(config('APP_URL')."product/".$req->proId);
         }
 
         public function viewCard(){

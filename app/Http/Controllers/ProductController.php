@@ -77,7 +77,7 @@ class ProductController extends Controller
                     foreach($files as $file){
                         $name=time().$file->getClientOriginalName();
                         $file->move(public_path().'/images/products', $name);
-                        $path=config('app.url').'/images/products/'. $name;
+                        $path=config('app.url').'images/products/'. $name;
                         // $pro->imgs()->create($path);
                         $img=new Img();
                         $img->img=$path;
@@ -152,7 +152,7 @@ class ProductController extends Controller
                 foreach($files as $file){
                     $name=time().$file->getClientOriginalName();
                     $file->move(public_path().'/images/products', $name);
-                    $path=config('app.url').'/images/products/'. $name;
+                    $path=config('app.url').'images/products/'. $name;
                     // $pro->imgs()->create($path);
                     $img=new Img();
                     $img->img=$path;
@@ -160,7 +160,7 @@ class ProductController extends Controller
                     $img->save();
                 }
             }
-            return redirect(config('app.url').'/product/'.$id);
+            return redirect(config('app.url').'product/'.$id);
           }
         }
     }
@@ -186,7 +186,7 @@ class ProductController extends Controller
                 }                  
                 File::delete($i->img);
                 $product->delete();  
-                return redirect(config('app.url')."/product?id=-1");
+                return redirect(config('app.url')."product?id=-1");
             }
         }
         return;

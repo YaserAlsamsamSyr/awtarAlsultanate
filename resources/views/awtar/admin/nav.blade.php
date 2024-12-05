@@ -18,7 +18,7 @@
                </form>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-color border-nav-part-2-element"  href="{{ env('APP_URL') }}/product/create"><span>اضافة منتج</span></a>
+              <a class="nav-link text-color border-nav-part-2-element"  href="{{ env('APP_URL') }}product/create"><span>اضافة منتج</span></a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link text-color border-nav-part-2-element  dropdown-hidden" href="#" role="button" aria-expanded="false">
@@ -27,12 +27,12 @@
               </a>
               <ul class="dropdown-menu  text-color bg-black dropdown-menu-border">
                 @foreach ($categories as $c)
-                    <li><a class="dropdown-item text-color dropdown-menu-item" href="{{ env('APP_URL') }}/adminHome?id={{ $c->id }}">{{ $c->category }}</a></li>
+                    <li><a class="dropdown-item text-color dropdown-menu-item" href="{{ env('APP_URL') }}adminHome?id={{ $c->id }}">{{ $c->category }}</a></li>
                 @endforeach
               </ul>
             </li>
             <li class="nav-item">
-               <a class="nav-link text-color border-nav-part-2-element"  href="{{ env('APP_URL') }}/category"><span>عرض الفئات</span></a>
+               <a class="nav-link text-color border-nav-part-2-element"  href="{{ env('APP_URL') }}category"><span>عرض الفئات</span></a>
              </li>
              <li class="nav-item">
                <a class="nav-link text-color border-nav-part-2-element"  href="{{ route('viewUsers') }}"><span>عرض المستخدمين</span></a>

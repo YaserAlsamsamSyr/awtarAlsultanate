@@ -47,7 +47,7 @@
                             <div class="bill d-flex flex-column">
                               <h3 align=center >{{ $user->email }}</h3>
                                 <div class="flex">
-                                  <form action="{{ env('APP_URL') }}/deleteUser/{{ $user->id }}" method="post">
+                                  <form action="{{ env('APP_URL') }}deleteUser/{{ $user->id }}" method="post">
                                       @csrf
                                       @method('DELETE')
                                       <input id="deletePro{{ $user->id }}" type="submit" value="تاكيد الحذف (سيتم حذف كل شيء متعلق به)" style="visibility:hidden;color:white;background-color:red;border:0px;width:100%;height:40px;" /> 

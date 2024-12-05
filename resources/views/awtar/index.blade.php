@@ -47,7 +47,7 @@
             
               <span>لما احساسي عطرسميته (عطر الروح)</span>
             </p>
-            <a href="{{ env('APP_URL') }}/product/{{ $alrohId }}" class="me-auto p-2">عطر الروح</a>
+            <a href="{{ env('APP_URL') }}product/{{ $alrohId }}" class="me-auto p-2">عطر الروح</a>
           </div>
           <div class="empty">
 
@@ -66,7 +66,7 @@
                 <p>إنها عطور تنبض  بطابع مترف وبعبير قوي ساحر لتفرض وجودها في أي مكان و مناسبة .</p>
                 @foreach ($slider as $s)
                       @if($s['name']=="ميكس عود")
-                          <a href="{{ env('APP_URL') }}/product/{{ $s['id'] }}">احصل عليها الأن</a>
+                          <a href="{{ env('APP_URL') }}product/{{ $s['id'] }}">احصل عليها الأن</a>
                       @endif
                 @endforeach
          </div>
@@ -79,7 +79,7 @@
                     <p>تخيّل شعورك وأنت محاط بالفخامة من كل جانب وصوب، وأنت تجول في قصرٍ تزدان ردهاته بأريج يحبس الأنفاس بعبق الأصالة الشرقية .</p>
                     @foreach ($slider as $s)
                         @if($s['name']=="هزام")
-                           <a href="{{ env('APP_URL') }}/product/{{ $s['id'] }}">احصل عليها الأن</a>
+                           <a href="{{ env('APP_URL') }}product/{{ $s['id'] }}">احصل عليها الأن</a>
                         @endif
                     @endforeach
                 </div>
@@ -92,7 +92,7 @@
                 <p>عندما تُصنع العطور من أعماق الطبيعة وتتغنى بسحرها وانتعاشهاو تخاطب الأحاسيس بمكوناتهما .</p>
                 @foreach ($slider as $s)
                        @if($s['name']=="عجم")
-                          <a href="{{ env('APP_URL') }}/product/{{ $s['id'] }}">احصل عليها الأن</a>
+                          <a href="{{ env('APP_URL') }}product/{{ $s['id'] }}">احصل عليها الأن</a>
                        @endif
                 @endforeach
                </div>
@@ -112,8 +112,8 @@
                  <div class="container-fluid items-today view-products">
                          <div class="row">
                                <div class="col-sm-12 col-md-6 col-lg-3">
-                                     <a href="{{ env('APP_URL') }}/product/{{ $products[0]->id }}"><img src="{{ $products[0]->imgs[0]->img }}" class="navbar-brand" /></a>
-                                     <a href="{{ env('APP_URL') }}/product/{{ $products[0]->id }}"><h2>{{ $products[0]->name }}</h2></a>
+                                     <a href="{{ env('APP_URL') }}product/{{ $products[0]->id }}"><img src="{{ $products[0]->imgs[0]->img }}" class="navbar-brand" /></a>
+                                     <a href="{{ env('APP_URL') }}product/{{ $products[0]->id }}"><h2>{{ $products[0]->name }}</h2></a>
                                      <div class="price">
                                       @if($products[0]->newPrice==0)
                                           <h5 class="offre">{{ $products[0]->oldPrice }} OMR</h5>
@@ -121,11 +121,11 @@
                                           <h5 class="offre">{{ $products[0]->newPrice }} OMR</h5>
                                       @endif
                                      </div>
-                                     <a href="{{ env('APP_URL') }}/product/{{ $products[0]->id }}" class="more-info">قراءة المزيد</a>
+                                     <a href="{{ env('APP_URL') }}product/{{ $products[0]->id }}" class="more-info">قراءة المزيد</a>
                                </div>
                                <div class="col-sm-12 col-md-6 col-lg-3">
-                                     <a href="{{ env('APP_URL') }}/product/{{ $products[1]->id }}"><img src="{{ $products[1]->imgs[0]->img }}" class="navbar-brand" /></a>
-                                     <a href="{{ env('APP_URL') }}/product/{{ $products[1]->id }}"><h2>{{ $products[1]->name }}</h2></a>
+                                     <a href="{{ env('APP_URL') }}product/{{ $products[1]->id }}"><img src="{{ $products[1]->imgs[0]->img }}" class="navbar-brand" /></a>
+                                     <a href="{{ env('APP_URL') }}product/{{ $products[1]->id }}"><h2>{{ $products[1]->name }}</h2></a>
                                      <div class="price">
                                       @if($products[1]->newPrice==0)
                                           <h5 class="offre">{{ $products[1]->oldPrice }} OMR</h5>
@@ -133,7 +133,7 @@
                                           <h5 class="offre">{{ $products[1]->newPrice }} OMR</h5>
                                       @endif
                                      </div>
-                                     <a href="{{ env('APP_URL') }}/product/{{ $products[1]->id }}" class="more-info">قراءة المزيد</a>
+                                     <a href="{{ env('APP_URL') }}product/{{ $products[1]->id }}" class="more-info">قراءة المزيد</a>
                                </div>
 
                          </div>
@@ -162,7 +162,7 @@
                       <h4>{{ $products[2]->desc }}</h4>
                 </div>
                 <div class="col-md-4">
-                     <a href="{{ env('APP_URL') }}/product/{{ $products[2]->id }}"><img src="{{ $products[2]->imgs[0]->img }}" class="navbar-brand"/></a>
+                     <a href="{{ env('APP_URL') }}product/{{ $products[2]->id }}"><img src="{{ $products[2]->imgs[0]->img }}" class="navbar-brand"/></a>
                 </div>
               </div>
          </div>
@@ -173,8 +173,8 @@
               <div class="container-fluid items-today view-products">
                       <div class="row">
                         <div class="col-sm-12 col-md-6 col-lg-3">
-                          <a href="{{ env('APP_URL') }}/product/{{ $products[3]->id }}"><img src="{{ $products[3]->imgs[0]->img }}" class="navbar-brand" /></a>
-                          <a href="{{ env('APP_URL') }}/product/{{ $products[3]->id }}"><h2>{{ $products[3]->name }}</h2></a>
+                          <a href="{{ env('APP_URL') }}product/{{ $products[3]->id }}"><img src="{{ $products[3]->imgs[0]->img }}" class="navbar-brand" /></a>
+                          <a href="{{ env('APP_URL') }}product/{{ $products[3]->id }}"><h2>{{ $products[3]->name }}</h2></a>
                           <div class="price">
                            @if($products[3]->newPrice==0)
                                <h5 class="offre">{{ $products[3]->oldPrice }} OMR</h5>
@@ -182,11 +182,11 @@
                                <h5 class="offre">{{ $products[3]->newPrice }} OMR</h5>
                            @endif
                           </div>
-                          <a href="{{ env('APP_URL') }}/product/{{ $products[3]->id }}" class="more-info">قراءة المزيد</a>
+                          <a href="{{ env('APP_URL') }}product/{{ $products[3]->id }}" class="more-info">قراءة المزيد</a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-3">
-                      <a href="{{ env('APP_URL') }}/product/{{ $products[4]->id }}"><img src="{{ $products[4]->imgs[0]->img }}" class="navbar-brand" /></a>
-                      <a href="{{ env('APP_URL') }}/product/{{ $products[4]->id }}"><h2>{{ $products[4]->name }}</h2></a>
+                      <a href="{{ env('APP_URL') }}product/{{ $products[4]->id }}"><img src="{{ $products[4]->imgs[0]->img }}" class="navbar-brand" /></a>
+                      <a href="{{ env('APP_URL') }}product/{{ $products[4]->id }}"><h2>{{ $products[4]->name }}</h2></a>
                       <div class="price">
                        @if($products[4]->newPrice==0)
                            <h5 class="offre">{{ $products[4]->oldPrice }} OMR</h5>
@@ -194,7 +194,7 @@
                            <h5 class="offre">{{ $products[4]->newPrice }} OMR</h5>
                        @endif
                       </div>
-                      <a href="{{ env('APP_URL') }}/product/{{ $products[4]->id }}" class="more-info">قراءة المزيد</a>
+                      <a href="{{ env('APP_URL') }}product/{{ $products[4]->id }}" class="more-info">قراءة المزيد</a>
                 </div>
 
                       </div>
@@ -205,7 +205,7 @@
       <div class="container">
           <div class="row">
              <div class="col-md-3">
-                 <a href="{{ env('APP_URL') }}/product/{{ $products[5]->id }}"><img src="{{ $products[5]->imgs[0]->img }}" class="navbar-brand"/></a>
+                 <a href="{{ env('APP_URL') }}product/{{ $products[5]->id }}"><img src="{{ $products[5]->imgs[0]->img }}" class="navbar-brand"/></a>
              </div>
              <div class="col-md-2"></div>
              <div class="col-md-7">

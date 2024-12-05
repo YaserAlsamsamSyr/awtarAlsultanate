@@ -81,7 +81,7 @@
               
             <div class="bill">
                   <h2 style="color:white;"> انشاء فئة جديدة </h2>
-                <form action="{{ env('APP_URL') }}/category" method="post"  class="create">
+                <form action="{{ env('APP_URL') }}category" method="post"  class="create">
                         @csrf
                         <input type="text" name="category" value="{{ old('category') }}" class="txt" required/>
                         <input type="submit" value="انشاء" class="sub" />
@@ -95,7 +95,7 @@
               
                             <div class="bill">
               
-                                <form action="{{ env('APP_URL') }}/category/{{ $cat->id }}" method="post" class="update" >
+                                <form action="{{ env('APP_URL') }}category/{{ $cat->id }}" method="post" class="update" >
                                         @csrf
                                         @method('PUT')
                                         <input class="txt" type="text" name="category" value="{{ $cat->category }}" required/>
@@ -103,7 +103,7 @@
                                 </form>
                                 <div class="flex">
                                   <button id="btnDeletePro{{ $cat->id }}" onclick="hid({{ $cat->id }})" style="color:red;border:1px solid red;background:black;width:20%;height:40px;margin-top:50px;">حذف</button>
-                                  <form action="{{ env('APP_URL') }}/category/{{ $cat->id }}" method="post">
+                                  <form action="{{ env('APP_URL') }}category/{{ $cat->id }}" method="post">
                                       @csrf
                                       @method('DELETE')
                                       <input id="deletePro{{ $cat->id }}" type="submit" value="تاكيد الحذف (سيتم حذف جميع المنتجات المتعلقة بها)" style="visibility:hidden;color:white;background-color:red;border:0px;width:100%;height:40px;" /> 

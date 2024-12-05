@@ -28,7 +28,7 @@
         <div class="col-lg-3 col-md-6 col-sm-12 products">
               <h5 class="h5-padding">المنتجات</h5>
               <div class="d-flex">
-                  <a href="{{ env('APP_URL') }}/product?id=-1" class="nav-link">جميع المنتجات</a>
+                  <a href="{{ env('APP_URL') }}product?id=-1" class="nav-link">جميع المنتجات</a>
               </div>
               @php
                 $count=1;
@@ -37,7 +37,7 @@
                   @if($count==1)
                       <div class="d-flex pt-3">
                   @endif
-                      <a href="{{ env('APP_URL') }}/product?id={{ $c->id }}" class="nav-link">{{ $c->category }}</a>
+                      <a href="{{ env('APP_URL') }}product?id={{ $c->id }}" class="nav-link">{{ $c->category }}</a>
                   @if($count==2)    
                      </div>
                   @endif

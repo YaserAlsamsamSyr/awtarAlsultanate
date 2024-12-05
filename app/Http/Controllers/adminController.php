@@ -34,7 +34,7 @@ class adminController extends Controller
 
     public function getBarcode(String $name,int $id){
                 // create parcode for new product and send it to admin
-                QrCode::size(400)->margin(5)->generate(config('app.url').'/'.'product/'.$id, public_path('images/qrcode.svg') );
+                QrCode::size(400)->margin(5)->generate(config('app.url').'product/'.$id, public_path('images/qrcode.svg') );
                 $file= public_path(). "/images/qrcode.svg";
                 $headers = array(
                           'Content-Type: application/svg',

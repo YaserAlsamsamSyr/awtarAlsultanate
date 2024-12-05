@@ -68,7 +68,7 @@
                                   <a class="next" onclick="plusSlides(1)">&#10094;</a>
                             </div>
                             <button id="btnDeletePro" onclick="hid()" style="color:yellow;border:1px solid yellow;background:black;width:20%;height:40px;margin-top:50px;">حذف</button>
-                            <form action="{{ env('APP_URL') }}/product/{{ $pro->id }}" method="post">
+                            <form action="{{ env('APP_URL') }}product/{{ $pro->id }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input id="deletePro" type="submit" value="تاكيد الحذف" style="visibility:hidden;color:white;background-color:red;border:0px;width:100%;height:40px;" /> 
@@ -77,7 +77,7 @@
                       <div class="col-sm-12 col-md-12 col-lg-6 second-part">
 
                       
-                        <form action="{{ env('APP_URL') }}/product/{{ $pro->id }}" method="post" enctype="multipart/form-data" >
+                        <form action="{{ env('APP_URL') }}product/{{ $pro->id }}" method="post" enctype="multipart/form-data" >
                           @csrf 
                           @method('PUT')
                               <p>(صور عن المنتج) يجب اعادة اختيار صور </p>

@@ -34,9 +34,9 @@
             <div class="col-sm-12 col-md-6 col-lg-3">
               {{-- {{ $i->imgs[0]->img }} --}}
               
-              <a href="{{ env('APP_URL') }}/getBarcode/{{ $i->name }}/{{ $i->id }}" style="color:rgb(231, 120, 120);">get barcode</a><br><br>
-              <a href="{{ env('APP_URL') }}/product/{{ $i->id }}"><img src='{{ $i->imgs[0]->img }}' class="navbar-brand" /></a>
-              <a href="{{ env('APP_URL') }}/product/{{ $i->id }}"><h2>{{ $i->name }}</h2></a>
+              <a href="{{ env('APP_URL') }}getBarcode/{{ $i->name }}/{{ $i->id }}" style="color:rgb(231, 120, 120);">get barcode</a><br><br>
+              <a href="{{ env('APP_URL') }}product/{{ $i->id }}"><img src='{{ $i->imgs[0]->img }}' class="navbar-brand" /></a>
+              <a href="{{ env('APP_URL') }}product/{{ $i->id }}"><h2>{{ $i->name }}</h2></a>
               <div class="price">          
                 @if($i->newPrice==0)      
                    <br><div class="height" style="height:17px;"></div>
@@ -46,7 +46,7 @@
                    <h5 class="offre">{{ $i->newPrice }} OMR</h5>
                 @endif
               </div>
-              <a href="{{ env('APP_URL') }}/product/{{ $i->id }}" class="more-info">قراءة المزيد</a>
+              <a href="{{ env('APP_URL') }}product/{{ $i->id }}" class="more-info">قراءة المزيد</a>
               
             </div>
             @if($count==4)

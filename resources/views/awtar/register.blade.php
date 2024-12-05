@@ -33,7 +33,7 @@
                  <h1 class="login-text">أنشاء حساب</h1>
                  <br>
                  <div class="login-form">
-                    <form method="POST" action='{{ env('APP_URL') }}/register'>
+                    <form method="POST" action='{{ env('APP_URL') }}register'>
                           @csrf
                           <div class="user-name">
                                 <div class="d-flex text">

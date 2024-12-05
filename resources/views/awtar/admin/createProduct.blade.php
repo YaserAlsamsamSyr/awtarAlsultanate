@@ -32,7 +32,7 @@
             @endforeach
      </div>
      <section class="confirmOrder">
-        <form action="{{ env('APP_URL') }}/product" method="post" enctype="multipart/form-data" >
+        <form action="{{ env('APP_URL') }}product" method="post" enctype="multipart/form-data" >
               @csrf
               <div class="container">
                   <div class="row">

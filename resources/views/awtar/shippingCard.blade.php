@@ -30,13 +30,13 @@
                           <div class="col-md-4 col-sm-12  section-one">
                               <div class="div-btn-remove-shipping">
                                     <button class="remove-from-shipping">
-                                         <a href="{{ env('APP_URL') }}/removeFromCard/{{ $i['id'] }}" style="text-decoration: none;width:auto;color:white;margin-right:0px;">X</a>
+                                         <a href="{{ env('APP_URL') }}removeFromCard/{{ $i['id'] }}" style="text-decoration: none;width:auto;color:white;margin-right:0px;">X</a>
                                     </button>
                               </div>
-                              <a href="{{ env('APP_URL') }}/product/{{ $i['id'] }}" ><img src="{{ $i['img'] }}" alt="no image" class="img-fluid "/></a>
+                              <a href="{{ env('APP_URL') }}product/{{ $i['id'] }}" ><img src="{{ $i['img'] }}" alt="no image" class="img-fluid "/></a>
                           </div>
                           <div class="col-md-8 col-sm-12 d-flex align-items-center section-tow">
-                             <p class="flex-fill"><a href="{{ env('APP_URL') }}/product/{{ $i['id'] }}">{{ $i['name'] }}</a></p>
+                             <p class="flex-fill"><a href="{{ env('APP_URL') }}product/{{ $i['id'] }}">{{ $i['name'] }}</a></p>
                              <p class="flex-fill">{{ $i['price'] }} OMR</p>
                              <div class="d-flex flex-fill select-quantity">
                                      <button class="min-btn" onclick="minusOne({{ $i['id'] }})">-</button>
@@ -48,7 +48,7 @@
                       </div>
                       @endforeach
                       @endif
-                   <form action="{{ env('APP_URL') }}/updateCard" method="post">
+                   <form action="{{ env('APP_URL') }}updateCard" method="post">
                     @csrf
                      <div class="row second-row">
                             <div class="col-sm-12 update-card d-flex justify-content-center">
