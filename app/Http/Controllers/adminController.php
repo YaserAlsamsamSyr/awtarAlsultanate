@@ -16,7 +16,6 @@ class adminController extends Controller
 {
     public function aHome(Request $req)
     {  
-        
         if (Auth::check()){
             $accType = Auth::user()->accountType;
             if($accType=="aaddmmii0n0n"){
@@ -27,7 +26,7 @@ class adminController extends Controller
                         return;
                     }
                 } else $cat=-1;
-                return redirect(config('app.url').'/product?id='.$cat);
+                return redirect(config('app.url').'product?id='.$cat);
             }
         }
         return;
