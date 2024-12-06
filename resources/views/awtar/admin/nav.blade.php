@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-           <a class="nav-link"><img  src="{{ asset('images/footerAndNav/awtar.png') }}"class="navbar-brand"/></a>
+           <a class="nav-link" href="{{ route('index') }}"><img  src="{{ asset('images/footerAndNav/awtar.png') }}"class="navbar-brand"/></a>
            <div class="db d-flex">
             
            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
