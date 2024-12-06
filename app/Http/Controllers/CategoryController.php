@@ -46,7 +46,7 @@ class CategoryController extends Controller
                           $cat->category=$req->category;
                           $cat->user_id=auth()->id();
                           $cat->save();
-                          return redirect(config('app.url')."/category");
+                          return redirect(config('app.url')."category");
                 }
             }
             return;
@@ -84,7 +84,7 @@ class CategoryController extends Controller
                    $cat=Category::find($id);
                    $cat->category=$req->category;
                    $cat->save();
-                   return redirect(config('app.url')."/category");
+                   return redirect(config('app.url')."category");
             }
         }
         return;
@@ -104,7 +104,7 @@ class CategoryController extends Controller
             if($accType=="aaddmmii0n0n"){
                 $cat=Category::find($id);
                 $cat->delete();
-                return redirect(config('app.url')."/category");
+                return redirect(config('app.url')."category");
             }
         }
         return;
