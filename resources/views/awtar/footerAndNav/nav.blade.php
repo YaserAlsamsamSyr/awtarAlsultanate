@@ -57,8 +57,8 @@
             @endauth
             <li class="nav-item">
               <a class="nav-link text-color d-flex justify-content-center border-nav-part-2-element icon sh a-large" href="{{ route('viewCard') }}" >
-                <img src="{{ asset('images/footerAndNav/shippingIcon.PNG') }}" class="shipping-icon"/>
-                <img src="{{ asset('images/footerAndNav/msg_icon.PNG') }}" class="msg-icon"/>
+                <img src="{{ asset('images/footerAndNav/shippingIcon.png') }}" class="shipping-icon"/>
+                <img src="{{ asset('images/footerAndNav/msg_icon.png') }}" class="msg-icon"/>
                 <p>
                   @if (session('quan'))
                       {{ session('quan') }}
