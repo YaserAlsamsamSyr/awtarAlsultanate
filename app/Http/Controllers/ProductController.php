@@ -10,6 +10,7 @@ use App\Models\Img;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProductRequest;
+use Exception;
 use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
@@ -19,6 +20,7 @@ class ProductController extends Controller
      */
     public function index(Request $req)
     {
+    try{
         $cat=$req->id;
         $pattern="/^(-1|[0-9]+)$/";
         if(!preg_match($pattern, $cat)){
@@ -37,6 +39,7 @@ class ProductController extends Controller
                 return view('awtar.admin.adminHome',['categories'=>$category,'products'=>$products,'accType'=>$accType]);
         }
         return view('awtar.products',['categories'=>$category,'pros'=>$products]);
+    }catch( Exception $err){return response()->json(['message'=>$err->getMessage()]);}
     }
 
     /**
