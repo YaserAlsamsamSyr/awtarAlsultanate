@@ -4,8 +4,8 @@
         <a href="{{ route('index') }}" class="nav-link"><img  src="{{ asset('images/footerAndNav/awtar.png') }}"class="navbar-brand"/></a>
        <div class="db d-flex">
         <a class="nav-link text-color d-flex justify-content-center border-nav-part-2-element icon sh a-small" href="{{ route('viewCard') }}">
-          <img src="{{ asset('images/footerAndNav/shippingIcon.PNG') }}" class="shipping-icon"/>
-          <img src="{{ asset('images/footerAndNav/msg_icon.PNG') }}" class="msg-icon"/>
+          <img src="{{ asset('images/footerAndNav/shippingIcon.png') }}" class="shipping-icon"/>
+          <img src="{{ asset('images/footerAndNav/msg_icon.png') }}" class="msg-icon"/>
           <p>
             @if (session('quan'))
                 {{ session('quan') }}
