@@ -32,7 +32,18 @@
     <!---->
 
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap" rel="stylesheet">
-
+    <style>
+      #updatepassword{
+        background-color: rgb(148, 148, 59);
+        width: 40%;
+      }
+      #updatepasswordinput{
+        width: 40%;
+      }
+      #updatepassword:hover{
+        background-color: rgb(92, 92, 34);
+      }
+    </style>
 </head>
 <body>
 @auth
@@ -45,7 +56,27 @@
            @foreach ($users as $user)
                            <div class="col-sm-12 d-flex justify-content-center ">   
                             <div class="bill d-flex flex-column">
-                              <h3 align=center >{{ $user->email }}</h3>
+                              <h3 align="center" >{{ $user->name }}</h3>
+                              <h3 align="center" >{{ $user->email }}</h3>
+                              <a align="center" class="m-2" href="{{ route('viewOrders',$user->id) }}">طلبات هذا المستخدم</a>
+                              <form action="{{ route('user.update.password') }}" method="post" align="center">
+                                  @csrf
+                                  <div class="m-2">
+                                      <input type="hidden" name="userId" value="{{ $user->id }}" />
+                                      <input type="password" name="password" placeholder="new password" id="updatepasswordinput" class="p-2" required />
+                                  </div>
+                                  <div class="m-2">
+                                        <input type="submit" value="تعديل كلمة سر" id="updatepassword" class="p-2"/>
+                                  </div>
+                              </form>
+                              @if($errors->any())
+                                  <div class="alert alert-danger" role="alert">
+                                        @foreach ($errors->all() as $error)
+                                        {{$error}}
+                                        @break
+                                        @endforeach
+                                  </div>
+                              @endif
                                 <div class="flex">
                                   <form action="{{ env('APP_URL') }}deleteUser/{{ $user->id }}" method="post">
                                       @csrf
@@ -61,6 +92,9 @@
         </div>
     </div>
     <br>
+    <div align="center">
+        {{ $users->links() }}
+    </div>
     <br>
     <br>
     <br>

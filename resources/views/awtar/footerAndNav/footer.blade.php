@@ -27,9 +27,9 @@
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12 products">
               <h5 class="h5-padding">المنتجات</h5>
-              <div class="d-flex">
+              {{-- <div class="d-flex">
                   <a href="{{ env('APP_URL') }}product?id=-1" class="nav-link">جميع المنتجات</a>
-              </div>
+              </div> --}}
               @php
                 $count=1;
               @endphp
@@ -56,6 +56,10 @@
         </div>
         <div class="col-lg-2 col-md-6 col-sm-12 sub-page">
           <h5 class="h5-padding h5-padding-md">الصفحات الجانبية</h5>
+          <a href={{ route('policy') }} class="nav-link d-flex pt-1">
+            <P class="border-circle"></P>
+            <P class="p-content">لمحة عن شركة</P>
+          </a> 
           <a href="{{ route('index') }}" class="nav-link d-flex">
               <P class="border-circle"></P>
               <P class="p-content">الصفحة الرئيسية</P>

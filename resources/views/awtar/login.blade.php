@@ -22,13 +22,13 @@
      @include('awtar.footerAndNav.nav') 
      <section class="login">
             @if($errors->any())
-            <div class="alert alert-danger" role="alert">
-                  @foreach ($errors->all() as $error)
-                  {{$error}}
-                  @break
-                  @endforeach
-            </div>
-      @endif
+                 <div class="alert alert-danger" role="alert">
+                       @foreach ($errors->all() as $error)
+                       {{$error}}
+                       @break
+                       @endforeach
+                 </div>
+           @endif
       <div class="d-flex align-items-center login-container flex-column">
            <h1 class="login-text">تسجيل الدخول</h1>
            <br>
@@ -55,8 +55,8 @@
                         </div>
                     </div>
                      {{--  --}}
-                    <div class="d-flex submit-with-remember">
-                          <a href="{{ route('password.request') }}" class="nav-link forget-pass">نسيت كلمة سر ؟</a>
+                    <div class="submit-with-remember">
+                          {{-- <a href="{{ route('password.request') }}" class="nav-link forget-pass">نسيت كلمة سر ؟</a> --}}
                           <input type="submit" value="تسجيل الدخول" class="submit"/>
                           <div class="no-thing"></div>
                     </div>

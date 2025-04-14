@@ -20,7 +20,8 @@ class Product extends Model
         'oldPrice',
         'offerNotic',
         'user_id',
-        'category_id'
+        'category_id',
+        'isDeleted'
     ];
     public $timestamps = true;
     protected $hidden=[
@@ -32,7 +33,7 @@ class Product extends Model
     }
 
     public function customers(){
-        return $this->belongsToMany(Customer::class,'orders')->withPivot('totalPrice','quantity');
+        return $this->belongsToMany(Customer::class,'orders')->withPivot('totalPrice','quantity','year','day','month');
     }
 
     public function imgs(){

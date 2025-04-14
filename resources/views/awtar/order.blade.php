@@ -48,7 +48,7 @@
               
                             <div class="bill">
               
-                                <h3>الطلب {{ $loop->index+1 }} :</h3>
+                                <h3>الطلب {{ $loop->index+1 }} : {{ $order[0]->pivot->day }}\{{ $order[0]->pivot->month }}\{{ $order[0]->pivot->year }}</h3>
                                 
                                   <div class="order-info d-flex justify-content-around">
                                       
@@ -96,7 +96,7 @@
             
 
         </div>
-
+        {{ $myCustomers->links() }}
     </div>
 
 

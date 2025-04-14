@@ -44,7 +44,7 @@
 }
 .slide-container .mySlides img{
     height:430px;
-    width: 60%;
+    width: 40%;
 }
 /*  */
 .product-info .first-row .price .no-offer{
@@ -194,7 +194,7 @@
         height: 40px;
     }
     .slide-container .mySlides img{
-        width: 50% !important;
+        width: 30% !important;
     }
     .product-info .first-row .second-part{
         text-align: center;
@@ -219,12 +219,12 @@
         width: 20%;
     }
     .slide-container .mySlides img{
-        width: 65% !important;
+        width: 40% !important;
     }
 }
 @media (max-width: 1200px) {
     .slide-container .mySlides img{
-        width: 70%;
+        width: 50%;
     }
 }
 

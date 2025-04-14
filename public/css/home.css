@@ -175,7 +175,7 @@ footer{
   }
   .preview1 .row .col-md-4 a img,
   .preview2 .container .row .col-md-3 a img{
-       width:360px;
+       width:200px;
        height:380px;
 }
 
@@ -203,7 +203,7 @@ footer{
         font-size: 19px;
      }
      .preview1 .row .col-md-4 a img{
-          width:250px;
+          width:150px;
           height:300px;
    }
 }
@@ -225,7 +225,7 @@ footer{
         width:390px;
     }
     .preview2 .container .row .col-md-3 a img{
-        width:250px;
+        width:150px;
         height:290px;
     }
 }

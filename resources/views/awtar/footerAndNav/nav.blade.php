@@ -19,6 +19,11 @@
         <div class="collapse navbar-collapse nav-part-2" id="navbarTogglerDemo01">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             @auth
+            @if(auth()->user()->accountType=="aaddmmii0n0n")
+              <li class="nav-item">
+                <a class="nav-link text-color border-nav-part-2-element"  href="{{ route('adminHome') }}"><span>admin</span></a>
+              </li>
+            @endif
             <li class="nav-item">
                <form action="{{ route('logout') }}" method="POST">
                 @csrf
@@ -29,9 +34,9 @@
             <li class="nav-item">
               <a class="nav-link text-color border-nav-part-2-element"  href="{{ route('index') }}"><span>الصفحة الرئيسية</span></a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link text-color border-nav-part-2-element" href="{{ env('APP_URL') }}product?id=-1">جميع المنتجات</a>
-            </li>
+            </li> --}}
             <li class="nav-item dropdown">
               <a class="nav-link text-color border-nav-part-2-element  dropdown-hidden" href="#" role="button" aria-expanded="false">
                 عطور ومجموعات دار السلطنة

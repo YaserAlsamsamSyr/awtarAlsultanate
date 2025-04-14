@@ -24,6 +24,9 @@
            top:52%;
        }
     </style>
+    @if (explode(" ", $pros[0]->name)[0]=="بخور")
+             @include('components.forimg')
+    @endif
 </head>
 <body>
      

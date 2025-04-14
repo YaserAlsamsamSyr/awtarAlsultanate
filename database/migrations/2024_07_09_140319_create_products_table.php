@@ -18,6 +18,7 @@ return new class extends Migration
             $table->double('newPrice')->default(0);
             $table->double('oldPrice')->nullable(false);
             $table->string('offerNotic')->nullable(true);
+            $table->boolean('isDeleted')->default(false);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('category_id');

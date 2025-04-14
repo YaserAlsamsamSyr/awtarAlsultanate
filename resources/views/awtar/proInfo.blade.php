@@ -17,6 +17,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!---->
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap" rel="stylesheet">
+    @if (explode(" ", $pro->name)[0]=="بخور")
+          <style>
+              #imgspe{
+                   height: 30% !important;
+              }
+          </style>
+    @endif
 </head>
 <body>
     
@@ -28,7 +35,7 @@
                                  @foreach ($pro->imgs as $p)
                                        <!-- Full-width images with number text -->
                                        <div class="mySlides">
-                                           <img src="{{ $p->img }}" class="navbar-brand">
+                                           <img src="{{ $p->img }}" id="imgspe" class="navbar-brand">
                                        </div>
                                   @endforeach
                                   <!-- Next and previous buttons -->

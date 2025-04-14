@@ -23,6 +23,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/viewUsers',[adminController::class,'viewUsers'])->name('viewUsers');
     Route::delete('/deleteUser/{id}',[adminController::class,'deleteUser']);
     Route::resource('category', CategoryController::class);
+    Route::post('/updateUserPassword',[adminController::class,'updateUserPassword'])->name('user.update.password');
+    Route::get('viewOrders/{id}', [adminController::class,'viewOrders'])->name('viewOrders');
+    Route::get('getMoney', [adminController::class,'getMoney'])->name('money');
     //
     Route::post('/addToCard',[HomeController::class,'addToCard'])->name('addToCard');
     Route::get('/viewCard',[HomeController::class,'viewCard'])->name('viewCard');

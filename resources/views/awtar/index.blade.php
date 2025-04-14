@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/products.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
@@ -107,6 +105,16 @@
            <br>       
      </section>
      <section>
+      <div class="card" style="background-color: black">
+        <div class="card-header m-5">
+            <h1 align="center" style="color:#B89761">لمحة عن الشركة</h1>
+        </div>
+        <div class="card-body" >
+          <h3 align="center">qw'dqwpdokqwpdokqwpodk wqpodk pwqok dpqwok dpwqokd poqwk </h3>
+        </div>
+      </div>
+     </section>
+     <section>
          <div class="today-perfume d-flex flex-column justify-content-center">
                  <h2>عطر الاسبوع</h2>
                  <div class="container-fluid items-today view-products">
@@ -140,7 +148,7 @@
                     </div>             
                  </div>
      </section>
-     <section class="list-img" >
+     {{-- <section class="list-img" >
       <div class="container-fluid">
         <div class="d-flex justify-content-center">
              <img src="{{ asset('images/home/slide1.jpg') }}" class="navbar-brand ps-4" />
@@ -151,8 +159,13 @@
         <div class="empty2">
 
         </div>
-     </section>
-
+     </section> --}}
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
      <section class="preview1">
          <div class="container">
              <div class="row">
@@ -167,6 +180,12 @@
               </div>
          </div>
      </section>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
      <section>
       <div class="today-perfume d-flex flex-column justify-content-center">
               <h2>متوفر الأن</h2>
@@ -260,5 +279,7 @@
             }
       </script>
      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
 </body>
 </html>
