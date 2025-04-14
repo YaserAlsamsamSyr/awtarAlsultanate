@@ -33,10 +33,7 @@
     <h1 style="color:white;background-color:black;">قم بإدخال 6 منتجات اولا ومن بينهم عجم و ميكس عود و عطر الروح و هزام</h1>
     @else      
      <section class="video">
-          <video width="100%" height="600" muted autoplay loop >
-              <source src="{{ asset('video/intro.mp4') }}" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
+          <img width="100%" height="600" src="{{ asset('video/intro.jpg') }}" />
           <div class="d-flex flex-column ps">
             <p class="p1">
               <span>الحكاية..ابتدت من هالسؤال… ؟ شلون أجمع ذكرياتي؟أغنياتي..وبعض إحساسي وحبي…وجزء من ذاتي..؟ كان أشبه</span>
