@@ -26,6 +26,7 @@
             object-fit: fill;
         } */
       </style>
+      {{-- <link href="{{ asset('css/slideshow.css') }}" rel="stylesheet"> --}}
 </head>
 <body>
     @include('awtar.footerAndNav.nav')    
@@ -102,22 +103,47 @@
            <br>       
      </section>
      {{--  --}}
-     <section id="groupitems">
-      <div class="today-perfume d-flex flex-column justify-content-center">
-              <h1 style="color:#B89761">المجموعات</h1>
-              <div class="container-fluid items-today view-products" align="center">
-                      <div class="row">
-                        @foreach ($categories as $i)
-                            <div class="col-sm-6 col-md-4 col-lg-3">
-                                  <a href="{{ env('APP_URL') }}product?id={{ $i->id }}"><img src="{{ asset('images/home/slide1.jpg') }}" class="navbar-brand m-2" /></a>
-                                  <a href="{{ env('APP_URL') }}product?id={{ $i->id }}"><h4 style="color:white;" align="center">{{ $i->category }}</h4></a>
-                            </div>
-                          @endforeach
+         <!-- Carousel Start -->
+         
+    <h1 style="color:#B89761" align="center" class="m-4">المجموعات</h1>
+    <div class="container-fluid p-0 mb-5 mt-5" id="parentdevheader">
+        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @foreach ($categories as $i)
+                      <div id="topheader" class="carousel-item active" align="center" style="background-color: black;">
+                        @if($loop->first)
+                        <a href="{{ env('APP_URL') }}product?id={{ $i->id }}" class="nav-link"><img id="headerimg" class="w-50"  src="{{ asset('images/home/slide1.jpg') }}" alt="Image"></a>
+                        @else
+                        <a href="{{ env('APP_URL') }}product?id={{ $i->id }}" class="nav-link"><img id="headerimg" class="w-50"  src="{{ asset('images/home/slide2.jpg') }}" alt="Image"></a>
+                        @endif
+                          <div class="carousel-caption">
+                              <div class="container">
+                                  <div class="row justify-content-center">
+                                      <div class="col-lg-7 pt-5">
+                                        <a href="{{ env('APP_URL') }}product?id={{ $i->id }}" class="nav-link"><h4 class="display-7 text-white animated slideInDown" style="color:white;" align="center">{{ $i->category }}</h4></a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
                       </div>
-                 </div>             
+                      @if(!$loop->first)
+                        @break
+                      @endif
+                @endforeach
               </div>
-  </section>
-
+              <button id="headernextpre" class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+              </button>
+              <button id="headernextpre" class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+              </button>
+        </div>
+    </div>
+    <!-- Carousel End -->
      {{--  --}}
      <section>
       <div class="card" style="background-color: black">
@@ -187,7 +213,8 @@
                 <div class="col-md-8">
                       <h1>{{ $products[2]->name }}</h1>
                       <br>
-                      <h4>{{ $products[2]->desc }}</h4>
+                      {{-- <h4>{{ $products[2]->desc }}</h4> --}}
+                      <h4>يجسد عطر روح توازن الأصالة و الإبداع , مستوحى من التراث العماني وسحر الطبيعة ليقدم تجربة عطرية لاتنسى تعكس هوية أوتار السلطنة</h4>
                 </div>
                 <div class="col-md-4">
                      <a href="{{ env('APP_URL') }}product/{{ $products[2]->id }}"><img src="{{ $products[2]->imgs[0]->img }}" class="navbar-brand"/></a>
@@ -293,6 +320,7 @@
               setTimeout(showSlides, 4000); // Change image every 2 seconds
             }
       </script>
+     {{-- <script src="{{ asset('js/slideshow.js') }}"></script> --}}
      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   
