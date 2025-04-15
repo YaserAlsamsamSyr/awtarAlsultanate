@@ -50,7 +50,7 @@ a{
 @media (max-width: 575.98px) {
     .view-products .row .col-sm-12 img{
         width: 38%;
-        height:3O%;
+        height:30%;
     } 
     .view-products .row .col-sm-12{
         height:800px;
@@ -59,7 +59,7 @@ a{
 @media (max-width: 450px) {
     .view-products .row .col-sm-12 img{
         width: 30%;
-        height:5O%;
+        height:50%;
     } 
     .view-products .row .col-sm-12{
         height:450px;

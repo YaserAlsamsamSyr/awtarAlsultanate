@@ -22,9 +22,9 @@
         .a-large p{
             top:52%;
         }
-        video {
+        /* video {
             object-fit: fill;
-        }
+        } */
       </style>
 </head>
 <body>
@@ -32,7 +32,7 @@
     @if($alrohId=='')
     <h1 style="color:white;background-color:black;">قم بإدخال 6 منتجات اولا ومن بينهم عجم و ميكس عود و عطر الروح و هزام</h1>
     @else      
-     <section class="video">
+     {{-- <section class="video">
           <img width="100%" height="600" src="{{ asset('video/intro.jpg') }}" />
           <div class="d-flex flex-column ps">
             <p class="p1">
@@ -47,7 +47,7 @@
           <div class="empty">
 
           </div>
-     </section>
+     </section> --}}
      <div style="background-color: black;">
      <section class="img-slider">
        <!-- Slideshow container -->
@@ -101,13 +101,31 @@
            </div>
            <br>       
      </section>
+     {{--  --}}
+     <section id="groupitems">
+      <div class="today-perfume d-flex flex-column justify-content-center">
+              <h1 style="color:#B89761">المجموعات</h1>
+              <div class="container-fluid items-today view-products" align="center">
+                      <div class="row">
+                        @foreach ($categories as $i)
+                            <div class="col-sm-6 col-md-4 col-lg-3">
+                                  <a href="{{ env('APP_URL') }}product?id={{ $i->id }}"><img src="{{ asset('images/home/slide1.jpg') }}" class="navbar-brand m-2" /></a>
+                                  <a href="{{ env('APP_URL') }}product?id={{ $i->id }}"><h4 style="color:white;" align="center">{{ $i->category }}</h4></a>
+                            </div>
+                          @endforeach
+                      </div>
+                 </div>             
+              </div>
+  </section>
+
+     {{--  --}}
      <section>
       <div class="card" style="background-color: black">
         <div class="card-header m-5">
             <h1 align="center" style="color:#B89761">لمحة عن الشركة</h1>
         </div>
         <div class="card-body" >
-          <h3 align="center">qw'dqwpdokqwpdokqwpodk wqpodk pwqok dpqwok dpwqokd poqwk </h3>
+          <h3 align="center" style="color:white;">qw'dqwpdokqwpdokqwpodk wqpodk pwqok dpqwok dpwqokd poqwk </h3>
         </div>
       </div>
      </section>
@@ -272,7 +290,7 @@
               if (slideIndex > slides.length) {slideIndex = 1}
               slides[slideIndex-1].style.display = "block";
               document.getElementsByClassName('dot')[slideIndex-1].style.backgroundColor="#e2ad56";
-              setTimeout(showSlides, 20000); // Change image every 2 seconds
+              setTimeout(showSlides, 4000); // Change image every 2 seconds
             }
       </script>
      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
