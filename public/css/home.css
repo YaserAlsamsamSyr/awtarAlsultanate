@@ -190,7 +190,6 @@ footer{
            100%{opacity: 0}
   }
 
-
   @media (max-width: 1200px) {
     .video p{
         font-size: 20px;

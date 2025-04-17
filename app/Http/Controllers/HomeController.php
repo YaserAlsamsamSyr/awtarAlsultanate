@@ -16,23 +16,27 @@ class HomeController extends Controller
 {
         public function home() {
             try{
-                $pros = Product::where('isDeleted',false)->orderBy('id', 'desc')->take(6)->with('imgs')->get();
+                $pros = Product::inRandomOrder()->where('isDeleted',false)->orderBy('id', 'desc')->limit(5)->with('imgs')->get();
                 $category=Category::select('id','category')->where('isDeleted',false)->get();
-                if (!empty($pros) && count($pros)>=6) {
+                if (!empty($pros) && count($pros)>=5) {
                     $pro=Product::where('isDeleted',false)->where('name','=','عطر الروح')->orWhere('name', '=', 'ميكس عود')->orWhere('name', '=', 'عجم')->orWhere('name', '=', 'هزام')->get();
                     if(count($pro)==4){
                         $alroh='';
+                        $alrohimg='';
+                        $alrohname='';
                         $slider=array();
                         foreach($pro as $p){
-                             if($p->name=="عطر الروح")
+                             if($p->name=="عطر الروح"){
                                    $alroh=$p->id;
-                            else
+                                   $alrohimg=($p->imgs()->first())->img;
+                                   $alrohname=$p->name;
+                             } else
                                array_push($slider,['id'=>$p->id,'name'=>$p->name]);
                         }
-                        return view('awtar.index',['categories'=>$category,'alrohId'=>$alroh,'slider'=>$slider,'products'=>$pros]);
+                        return view('awtar.index',['categories'=>$category,'alrohname'=>$alrohname,'alrohimg'=>$alrohimg,'alrohId'=>$alroh,'slider'=>$slider,'products'=>$pros]);
                     }
                 }
-                return view('awtar.index',['categories'=>[],'alrohId'=>'','slider'=>[],'products'=>[]]);
+                return view('awtar.index',['categories'=>[],'alrohname'=>'','alrohimg'=>'','alrohId'=>'','slider'=>[],'products'=>[]]);
             } catch(Exception $err){
                 return response()->json(['message'=>$err->getMessage()]);
             }
@@ -219,6 +223,19 @@ class HomeController extends Controller
                           'Content-Type: application/pdf',
                         );
                 return response()->download($file, 'AwtarContacts.pdf', $headers);
+            } catch(Exception $err){
+                return response()->json(['message'=>$err->getMessage()]);
+            }
+        }
+        
+        public function company(){
+            try{
+                $fileName='AwtarOverview_ar.pdf';
+                $file= public_path(). "/files/".$fileName;
+                $headers = array(
+                          'Content-Type: application/pdf',
+                        );
+                return response()->download($file, $fileName, $headers);
             } catch(Exception $err){
                 return response()->json(['message'=>$err->getMessage()]);
             }

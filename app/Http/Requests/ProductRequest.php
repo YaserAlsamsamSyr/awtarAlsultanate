@@ -25,7 +25,7 @@ class ProductRequest extends FormRequest
                 'imgs'=>['required'],
                 'imgs.*'=>['image','mimes:jpeg,jpg,png,gif'],
                 'name'=>['required', 'string', 'max:255'],
-                'desc'=>['required', 'string', 'max:500'],
+                'desc'=>['required', 'string', 'max:2000'],
                 'newPrice'=>['nullable','numeric', 'max:200'],
                 'oldPrice'=>['required', 'numeric', 'max:200'],
                 'offerNotic'=>['nullable', 'string', 'max:500']

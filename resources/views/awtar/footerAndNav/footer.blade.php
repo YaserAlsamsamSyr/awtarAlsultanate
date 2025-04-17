@@ -7,7 +7,7 @@
                 <img src="{{ asset('images/footerAndNav/location.png') }}"/>
                 <div class="location-desc desc">
                   <h5>العنوان</h5>
-                  <p class="margin-top">الخوض</p>
+                  <p class="margin-top">سلطنة عمان - مسقط - الخوض</p>
                 </div>
               </div>
                 <div class="item-call d-flex">
@@ -56,7 +56,7 @@
         </div>
         <div class="col-lg-2 col-md-6 col-sm-12 sub-page">
           <h5 class="h5-padding h5-padding-md">الصفحات الجانبية</h5>
-          <a href={{ route('policy') }} class="nav-link d-flex pt-1">
+          <a href={{ route('company') }} class="nav-link d-flex pt-1">
             <P class="border-circle"></P>
             <P class="p-content">لمحة عن شركة</P>
           </a> 

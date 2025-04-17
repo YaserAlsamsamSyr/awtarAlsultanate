@@ -12,6 +12,7 @@ Route::get('/log',[HomeController::class,'login'])->name('log');
 Route::get('/contactUs',[HomeController::class,'contactUs'])->name('contactUs');
 Route::get('/terms',[HomeController::class,'termAndCondition'])->name('terms');
 Route::get('/policy',[HomeController::class,'policy'])->name('policy');
+Route::get('/company',[HomeController::class,'company'])->name('company');
 Route::resource('product', productController::class);
 // http://localhost:8000/downloadAwtarContacts
 Route::get('/downloadAwtarContacts',[HomeController::class,'contactsDownload']);

@@ -80,7 +80,7 @@ header nav .dropdown:hover .dropdown-menu{
     border-top-width: 2px;
     border-top-color: #b89761;
     border-radius: 0px;
-    width:100%;
+    width:300px;
 }
 header nav .dropdown .arrow {
     border: solid #AAAAAA;
@@ -471,6 +471,9 @@ footer .Copyright p{
     }
     footer .Copyright{
         margin-bottom: 28px;
+    }
+    header nav .dropdown:hover .dropdown-menu{
+        width:100%;
     }
     /*  */ 
 }
