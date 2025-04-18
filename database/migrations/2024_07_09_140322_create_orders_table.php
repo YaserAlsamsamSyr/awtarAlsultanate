@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Carbon\Carbon;
 
 return new class extends Migration
 {
@@ -20,9 +19,9 @@ return new class extends Migration
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->integer('quantity')->nullable(false);
             $table->double('totalPrice')->nullable(false);
-            $table->string('month')->default(Carbon::now()->month);
-            $table->string('year')->default(Carbon::now()->year);
-            $table->string('day')->default(Carbon::now()->day);
+            $table->string('month');
+            $table->string('year');
+            $table->string('day');
             $table->timestamps();
         });
     }

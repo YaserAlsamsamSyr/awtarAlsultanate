@@ -105,30 +105,51 @@
          <!-- Carousel Start -->
          
     <h1 style="color:#B89761" align="center" class="m-4">المجموعات</h1>
-    <div class="container-fluid p-0 mb-5 mt-5" id="parentdevheader">
+    {{-- <div class="container-fluid p-0 mb-5 mt-5" id="parentdevheader">
         <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                @foreach ($categories as $i)
+                @for ($i=0;$i<count($categories);$i++)
                       <div id="topheader" class="carousel-item active" align="center" style="background-color: black;">
-                        @if($loop->first)
-                        <a href="{{ env('APP_URL') }}product?id={{ $i->id }}" class="nav-link"><img id="headerimg" class="w-50"  src="{{ asset('images/home/slide1.jpg') }}" alt="Image"></a>
-                        @else
-                        <a href="{{ env('APP_URL') }}product?id={{ $i->id }}" class="nav-link"><img id="headerimg" class="w-50"  src="{{ asset('images/home/slide2.jpg') }}" alt="Image"></a>
-                        @endif
-                          <div class="carousel-caption">
-                              <div class="container">
+                          <div class="row">
+                            <div class="col-4">
+                          <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><img id="headerimg" class="w-50" src="{{ $categories[$i]->img }}" alt="Image"/></a>
+                          {{-- <div class="carousel-caption"> --}}
+                              {{-- <div class="container">
                                   <div class="row justify-content-center">
                                       <div class="col-lg-7 pt-5">
-                                        <a href="{{ env('APP_URL') }}product?id={{ $i->id }}" class="nav-link"><h4 class="display-7 text-white animated slideInDown" style="color:white;" align="center">{{ $i->category }}</h4></a>
+                                        <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><h4 class="display-7 text-white animated slideInDown" style="color:white;" align="center">{{ $categories[$i]->category }}</h4></a>
                                       </div>
                                   </div>
-                              </div>
+                              </div> --}}
+                          {{-- </div> --}}
+                            {{-- </div>
+                            <div class="col-4">
+                                <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><img id="headerimg" class="w-50" src="{{ $categories[$i]->img }}" alt="Image"/></a> --}}
+                                {{-- <div class="carousel-caption"> --}}
+                                    {{-- <div class="container">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-7 pt-5">
+                                              <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><h4 class="display-7 text-white animated slideInDown" style="color:white;" align="center">{{ $categories[$i]->category }}</h4></a>
+                                            </div>
+                                        </div>
+                                    </div> --}}
+                                {{-- </div> --}}
+                            {{-- </div>
+                            <div class="col-4">
+                                <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><img id="headerimg" class="w-50" src="{{ $categories[$i]->img }}" alt="Image"/></a> --}}
+                                {{-- <div class="carousel-caption"> --}}
+                                    {{-- <div class="container">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-7 pt-5">
+                                              <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><h4 class="display-7 text-white animated slideInDown" style="color:white;" align="center">{{ $categories[$i]->category }}</h4></a>
+                                            </div>
+                                        </div>
+                                    </div> --}}
+                                {{-- </div> --}}
+                            {{-- </div>
                           </div>
-                      </div>
-                      @if(!$loop->first)
-                        @break
-                      @endif
-                @endforeach
+                        </div>
+                @endfor
               </div>
               <button id="headernextpre" class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
                   data-bs-slide="prev">
@@ -141,21 +162,33 @@
                   <span class="visually-hidden">Next</span>
               </button>
         </div>
-    </div>
+    </div> --}}
+     <div class="container">
+        <div class="row">
+            @foreach ($categories as $i)
+                <div class="col-4 p-5" align="center">
+                    <a href="{{ env('APP_URL') }}product?id={{ $i->id }}" class="nav-link"><img id="headerimg" class="w-100" src="{{ $i->img }}" alt="Image"/></a>
+                    <br>
+                    <br>
+                    <a href="{{ env('APP_URL') }}product?id={{ $i->id }}" class="nav-link"><h4 class="display-9 text-white animated slideInDown" style="color:white;" align="center">{{ $i->category }}</h4></a>
+                </div>
+            @endforeach
+        </div>
+     </div>
+    <br>
+    <br>
     <!-- Carousel End -->
      {{--  --}}
      <section>
-      <div class="card" style="background-color: black">
-        <div class="card-header m-5">
+        <div class="container" style="background-color: black" align="center">
             <h1 align="center" style="color:#B89761">لمحة عن الشركة</h1>
-        </div>
-        <div class="card-body" >
-          <p class="card-text py-2" align="center" style="color:white;font-size:1.8vw;"> أوتار السلطنة للعطور التي انطلقت في عام 2007 متخصصة في ابتكار عطور فاخرة تجمع بين الأناقة و روح التقاليد العريقة</p>
-          <p class="card-text py-2" align="center" style="color:white;font-size:1.8vw;"> تقع الشركة في مسقط، عمان، وتتخصص في ابتكار العطور الفاخرة ومنتجات العود المستوحاة من التراث لثقافي الغني للمنطقة</p>
-          <p class="card-text py-2" align="center" style="color:white;font-size:1.8vw;"> من خلال التزام عميق بالجودة، تجمع أوتار السلطنة بين الحرفية التقليدية واﻻبتكار الحديث لتقديم روائح تتميز باﻷصالة والرقي و</p>
-          <p class="card-text py-2" align="center" style="color:white;font-size:1.8vw;"> تشمل قيمها اﻷساسية التميز , اﻹبداع ، والحفاظ على جوهر الثقافة العمانيةاكتسبت الشركة سمعة مرموقة بفضل منتجاتها المتميزة</p>
-          <p class="card-text py-2" align="center" style="color:white;font-size:1.8vw;"> المتوفرة في جميع فروعها في سلطنة عمان ، والتي تلبي احتياجات اﻷفراد الباحثين عن عطور فريدة طويلة اﻷمد . <a href="{{ route('company') }}" >المزيد ...</a></p>
-          </div>
+            <br>
+            <br>
+            <p id="companyOverviewText" class="py-2" align="center"> أوتار السلطنة للعطور التي انطلقت في عام 2007 متخصصة في ابتكار عطور فاخرة تجمع بين الأناقة و روح التقاليد العريقة
+             تقع الشركة في مسقط، عمان، وتتخصص في ابتكار العطور الفاخرة ومنتجات العود المستوحاة من التراث الثقافي الغني للمنطقة
+             من خلال التزام عميق بالجودة، تجمع أوتار السلطنة بين الحرفية التقليدية واﻻبتكار الحديث لتقديم روائح تتميز باﻷصالة والرقي و
+             تشمل قيمها اﻷساسية التميز , اﻹبداع ، والحفاظ على جوهر الثقافة العمانية . اكتسبت الشركة سمعة مرموقة بفضل منتجاتها المتميزة
+             المتوفرة في جميع فروعها في سلطنة عمان ، والتي تلبي احتياجات اﻷفراد الباحثين عن عطور فريدة طويلة اﻷمد . <a href="{{ route('company') }}" >المزيد ...</a></p>
         </div>
      </section>
      <section>
@@ -209,7 +242,59 @@
      <div class="empty2">
 
      </div> 
-      {{--  --}}
+     <section>
+      <div class="today-perfume d-flex flex-column justify-content-center">
+              <h2>متوفر الأن</h2>
+              <div class="container-fluid items-today view-products">
+                      <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                          <a href="{{ env('APP_URL') }}product/{{ $products[2]->id }}"><img src="{{ $products[2]->imgs[0]->img }}" class="navbar-brand" /></a>
+                          <a href="{{ env('APP_URL') }}product/{{ $products[2]->id }}"><h2>{{ $products[2]->name }}</h2></a>
+                          <div class="price">
+                           @if($products[2]->newPrice==0)
+                               <h5 class="offre">{{ $products[2]->oldPrice }} OMR</h5>
+                           @else
+                               <h5 class="offre">{{ $products[2]->newPrice }} OMR</h5>
+                           @endif
+                          </div>
+                          <a href="{{ env('APP_URL') }}product/{{ $products[2]->id }}" class="more-info">قراءة المزيد</a>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-3">
+                      <a href="{{ env('APP_URL') }}product/{{ $products[3]->id }}"><img src="{{ $products[3]->imgs[0]->img }}" class="navbar-brand" /></a>
+                      <a href="{{ env('APP_URL') }}product/{{ $products[3]->id }}"><h2>{{ $products[3]->name }}</h2></a>
+                      <div class="price">
+                       @if($products[3]->newPrice==0)
+                           <h5 class="offre">{{ $products[3]->oldPrice }} OMR</h5>
+                       @else
+                           <h5 class="offre">{{ $products[3]->newPrice }} OMR</h5>
+                       @endif
+                      </div>
+                      <a href="{{ env('APP_URL') }}product/{{ $products[3]->id }}" class="more-info">قراءة المزيد</a>
+                </div>
+
+                      </div>
+                 </div>             
+              </div>
+  </section>
+     <section class="preview2">
+      <div class="container">
+          <div class="row">
+             <div class="col-md-3">
+                 <a href="{{ env('APP_URL') }}product/{{ $products[4]->id }}"><img src="{{ $products[4]->imgs[0]->img }}" class="navbar-brand"/></a>
+             </div>
+             <div class="col-md-2"></div>
+             <div class="col-md-7">
+                   <h1>{{ $products[4]->name }}</h1>
+                   <br>
+                   <h4>{{ $products[4]->desc }}</h4>
+             </div>
+
+      </div>
+    </div>
+    <div class="empty2">
+
+    </div>
+     {{--  --}}
   
   <h1 align="center" style="color:#B89761">فروعنا</h1>
   <div class="empty2">
@@ -270,55 +355,6 @@
         </div>     
   </section>
   {{--  --}}
-     <section>
-      <div class="today-perfume d-flex flex-column justify-content-center">
-              <h2>متوفر الأن</h2>
-              <div class="container-fluid items-today view-products">
-                      <div class="row">
-                        <div class="col-sm-12 col-md-6 col-lg-3">
-                          <a href="{{ env('APP_URL') }}product/{{ $products[2]->id }}"><img src="{{ $products[2]->imgs[0]->img }}" class="navbar-brand" /></a>
-                          <a href="{{ env('APP_URL') }}product/{{ $products[2]->id }}"><h2>{{ $products[2]->name }}</h2></a>
-                          <div class="price">
-                           @if($products[2]->newPrice==0)
-                               <h5 class="offre">{{ $products[2]->oldPrice }} OMR</h5>
-                           @else
-                               <h5 class="offre">{{ $products[2]->newPrice }} OMR</h5>
-                           @endif
-                          </div>
-                          <a href="{{ env('APP_URL') }}product/{{ $products[2]->id }}" class="more-info">قراءة المزيد</a>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-3">
-                      <a href="{{ env('APP_URL') }}product/{{ $products[3]->id }}"><img src="{{ $products[3]->imgs[0]->img }}" class="navbar-brand" /></a>
-                      <a href="{{ env('APP_URL') }}product/{{ $products[3]->id }}"><h2>{{ $products[3]->name }}</h2></a>
-                      <div class="price">
-                       @if($products[3]->newPrice==0)
-                           <h5 class="offre">{{ $products[3]->oldPrice }} OMR</h5>
-                       @else
-                           <h5 class="offre">{{ $products[3]->newPrice }} OMR</h5>
-                       @endif
-                      </div>
-                      <a href="{{ env('APP_URL') }}product/{{ $products[3]->id }}" class="more-info">قراءة المزيد</a>
-                </div>
-
-                      </div>
-                 </div>             
-              </div>
-  </section>
-     <section class="preview2">
-      <div class="container">
-          <div class="row">
-             <div class="col-md-3">
-                 <a href="{{ env('APP_URL') }}product/{{ $products[4]->id }}"><img src="{{ $products[4]->imgs[0]->img }}" class="navbar-brand"/></a>
-             </div>
-             <div class="col-md-2"></div>
-             <div class="col-md-7">
-                   <h1>{{ $products[4]->name }}</h1>
-                   <br>
-                   <h4>{{ $products[4]->desc }}</h4>
-             </div>
-
-      </div>
-    </div>
       <div class="empty2">
 
       </div>

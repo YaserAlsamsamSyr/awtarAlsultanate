@@ -53,7 +53,7 @@
                                   <div class="order-info d-flex justify-content-around">
                                       
                                       <div class="part-1">
-                
+                                             
                                            <h4>المنتج</h4>
                                             
                                            <br>
@@ -64,11 +64,17 @@
                 
                 
                                            <h4>الإجمالي</h4>
+                                           <br>
+                                           <p>الأسم</p>
+                                           <p>اللقب</p>
+                                           <p>رقم الهاتف</p>
+                                           <p>العنوان</p>
+                                           <p>المدينة</p>
+                                           <p>ملاحظات</p>
                 
                                       </div>
                   
                                       <div class="part-2">
-                
                                            <h4>المجموع</h4>
                 
                                            <br>
@@ -83,7 +89,14 @@
                                             @endphp
                                             @endforeach
                 
-                                           <h4>{{ $total }} ORM</h4>
+                                           <h4><span style="color:#b7982b;">{{ $total }}</span> ORM</h4>
+                                           <br>
+                                           <p>{{ $myCustomers[0]->firstName }}</p>
+                                           <p>{{ $myCustomers[0]->lastName }}</p>
+                                           <p>{{ $myCustomers[0]->phone }}</p>
+                                           <p>{{ $myCustomers[0]->address }}</p>
+                                           <p>{{ $myCustomers[0]->city }}</p>
+                                           <p>{{ $myCustomers[0]->notics ?? "لا يوجد ملاحظات" }}</p>
                 
                                       </div>
                                       
@@ -96,7 +109,9 @@
             
 
         </div>
+        @if($myCustomers!=[])
         {{ $myCustomers->links() }}
+        @endif
     </div>
 
 

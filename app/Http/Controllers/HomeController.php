@@ -11,13 +11,14 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CustomerRequest;
 use Exception;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
         public function home() {
             try{
                 $pros = Product::inRandomOrder()->where('isDeleted',false)->orderBy('id', 'desc')->limit(5)->with('imgs')->get();
-                $category=Category::select('id','category')->where('isDeleted',false)->get();
+                $category=Category::select('id','category','img')->where('isDeleted',false)->get();
                 if (!empty($pros) && count($pros)>=5) {
                     $pro=Product::where('isDeleted',false)->where('name','=','عطر الروح')->orWhere('name', '=', 'ميكس عود')->orWhere('name', '=', 'عجم')->orWhere('name', '=', 'هزام')->get();
                     if(count($pro)==4){
@@ -161,7 +162,14 @@ class HomeController extends Controller
                 $req->session()->get('quan');
                 $a=array();
                 for($i=0;$i<count($category);$i++){
-                    $a=array($category[$i]['id']=>['totalPrice'=>$category[$i]['price']*$category[$i]['quantity'],'quantity'=>$category[$i]['quantity']]);
+                    $a=array($category[$i]['id']=>[
+                        'totalPrice'=>$category[$i]['price']*$category[$i]['quantity'],
+                        'quantity'=>$category[$i]['quantity'],
+                        'month'=>Carbon::now()->month,
+                        'year'=>Carbon::now()->year,
+                        'day'=>Carbon::now()->day
+                    ]);
+                    // explode('-' ,now()->format('Y-m-d'))[2]
                     $cusId->products()->attach($a);
                 }
                 $req->session()->forget('quan');

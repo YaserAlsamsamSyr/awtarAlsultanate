@@ -64,7 +64,13 @@
                 
                 
                                            <h4>الإجمالي</h4>
-                
+                                           <br>
+                                           <p>الأسم</p>
+                                           <p>اللقب</p>
+                                           <p>رقم الهاتف</p>
+                                           <p>العنوان</p>
+                                           <p>المدينة</p>
+                                           <p>ملاحظات</p>
                                       </div>
                   
                                       <div class="part-2">
@@ -83,8 +89,15 @@
                                             @endphp
                                             @endforeach
                 
-                                           <h4>{{ $total }} ORM</h4>
-                
+                                            <h4><span style="color:#b7982b;">{{ $total }}</span> ORM</h4>
+                                            <br>
+                                            <p>{{ $myCustomers[0]->firstName }}</p>
+                                            <p>{{ $myCustomers[0]->lastName }}</p>
+                                            <p>{{ $myCustomers[0]->phone }}</p>
+                                            <p>{{ $myCustomers[0]->address }}</p>
+                                            <p>{{ $myCustomers[0]->city }}</p>
+                                            <p>{{ $myCustomers[0]->notics ?? "لا يوجد ملاحظات" }}</p>
+                 
                                       </div>
                                       
                                   </div>
@@ -96,7 +109,9 @@
             
 
         </div>
+        @if($myCustomers!=[])
         {{ $myCustomers->links() }}
+        @endif
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 </body>

@@ -24,7 +24,7 @@ class CustomerRequest extends FormRequest
         return [
             'firstName'=> ['required', 'string', 'max:255'],
             'lastName'=> ['required', 'string', 'max:255'],
-            'phone'=>['required','regex:/^[9|7][0-9]{7,8}$/'],
+            'phone'=>['required','regex:/^[0-9]{7,20}$/'],
             'address'=> ['required', 'string', 'max:500'],
             'city'=> ['required', 'string', 'max:255'],
             'notics'=> ['nullable', 'string', 'max:1000']

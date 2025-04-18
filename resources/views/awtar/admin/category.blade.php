@@ -80,9 +80,10 @@
           <div class="col-sm-12 d-flex justify-content-center ">
               
             <div class="bill">
-                  <h2 style="color:white;"> انشاء فئة جديدة </h2>
-                <form action="{{ env('APP_URL') }}category" method="post"  class="create">
+                <h2 style="color:white;"> انشاء فئة جديدة </h2>
+                <form action="{{ env('APP_URL') }}category" method="post" class="create" enctype="multipart/form-data" >
                         @csrf
+                        <input type="file" name="img" required /><br><br><br>
                         <input type="text" name="category" value="{{ old('category') }}" class="txt" required/>
                         <input type="submit" value="انشاء" class="sub" />
                 </form>
@@ -94,10 +95,11 @@
                            <div class="col-sm-12 d-flex justify-content-center ">
               
                             <div class="bill">
-              
-                                <form action="{{ env('APP_URL') }}category/{{ $cat->id }}" method="post" class="update" >
+                                <p align="center"><img src="{{ $cat->img }}" width="50%" height="50%" /></p align="center">
+                                <form action="{{ env('APP_URL') }}category/{{ $cat->id }}" method="post" class="update" enctype="multipart/form-data" >
                                         @csrf
                                         @method('PUT')
+                                        <input type="file" name="img" required /><br><br><br>
                                         <input class="txt" type="text" name="category" value="{{ $cat->category }}" required/>
                                         <input class="sub" type="submit" value="تعديل" />
                                 </form>

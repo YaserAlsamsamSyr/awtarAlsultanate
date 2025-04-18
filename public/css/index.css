@@ -437,7 +437,21 @@ footer .Copyright p{
     50% {margin-top:-5px;}
     100% {margin-bottom:5px;}
 }
+#companyOverviewText {
+    color:white;
+    font-size:1.8vw;
+}
 /* responsive */
+@media (max-width: 1200px) {
+    #companyOverviewText{
+        font-size:30px;
+    }
+}
+@media (max-width: 1010px) {
+    #companyOverviewText{
+        font-size:28px;
+    }
+}
 @media (max-width: 991.98px) {
     .a-large{
         visibility: hidden;
@@ -476,6 +490,11 @@ footer .Copyright p{
         width:100%;
     }
     /*  */ 
+}
+@media (max-width: 780px) {
+    #companyOverviewText{
+        font-size:25px;
+    }
 }
 @media (max-width: 767.98px) {
     header .navbar .a-small{
@@ -537,31 +556,9 @@ body{
         width:150px;
         height:80px;
     }
-}
-
-/* 
-#groupitems img{
-    width:70%;
-    height:70%;
-  }
-  @media (max-width: 767.98px) {
-       #groupitems img{
-         width:55%;
-         height:45%;
-       }
-       #groupitems .row div{
-        height:250px;
-       }
-  }
-  @media (max-width: 620px) {
-  #groupitems img{
-          width:45%;
-          height:40%;
+    #companyOverviewText{
+            font-size:20px;
+            width:85%;
         }
-  }
-  @media (max-width: 500px) {
-       #groupitems img{
-         width:35%;
-         height:30%;
-       }
-  } */
+    
+}

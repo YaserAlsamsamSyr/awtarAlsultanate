@@ -18,7 +18,7 @@ class CategoryController extends Controller
             if (Auth::check()){
                 $accType = Auth::user()->accountType;
                 if($accType=="aaddmmii0n0n"){
-                     $category=Category::select('id','category')->where('isDeleted',false)->orderBy('id','desc')->get();
+                     $category=Category::select('id','category','img')->where('isDeleted',false)->orderBy('id','desc')->get();
                      return view('awtar.admin.category',['categories'=>$category,'accType'=>$accType]);
                 }
             }
@@ -48,6 +48,15 @@ class CategoryController extends Controller
                 if($accType=="aaddmmii0n0n"){
                           $cat=new Category();
                           $cat->category=$req->category;
+                          // img
+                          if($req->hasFile('img')){
+                               $file=$req->file('img');
+                               $name=time().$file->getClientOriginalName();
+                               $file->move(public_path().'/images/categories', $name);
+                               $path=config('app.url').'images/categories/'. $name;
+                               $cat->img=$path;
+                          }
+                          //
                           $cat->user_id=auth()->id();
                           $cat->save();
                           return redirect(config('app.url')."category");
@@ -91,6 +100,20 @@ class CategoryController extends Controller
                 if($accType=="aaddmmii0n0n"){
                        $cat=Category::find($id);
                        $cat->category=$req->category;
+                       // img
+                       if($req->hasFile('img')){
+                            // delete old image first
+                            $arr = explode('/images/categories/', $cat->img);
+                            if(file_exists(public_path('/images/categories/'.$arr[1])))
+                                unlink(public_path('/images/categories/'.$arr[1]));
+                            //
+                             $file=$req->file('img');
+                             $name=time().$file->getClientOriginalName();
+                             $file->move(public_path().'/images/categories', $name);
+                             $path=config('app.url').'images/categories/'. $name;
+                             $cat->img=$path;
+                       }
+                       //
                        $cat->save();
                        return redirect(config('app.url')."category");
                 }
@@ -126,6 +149,9 @@ class CategoryController extends Controller
                          $j->isDeleted=true;
                          $j->save();
                      }
+                     $arr = explode('/images/categories/', $cat->img);
+                     if(file_exists(public_path('/images/categories/'.$arr[1])))
+                         unlink(public_path('/images/categories/'.$arr[1])); 
                      $cat->isDeleted=true;
                      $cat->save();
                      return redirect(config('app.url')."category");

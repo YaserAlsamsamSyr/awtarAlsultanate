@@ -13,7 +13,10 @@ class Order extends Model
         'quantity',
         'totalPrice',
         'customer_id',
-        'product_id'
+        'product_id',
+        'year',
+        'month',
+        'day'
     ];
     public $timestamps = true;
     protected $hidden=[
