@@ -155,27 +155,27 @@
           <div class="mySlides fade mySlidesss">
             <img src="{{ asset('images/home/slide1.jpg') }}" style="width:100%">
             <div class="text d-flex flex-column ">
-                <h2>{{ $slider[0]->name }}</h2>
-                <p>{{ $slider[0]->desc }}</p>
-                <a href="{{ env('APP_URL') }}product/{{ $slider[0]->id }}">احصل عليها الأن</a>
+                <h2>{{ $slider[0]['name'] }}</h2>
+                <p>{{ $slider[0]['desc'] }}</p>
+                <a href="{{ env('APP_URL') }}product/{{ $slider[0]['id'] }}">احصل عليها الأن</a>
             </div>
           </div>
         
           <div class="mySlides fade mySlidesss">
              <img src="{{ asset('images/home/slide2.jpg') }}" style="width:100%">
              <div class="text d-flex flex-column ">
-                 <h2>{{ $slider[1]->name }}</h2>
-                 <p>{{ $slider[1]->desc }}</p>
-                 <a href="{{ env('APP_URL') }}product/{{ $slider[1]->id }}">احصل عليها الأن</a>
+                 <h2>{{ $slider[1]['name'] }}</h2>
+                 <p>{{ $slider[1]['desc'] }}</p>
+                 <a href="{{ env('APP_URL') }}product/{{ $slider[1]['id'] }}">احصل عليها الأن</a>
              </div>
           </div>
         
           <div class="mySlides fade mySlidesss">
             <img src="{{ asset('images/home/slide3.jpg') }}" style="width:100%">
             <div class="text d-flex flex-column ">
-                <h2>{{ $slider[2]->name }}</h2>
-                <p>{{ $slider[2]->desc }}</p>
-                <a href="{{ env('APP_URL') }}product/{{ $slider[2]->id }}">احصل عليها الأن</a>
+                <h2>{{ $slider[2]['name'] }}</h2>
+                <p>{{ $slider[2]['desc'] }}</p>
+                <a href="{{ env('APP_URL') }}product/{{ $slider[2]['id'] }}">احصل عليها الأن</a>
             </div>
           </div>
                    <!-- The dots/circles -->
