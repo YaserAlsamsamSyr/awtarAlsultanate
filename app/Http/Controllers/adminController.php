@@ -30,7 +30,7 @@ class adminController extends Controller
                         if(!preg_match($pattern, $cat)){
                             return;
                         }
-                    } else $cat=1;
+                    } else $cat=(Category::where('isDeleted',0)->first())->id;
                     return redirect(config('app.url').'product?id='.$cat);
                 }
             }

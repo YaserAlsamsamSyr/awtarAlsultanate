@@ -20,7 +20,7 @@ class HomeController extends Controller
                 $pros = Product::inRandomOrder()->where('isDeleted',false)->orderBy('id', 'desc')->limit(5)->with('imgs')->get();
                 $category=Category::select('id','category','img')->where('isDeleted',false)->get();
                 if (!empty($pros) && count($pros)>=5) {
-                    $pro=Product::where('isDeleted',false)->where('name','=','عطر الروح')->orWhere('name', '=', 'ميكس عود')->orWhere('name', '=', 'عجم')->orWhere('name', '=', 'هزام')->get();
+                    $pro=Product::where('isDeleted',false)->where('name','=','عطر الروح')->orWhere('name', '=', 'نهاوند')->orWhere('name', '=', 'عجم')->orWhere('name', '=', 'هزام')->get();
                     if(count($pro)==4){
                         $alroh='';
                         $alrohimg='';
@@ -32,7 +32,7 @@ class HomeController extends Controller
                                    $alrohimg=($p->imgs()->first())->img;
                                    $alrohname=$p->name;
                              } else
-                               array_push($slider,['id'=>$p->id,'name'=>$p->name]);
+                               array_push($slider,['id'=>$p->id,'name'=>$p->name,'desc'=>$p->desc]);
                         }
                         return view('awtar.index',['categories'=>$category,'alrohname'=>$alrohname,'alrohimg'=>$alrohimg,'alrohId'=>$alroh,'slider'=>$slider,'products'=>$pros]);
                     }

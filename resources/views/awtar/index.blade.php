@@ -15,162 +15,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!---->
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap" rel="stylesheet">
-      <style>
-        .a-large{
-            margin-top:0px;
-        }
-        .a-large p{
-            top:52%;
-        }
-        /* video {
-            object-fit: fill;
-        } */
-      </style>
 </head>
 <body>
     @include('awtar.footerAndNav.nav')    
     @if($alrohId=='')
-    <h1 style="color:white;background-color:black;">قم بإدخال 6 منتجات اولا ومن بينهم عجم و ميكس عود و عطر الروح و هزام</h1>
+    <h1 style="color:white;background-color:black;">قم بإدخال 6 منتجات اولا ومن بينهم عجم و نهاوند و عطر الروح و هزام</h1>
     @else      
-     {{-- <section class="video">
-          <img width="100%" height="600" src="{{ asset('video/intro.jpg') }}" />
-          <div class="d-flex flex-column ps">
-            <p class="p1">
-              <span>الحكاية..ابتدت من هالسؤال… ؟ شلون أجمع ذكرياتي؟أغنياتي..وبعض إحساسي وحبي…وجزء من ذاتي..؟ كان أشبه</span>
-        
-              <span>بالخيال…وصارت أسألتي حقيقة..! في زجاجة حب شفافة.. رقيقة..هي خلاصة هالسنين…! حب وإحساس وحنين مو محال…</span>
-            
-              <span>لما احساسي عطرسميته (عطر الروح)</span>
-            </p>
-            <a href="{{ env('APP_URL') }}product/{{ $alrohId }}" class="me-auto p-2">عطر الروح</a>
-          </div>
-          <div class="empty">
 
-          </div>
-     </section> --}}
      <div style="background-color: black;">
-     <section class="img-slider">
-       <!-- Slideshow container -->
-           <div class="slideshow-container">
-           
-             <!-- Full-width images with number and caption text -->
-             <div class="mySlides fade mmmySlides">
-               <img src="{{ asset('images/home/slide1.jpg') }}" style="width:100%">
-               <div class="text d-flex flex-column">
-                <h2>ميكس عود</h2>
-                <p>إنها عطور تنبض  بطابع مترف وبعبير قوي ساحر لتفرض وجودها في أي مكان و مناسبة .</p>
-                @foreach ($slider as $s)
-                      @if($s['name']=="ميكس عود")
-                          <a href="{{ env('APP_URL') }}product/{{ $s['id'] }}">احصل عليها الأن</a>
-                      @endif
-                @endforeach
-         </div>
-             </div>
-           
-             <div class="mySlides fade mmmySlides">
-                <img src="{{ asset('images/home/slide2.jpg') }}" style="width:100%">
-                <div class="text d-flex flex-column ">
-                    <h2>هزام</h2>
-                    <p>تخيّل شعورك وأنت محاط بالفخامة من كل جانب وصوب، وأنت تجول في قصرٍ تزدان ردهاته بأريج يحبس الأنفاس بعبق الأصالة الشرقية .</p>
-                    @foreach ($slider as $s)
-                        @if($s['name']=="هزام")
-                           <a href="{{ env('APP_URL') }}product/{{ $s['id'] }}">احصل عليها الأن</a>
-                        @endif
-                    @endforeach
-                </div>
-             </div>
-           
-             <div class="mySlides fade mmmySlides">
-               <img src="{{ asset('images/home/slide3.jpg') }}" style="width:100%">
-               <div class="text d-flex flex-column ">
-                <h2>عجم</h2>
-                <p>عندما تُصنع العطور من أعماق الطبيعة وتتغنى بسحرها وانتعاشهاو تخاطب الأحاسيس بمكوناتهما .</p>
-                @foreach ($slider as $s)
-                       @if($s['name']=="عجم")
-                          <a href="{{ env('APP_URL') }}product/{{ $s['id'] }}">احصل عليها الأن</a>
-                       @endif
-                @endforeach
-               </div>
-             </div>
-                      <!-- The dots/circles -->
-                      <div style="text-align:center" class="circle">
-                        <span class="dot dddot"></span>
-                        <span class="dot dddot"></span>
-                        <span class="dot dddot"></span>
-                      </div>
-           </div>
-           <br>       
-     </section>
-     {{--  --}}
-         <!-- Carousel Start -->
+        <img src="{{ asset('images/home/index.jpg') }}" class="img-fluid" >
+        <div class="empty2"></div> 
+        {{--  --}}
          
     <h1 style="color:#B89761" align="center" class="m-4">المجموعات</h1>
-    {{-- <div class="container-fluid p-0 mb-5 mt-5" id="parentdevheader">
-        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                @for ($i=0;$i<count($categories);$i++)
-                      <div id="topheader" class="carousel-item active" align="center" style="background-color: black;">
-                          <div class="row">
-                            <div class="col-4">
-                          <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><img id="headerimg" class="w-50" src="{{ $categories[$i]->img }}" alt="Image"/></a>
-                          {{-- <div class="carousel-caption"> --}}
-                              {{-- <div class="container">
-                                  <div class="row justify-content-center">
-                                      <div class="col-lg-7 pt-5">
-                                        <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><h4 class="display-7 text-white animated slideInDown" style="color:white;" align="center">{{ $categories[$i]->category }}</h4></a>
-                                      </div>
-                                  </div>
-                              </div> --}}
-                          {{-- </div> --}}
-                            {{-- </div>
-                            <div class="col-4">
-                                <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><img id="headerimg" class="w-50" src="{{ $categories[$i]->img }}" alt="Image"/></a> --}}
-                                {{-- <div class="carousel-caption"> --}}
-                                    {{-- <div class="container">
-                                        <div class="row justify-content-center">
-                                            <div class="col-lg-7 pt-5">
-                                              <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><h4 class="display-7 text-white animated slideInDown" style="color:white;" align="center">{{ $categories[$i]->category }}</h4></a>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                {{-- </div> --}}
-                            {{-- </div>
-                            <div class="col-4">
-                                <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><img id="headerimg" class="w-50" src="{{ $categories[$i]->img }}" alt="Image"/></a> --}}
-                                {{-- <div class="carousel-caption"> --}}
-                                    {{-- <div class="container">
-                                        <div class="row justify-content-center">
-                                            <div class="col-lg-7 pt-5">
-                                              <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><h4 class="display-7 text-white animated slideInDown" style="color:white;" align="center">{{ $categories[$i]->category }}</h4></a>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                {{-- </div> --}}
-                            {{-- </div>
-                          </div>
-                        </div>
-                @endfor
-              </div>
-              <button id="headernextpre" class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
-                  data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-              </button>
-              <button id="headernextpre" class="carousel-control-next" type="button" data-bs-target="#header-carousel"
-                  data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-              </button>
-        </div>
-    </div> --}}
-     <div class="container">
+    <div class="container">
         <div class="row">
             @foreach ($categories as $i)
-                <div class="col-4 p-5" align="center">
+                <div class="col-4 py-5" align="center">
                     <a href="{{ env('APP_URL') }}product?id={{ $i->id }}" class="nav-link"><img id="headerimg" class="w-100" src="{{ $i->img }}" alt="Image"/></a>
                     <br>
                     <br>
-                    <a href="{{ env('APP_URL') }}product?id={{ $i->id }}" class="nav-link"><h4 class="display-9 text-white animated slideInDown" style="color:white;" align="center">{{ $i->category }}</h4></a>
+                    <a href="{{ env('APP_URL') }}product?id={{ $i->id }}" class="nav-link"><h4 class="display-9 text-white animated slideInDown" id="categorytext" style="color:white;" align="center">{{ $i->category }}</h4></a>
                 </div>
             @endforeach
         </div>
@@ -179,18 +44,6 @@
     <br>
     <!-- Carousel End -->
      {{--  --}}
-     <section>
-        <div class="container" style="background-color: black" align="center">
-            <h1 align="center" style="color:#B89761">لمحة عن الشركة</h1>
-            <br>
-            <br>
-            <p id="companyOverviewText" class="py-2" align="center"> أوتار السلطنة للعطور التي انطلقت في عام 2007 متخصصة في ابتكار عطور فاخرة تجمع بين الأناقة و روح التقاليد العريقة
-             تقع الشركة في مسقط، عمان، وتتخصص في ابتكار العطور الفاخرة ومنتجات العود المستوحاة من التراث الثقافي الغني للمنطقة
-             من خلال التزام عميق بالجودة، تجمع أوتار السلطنة بين الحرفية التقليدية واﻻبتكار الحديث لتقديم روائح تتميز باﻷصالة والرقي و
-             تشمل قيمها اﻷساسية التميز , اﻹبداع ، والحفاظ على جوهر الثقافة العمانية . اكتسبت الشركة سمعة مرموقة بفضل منتجاتها المتميزة
-             المتوفرة في جميع فروعها في سلطنة عمان ، والتي تلبي احتياجات اﻷفراد الباحثين عن عطور فريدة طويلة اﻷمد . <a href="{{ route('company') }}" >المزيد ...</a></p>
-        </div>
-     </section>
      <section>
          <div class="today-perfume d-flex flex-column justify-content-center">
                  <h2>عطر الاسبوع</h2>
@@ -239,9 +92,6 @@
               </div>
          </div>
      </section>
-     <div class="empty2">
-
-     </div> 
      <section>
       <div class="today-perfume d-flex flex-column justify-content-center">
               <h2>متوفر الأن</h2>
@@ -291,11 +141,8 @@
 
       </div>
     </div>
-    <div class="empty2">
-
-    </div>
+</section>
      {{--  --}}
-  
   <h1 align="center" style="color:#B89761">فروعنا</h1>
   <div class="empty2">
 
@@ -308,14 +155,14 @@
           <div class="mySlides fade mySlidesss">
             <img src="{{ asset('images/home/slide1.jpg') }}" style="width:100%">
             <div class="text d-flex flex-column">
-             <h2>ميكس عود</h2>
-             <p>إنها عطور تنبض  بطابع مترف وبعبير قوي ساحر لتفرض وجودها في أي مكان و مناسبة .</p>
-             @foreach ($slider as $s)
-                   @if($s['name']=="ميكس عود")
-                       <a href="{{ env('APP_URL') }}product/{{ $s['id'] }}">احصل عليها الأن</a>
-                   @endif
-             @endforeach
-      </div>
+                <h2>ميكس عود</h2>
+                <p>إنها عطور تنبض  بطابع مترف وبعبير قوي ساحر لتفرض وجودها في أي مكان و مناسبة .</p>
+                @foreach ($slider as $s)
+                      @if($s['name']=="ميكس عود")
+                          <a href="{{ env('APP_URL') }}product/{{ $s['id'] }}">احصل عليها الأن</a>
+                      @endif
+                @endforeach
+             </div>
           </div>
         
           <div class="mySlides fade mySlidesss">
@@ -349,17 +196,28 @@
                      <span class="dot dottt"></span>
                      <span class="dot dottt"></span>
                    </div>
-        </div>
-        <div class="empty2">
-
-        </div>     
+        </div>    
   </section>
   {{--  --}}
       <div class="empty2">
 
       </div>
-  </section>
+      <section>
+        <div class="container" style="background-color: black" align="center">
+            <h1 align="center" style="color:#B89761">لمحة عن الشركة</h1>
+            <br>
+            <br>
+            <p id="companyOverviewText" class="py-2" align="center"> أوتار السلطنة للعطور التي انطلقت في عام 2007 متخصصة في ابتكار عطور فاخرة تجمع بين الأناقة و روح التقاليد العريقة
+             تقع الشركة في مسقط، عمان، وتتخصص في ابتكار العطور الفاخرة ومنتجات العود المستوحاة من التراث الثقافي الغني للمنطقة
+             من خلال التزام عميق بالجودة، تجمع أوتار السلطنة بين الحرفية التقليدية واﻻبتكار الحديث لتقديم روائح تتميز باﻷصالة والرقي و
+             تشمل قيمها اﻷساسية التميز , اﻹبداع ، والحفاظ على جوهر الثقافة العمانية . اكتسبت الشركة سمعة مرموقة بفضل منتجاتها المتميزة
+             المتوفرة في جميع فروعها في سلطنة عمان ، والتي تلبي احتياجات اﻷفراد الباحثين عن عطور فريدة طويلة اﻷمد . <a href="{{ route('company') }}" >المزيد ...</a></p>
+        </div>
+     </section>
 
+     <div class="empty2">
+
+     </div>
 </div>
      <section class="gold-section">
           <div class="container">
