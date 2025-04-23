@@ -24,9 +24,6 @@
            top:52%;
        }
     </style>
-    @if (explode(" ", $pros[0]->name)[0]=="بخور")
-             @include('components.forimg')
-    @endif
 </head>
 <body>
      
@@ -40,9 +37,9 @@
             @if($count==1)
                <div class="row">
             @endif
-            <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="col-sm-12 col-md-6 col-lg-3 mt-5">
            
-              <a href="{{ env('APP_URL') }}product/{{ $i->id }}"><img src='{{ $i->imgs[0]->img }}' class="navbar-brand" /></a>
+              <a href="{{ env('APP_URL') }}product/{{ $i->id }}"><img src='{{ $i->imgs[0]->img }}' class="p-2" /></a>
               <a href="{{ env('APP_URL') }}product/{{ $i->id }}"><h2>{{ $i->name }}</h2></a>
               <div class="price">          
                 @if($i->newPrice==0)      

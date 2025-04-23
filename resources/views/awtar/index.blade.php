@@ -20,37 +20,41 @@
     @include('awtar.footerAndNav.nav')    
     @if($alrohId=='')
     <h1 style="color:white;background-color:black;">قم بإدخال 6 منتجات اولا ومن بينهم عجم و نهاوند و عطر الروح و هزام</h1>
-    @else      
+    @else  
 
-     <div style="background-color: black;">
-        <img src="{{ asset('images/home/index.jpg') }}" class="img-fluid" >
+     <div id="cateee">
+        <img src="{{ asset('images/home/index1.jpg') }}" class="img-fluid" >
+        
         <div class="empty2"></div> 
         {{--  --}}
-         
-    <h1 style="color:#B89761" align="center" class="m-4">المجموعات</h1>
-    <div class="container">
-        <div class="row">
-            @foreach ($categories as $i)
-                <div class="col-4 py-5" align="center">
-                    <a href="{{ env('APP_URL') }}product?id={{ $i->id }}" class="nav-link"><img id="headerimg" class="w-100" src="{{ $i->img }}" alt="Image"/></a>
-                    <br>
-                    <br>
-                    <a href="{{ env('APP_URL') }}product?id={{ $i->id }}" class="nav-link"><h4 class="display-9 text-white animated slideInDown" id="categorytext" style="color:white;" align="center">{{ $i->category }}</h4></a>
+            <h1 style="color:#B89761"  align="center" class="m-4">المجموعات</h1>
+            <div class="container">
+                <div class="row">
+                    @foreach ($categories as $i)
+                        <div class="col-sm-12 col-md-6 col-lg-4 py-5" align="center">
+                            <a href="{{ env('APP_URL') }}product?id={{ $i->id }}" class="nav-link"><img id="headerimg" class="w-75" src="{{ $i->img }}" alt="Image"/></a>
+                            <br>
+                            <br>
+                            <a href="{{ env('APP_URL') }}product?id={{ $i->id }}" class="nav-link"><h4 class="display-9 text-white animated slideInDown" id="categorytext" style="color:white;" align="center">{{ $i->category }}</h4></a>
+                        </div>
+                    @endforeach
                 </div>
-            @endforeach
-        </div>
-     </div>
+             </div>
     <br>
     <br>
     <!-- Carousel End -->
      {{--  --}}
+     
+  <div class="empty2">
+
+  </div>
      <section>
          <div class="today-perfume d-flex flex-column justify-content-center">
                  <h2>عطر الاسبوع</h2>
                  <div class="container-fluid items-today view-products">
                          <div class="row">
-                               <div class="col-sm-12 col-md-6 col-lg-3">
-                                     <a href="{{ env('APP_URL') }}product/{{ $products[0]->id }}"><img src="{{ $products[0]->imgs[0]->img }}" class="navbar-brand" /></a>
+                               <div class="col-sm-12 col-md-6">
+                                     <a href="{{ env('APP_URL') }}product/{{ $products[0]->id }}"><img src="{{ $products[0]->imgs[0]->img }}"/></a>
                                      <a href="{{ env('APP_URL') }}product/{{ $products[0]->id }}"><h2>{{ $products[0]->name }}</h2></a>
                                      <div class="price">
                                       @if($products[0]->newPrice==0)
@@ -61,7 +65,7 @@
                                      </div>
                                      <a href="{{ env('APP_URL') }}product/{{ $products[0]->id }}" class="more-info">قراءة المزيد</a>
                                </div>
-                               <div class="col-sm-12 col-md-6 col-lg-3">
+                               <div class="col-sm-12 col-md-6">
                                      <a href="{{ env('APP_URL') }}product/{{ $products[1]->id }}"><img src="{{ $products[1]->imgs[0]->img }}" class="navbar-brand" /></a>
                                      <a href="{{ env('APP_URL') }}product/{{ $products[1]->id }}"><h2>{{ $products[1]->name }}</h2></a>
                                      <div class="price">
@@ -78,26 +82,41 @@
                     </div>             
                  </div>
      </section>
-     <section class="preview1">
-         <div class="container">
-             <div class="row">
-                <div class="col-md-8">
-                      <h1>{{ $alrohname }}</h1>
-                      <br>
-                      <h4>يجسد عطر روح توازن الأصالة و الإبداع , مستوحى من التراث العماني وسحر الطبيعة ليقدم تجربة عطرية لاتنسى تعكس هوية أوتار السلطنة</h4>
+     
+     <div class="empty2">
+
+     </div>
+     {{-- ----------------------------------------------------------------------------------------------- --}}
+     <section>
+        <div class="today-perfume d-flex flex-column justify-content-center" id="isdisplay" >
+                    <div class="container-fluid items-today view-products">
+                        <div class="row">
+                              <div class="col-sm-12 col-md-6">
+                                    <a href="{{ env('APP_URL') }}product/{{ $alrohId }}"><img src="{{ $alrohimg }}" /></a>
+                              </div>
+                              <div class="col-sm-12 col-md-6 d-flex align-items-center">
+                                    <div>
+                                        <h1>{{ $alrohname }}</h1>
+                                        <br>
+                                        <h4 style="color:white;padding-left:30px;">يجسد عطر روح توازن الأصالة و الإبداع , مستوحى من التراث العماني وسحر الطبيعة ليقدم تجربة عطرية لاتنسى تعكس هوية أوتار السلطنة</h4>
+                                    </div>
+                              </div>
+
+                        </div>
+                   </div>             
                 </div>
-                <div class="col-md-4">
-                     <a href="{{ env('APP_URL') }}product/{{ $alrohId }}"><img src="{{ $alrohimg }}" class="navbar-brand"/></a>
-                </div>
-              </div>
-         </div>
-     </section>
+    </section>
+    
+     <div class="empty2">
+
+     </div>
+     
      <section>
       <div class="today-perfume d-flex flex-column justify-content-center">
-              <h2>متوفر الأن</h2>
+              <h2 align="center">متوفر الأن</h2>
               <div class="container-fluid items-today view-products">
                       <div class="row">
-                        <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="col-sm-12 col-md-6">
                           <a href="{{ env('APP_URL') }}product/{{ $products[2]->id }}"><img src="{{ $products[2]->imgs[0]->img }}" class="navbar-brand" /></a>
                           <a href="{{ env('APP_URL') }}product/{{ $products[2]->id }}"><h2>{{ $products[2]->name }}</h2></a>
                           <div class="price">
@@ -109,7 +128,7 @@
                           </div>
                           <a href="{{ env('APP_URL') }}product/{{ $products[2]->id }}" class="more-info">قراءة المزيد</a>
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="col-sm-12 col-md-6">
                       <a href="{{ env('APP_URL') }}product/{{ $products[3]->id }}"><img src="{{ $products[3]->imgs[0]->img }}" class="navbar-brand" /></a>
                       <a href="{{ env('APP_URL') }}product/{{ $products[3]->id }}"><h2>{{ $products[3]->name }}</h2></a>
                       <div class="price">
@@ -126,22 +145,33 @@
                  </div>             
               </div>
   </section>
-     <section class="preview2">
-      <div class="container">
-          <div class="row">
-             <div class="col-md-3">
-                 <a href="{{ env('APP_URL') }}product/{{ $products[4]->id }}"><img src="{{ $products[4]->imgs[0]->img }}" class="navbar-brand"/></a>
-             </div>
-             <div class="col-md-2"></div>
-             <div class="col-md-7">
-                   <h1>{{ $products[4]->name }}</h1>
-                   <br>
-                   <h4>{{ $products[4]->desc }}</h4>
-             </div>
+  
+  <div class="empty2">
 
-      </div>
-    </div>
+  </div>
+<section>
+    <div class="today-perfume d-flex flex-column justify-content-center" id="isdisplay" >
+            <div class="container-fluid items-today view-products">
+                    <div class="row">
+                          <div class="col-sm-12 col-md-6">
+                            <a href="{{ env('APP_URL') }}product/{{ $products[4]->id }}"><img src="{{ $products[4]->imgs[0]->img }}"/></a>
+                          </div>
+                          <div class="col-sm-12 col-md-6 d-flex align-items-center justify-content-start">
+                                <div>
+                                    <h1>{{ $products[4]->name }}</h1>
+                                    <br>
+                                    <h4 style="color:white;padding-left:30px;">{{ $products[4]->desc }}</h4>
+                                </div>
+                          </div>
+
+                    </div>
+               </div>             
+            </div>
 </section>
+ 
+<div class="empty2">
+
+</div>
      {{--  --}}
   <h1 align="center" style="color:#B89761">فروعنا</h1>
   <div class="empty2">
@@ -155,35 +185,40 @@
           <div class="mySlides fade mySlidesss">
             <img src="{{ asset('images/home/slide1.jpg') }}" style="width:100%">
             <div class="text d-flex flex-column ">
-                <h2>{{ $slider[0]['name'] }}</h2>
-                <p>{{ $slider[0]['desc'] }}</p>
-                <a href="{{ env('APP_URL') }}product/{{ $slider[0]['id'] }}">احصل عليها الأن</a>
+                <h2 style="color: white">مسقط الغبرة</h2>
+                <h2 style="color: white">أفينيوز مول</h2>
             </div>
           </div>
         
           <div class="mySlides fade mySlidesss">
              <img src="{{ asset('images/home/slide2.jpg') }}" style="width:100%">
              <div class="text d-flex flex-column ">
-                 <h2>{{ $slider[1]['name'] }}</h2>
-                 <p>{{ $slider[1]['desc'] }}</p>
-                 <a href="{{ env('APP_URL') }}product/{{ $slider[1]['id'] }}">احصل عليها الأن</a>
+                <h2 style="color: white">مسقط السيب</h2>
+                <h2 style="color: white">العريمي بوليفارد</h2>
              </div>
           </div>
         
           <div class="mySlides fade mySlidesss">
             <img src="{{ asset('images/home/slide3.jpg') }}" style="width:100%">
             <div class="text d-flex flex-column ">
-                <h2>{{ $slider[2]['name'] }}</h2>
-                <p>{{ $slider[2]['desc'] }}</p>
-                <a href="{{ env('APP_URL') }}product/{{ $slider[2]['id'] }}">احصل عليها الأن</a>
+                <h2 style="color: white">مسقط السيب</h2>
+                <h2 style="color: white">العريمي بوليفارد</h2>
             </div>
           </div>
-                   <!-- The dots/circles -->
-                   <div style="text-align:center" class="circle">
-                     <span class="dot dottt"></span>
-                     <span class="dot dottt"></span>
-                     <span class="dot dottt"></span>
-                   </div>
+          <div class="mySlides fade mySlidesss">
+            <img src="{{ asset('images/home/slide4.jpg') }}" style="width:100%">
+            <div class="text d-flex flex-column ">
+                <h2 style="color: white">مسقط القرم</h2>
+                <h2 style="color: white">مجمع العريمي بوليفارد</h2>
+            </div>
+          </div>
+          <div class="mySlides fade mySlidesss">
+            <img src="{{ asset('images/home/slide5.jpg') }}" style="width:100%">
+            <div class="text d-flex flex-column ">
+                <h2 style="color: white">مسقط القرم</h2>
+                <h2 style="color: white">بوليفارد مقابل دار الأوبرا</h2>
+            </div>
+          </div>
         </div>    
   </section>
   {{--  --}}
@@ -206,7 +241,7 @@
      <div class="empty2">
 
      </div>
-</div>
+     </div>
      <section class="gold-section">
           <div class="container">
               <div class="elementor-background-overlay">

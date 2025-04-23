@@ -1,6 +1,6 @@
-.view-products .row{
+/* .view-products .row{
     padding-top: 80px;
-}
+} */
 .view-products .row .col-sm-12{
     text-align: center;
     color: #b89761;
@@ -11,9 +11,10 @@
     padding: 20px 0px;
 }
 .view-products .row .col-sm-12 img{
-       width: 50%;
-       height:60%;
-       border-radius: 39px;
+       width: 100%;
+       height:auto;
+       padding: 100px;
+       padding-bottom: 50px;
 }
 a{
     color:#b89761;
@@ -35,34 +36,55 @@ a{
 .view-products .row .col-sm-12 .price{
     padding-bottom: 20px;
 }
-@media (max-width: 767.98px) {
-    .view-products .row .col-sm-12{
-        height:600px;
-    }
+
+@media (max-width: 1100px) {
     .view-products .row .col-sm-12 img{
+        padding: 80px;
+        padding-bottom: 50px;
+    }
+}
+@media (max-width: 800px) {
+    .view-products .row .col-sm-12 img{
+        padding: 60px;
+        padding-bottom: 50px;
+    }
+}
+@media (max-width: 767.98px) {
+    /* .view-products .row .col-sm-12{
+        height:600px;
+    } */
+    /* .view-products .row .col-sm-12 img{
         width: 20%;
         height:50%;
-    } 
+    }  */
+    .view-products .row .col-sm-12 img{
+        padding: 100px;
+        padding-bottom: 50px;
+    }
     .view-products .row .col-sm-12 .price .no-offer{
        font-size: 20px;
     }
 }
 @media (max-width: 575.98px) {
-    .view-products .row .col-sm-12 img{
+    /* .view-products .row .col-sm-12 img{
         width: 38%;
         height:30%;
-    } 
-    .view-products .row .col-sm-12{
+    }  */
+    /* .view-products .row .col-sm-12{
         height:800px;
-    }
+    } */
 }
-@media (max-width: 450px) {
-    .view-products .row .col-sm-12 img{
+@media (max-width: 480px) {
+    /* .view-products .row .col-sm-12 img{
         width: 30%;
         height:50%;
-    } 
-    .view-products .row .col-sm-12{
+    }  */
+    /* .view-products .row .col-sm-12{
         height:450px;
+    } */
+    .view-products .row .col-sm-12 img{
+        padding: 80px;
+        padding-bottom: 50px;
     }
 }
 /* animation

@@ -16,12 +16,12 @@
               let slides = document.getElementsByClassName("mySlidesss");
               for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";
-                document.getElementsByClassName('dottt')[i].style.backgroundColor="#1d1c1c";
+                // document.getElementsByClassName("dottt")[i].style.backgroundColor="#1d1c1c";
               }
               slideIndexx++;
               if (slideIndexx > slides.length) {slideIndexx = 1}
               slides[slideIndexx-1].style.display = "block";
-              document.getElementsByClassName('dottt')[slideIndexx-1].style.backgroundColor="#e2ad56";
-              setTimeout(showSlidess, 3000); // Change image every 2 seconds
+              // document.getElementsByClassName("dottt")[slideIndexx-1].style.backgroundColor="#e2ad56";
+              setTimeout(showSlidess, 5000); // Change image every 2 seconds
             }
     

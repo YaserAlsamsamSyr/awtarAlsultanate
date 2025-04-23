@@ -42,10 +42,10 @@
 .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
-.slide-container .mySlides img{
+/* .slide-container .mySlides img{
     height:430px;
     width: 40%;
-}
+} */
 /*  */
 .product-info .first-row .price .no-offer{
     text-decoration: line-through;
@@ -193,9 +193,9 @@
         width: 10%;
         height: 40px;
     }
-    .slide-container .mySlides img{
+    /* .slide-container .mySlides img{
         width: 30% !important;
-    }
+    } */
     .product-info .first-row .second-part{
         text-align: center;
         padding-top: 50px;
@@ -218,13 +218,13 @@
     .product-info .first-row .quantity .select-quantity input{
         width: 20%;
     }
-    .slide-container .mySlides img{
+    /* .slide-container .mySlides img{
         width: 40% !important;
-    }
+    } */
 }
 @media (max-width: 1200px) {
-    .slide-container .mySlides img{
+    /* .slide-container .mySlides img{
         width: 50%;
-    }
+    } */
 }
 
