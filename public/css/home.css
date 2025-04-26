@@ -97,7 +97,9 @@ footer{
     background-color:#f9ce8a;
     color:rgb(0, 0, 0);
     padding:1rem;
-    width:100%;
+    padding-top: 1.5rem;
+    width:50%;
+    border-radius: 180px;
   }
   .empty2{
     height:100px;

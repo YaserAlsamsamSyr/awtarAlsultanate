@@ -46,9 +46,12 @@
         {{--  --}}
         <div class="empty2"></div> 
         {{--  --}}
-              <div id="h11" style="width:100%" align="center">
+        
+        <div class="container" align="center">
+              <div id="h11">
                 <h1 align="center">المجموعات</h1>
               </div>
+        </div>
             <div class="container">
                 <div class="row" dir="ltr">
                   {{-- {{ $size=count($categories) }} --}}
@@ -71,8 +74,10 @@
 
   </div>
      <section>
-      <div id="h11" align="center">
-            <h1 align="center">عطر الأسبوع</h1>
+      <div class="container" align="center">
+            <div id="h11">
+                <h1 align="center">عطر الأسبوع</h1>
+            </div>
       </div>
          <div class="today-perfume d-flex flex-column justify-content-center">
                  <div class="container-fluid items-today view-products">
@@ -136,8 +141,10 @@
      </div>
      
      <section>
-      <div id="h11" align="center">
-           <h2 align="center">متوفر الأن</h2>
+      <div class="container" align="center">
+            <div id="h11">
+                 <h2 align="center">متوفر الأن</h2>
+            </div>
       </div>
       <div class="today-perfume d-flex flex-column justify-content-center">
               <div class="container-fluid items-today view-products">
@@ -199,8 +206,10 @@
 
 </div>
      {{--  --}}
-  <div id="h11" align="center">
-      <h1 align="center" >فروعنا</h1>
+  <div class="container" align="center">
+        <div id="h11">
+            <h1 align="center" >فروعنا</h1>
+        </div>
   </div>
   <div class="empty2"></div>
   <section class="img-slider">
@@ -252,8 +261,10 @@
 
       </div>
       <section>
-        <div id="h11" align="center">
-            <h1 align="center">لمحة عن الشركة</h1>
+        <div class="container" align="center">
+              <div id="h11">
+                   <h1 align="center">لمحة عن الشركة</h1>
+              </div>  
         </div>
         <div class="container" align="center">
             <br>
