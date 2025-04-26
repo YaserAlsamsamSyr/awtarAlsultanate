@@ -39,9 +39,9 @@
                              <p class="flex-fill"><a href="{{ env('APP_URL') }}product/{{ $i['id'] }}">{{ $i['name'] }}</a></p>
                              <p class="flex-fill">{{ $i['price'] }} OMR</p>
                              <div class="d-flex flex-fill select-quantity">
-                                     <button class="min-btn" onclick="minusOne({{ $i['id'] }})">-</button>
-                                     <input name="quantity" type="number" id="quan{{ $i['id'] }}" value="{{ $i['quantity'] }}" min="1" max="100" readonly title="الكمية" onkeyup="chcekSize(this)" />
                                      <button onclick="plusOne({{ $i['id'] }})" class="plus-btn">+</button>
+                                     <input name="quantity" type="number" id="quan{{ $i['id'] }}" value="{{ $i['quantity'] }}" min="1" max="100" readonly title="الكمية" onkeyup="chcekSize(this)" />
+                                     <button class="min-btn" onclick="minusOne({{ $i['id'] }})">-</button>
                              </div>
                              <p class="flex-fill">{{ $i['price']*$i['quantity'] }} OMR</p>
                           </div>
@@ -89,7 +89,10 @@
                                 <p class="pp-3">{{ $totalPrice }} OMR</p>
                               </div>
                       </div>
-                      <a href="{{ route('confirmOrder') }}">التقدم لاتمام الطلب</a>
+                      @foreach ( Session::get('card') as $i )
+                           <a href="{{ route('confirmOrder') }}">التقدم لاتمام الطلب</a>
+                           @break
+                      @endforeach
                   </div>
             </div>
             </div>

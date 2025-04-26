@@ -232,11 +232,11 @@ body{
         margin-top: 30px;
     }
     .product-info .first-row .slide-container{
-              margin-right: 30px;
+              margin-right: 25px;
     }
 }
 @media (max-width: 767.98px) {
-    .product-info .first-row .slide-container-pa{
+    .product-info .first-row .first-pa .slide-container-pa{
         padding-left: 20px;
     }
     /* .product-info .first-row .quantity .select-quantity button{

@@ -38,6 +38,10 @@
           .second-part .inpt-sub:hover{
                      background-color: #da9932;
           }
+          #imgspe{
+               height: 60% !important;
+               width: 60%!important;
+          }
     </style>
 </head>
 <body>
@@ -60,7 +64,7 @@
                                  @foreach ($pro->imgs as $p)
                                        <!-- Full-width images with number text -->
                                        <div class="mySlides">
-                                           <img src="{{ $p->img }}" class="navbar-brand">
+                                           <img src="{{ $p->img }}" id="imgspe">
                                        </div>
                                   @endforeach
                                   <!-- Next and previous buttons -->

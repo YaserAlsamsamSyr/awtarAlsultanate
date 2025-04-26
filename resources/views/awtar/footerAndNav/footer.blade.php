@@ -7,7 +7,7 @@
                 <img src="{{ asset('images/footerAndNav/location.png') }}"/>
                 <div class="location-desc desc">
                   <h5>العنوان</h5>
-                  <p class="margin-top">سلطنة عمان - مسقط - الخوض</p>
+                  <p class="margin-top" style="color:white!important;">سلطنة عمان - مسقط - الخوض</p>
                 </div>
               </div>
                 <div class="item-call d-flex">

@@ -57,9 +57,9 @@
                             </div>
                             <div class="quantity">
                                   <div class="d-flex flex-fill select-quantity">
-                                      <button class="min-btn" onclick="minusOne()">-</button>
+                                    <button onclick="plusOne()" class="plus-btn">+</button>
                                       <input name="q" type="number" id="quan" value="1" min="1" max="100" readonly title="الكمية" onkeyup="chcekSize(this)" />
-                                      <button onclick="plusOne()" class="plus-btn">+</button>
+                                      <button class="min-btn" onclick="minusOne()">-</button>
                                   </div>
                                   <form action="{{ route('addToCard') }}" method="post">
                                       @csrf

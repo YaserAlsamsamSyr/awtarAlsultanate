@@ -31,11 +31,10 @@
             @if($count==1)
                <div class="row">
             @endif
-            <div class="col-sm-12 col-md-6 col-lg-3">
-              {{-- {{ $i->imgs[0]->img }} --}}
+            <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
               
               <a href="{{ env('APP_URL') }}getBarcode/{{ $i->name }}/{{ $i->id }}" style="color:rgb(231, 120, 120);">get barcode</a><br><br>
-              <a href="{{ env('APP_URL') }}product/{{ $i->id }}"><img src='{{ $i->imgs[0]->img }}' class="navbar-brand" /></a>
+              <a href="{{ env('APP_URL') }}product/{{ $i->id }}"><img src='{{ $i->imgs[0]->img }}'class="p-2"  /></a>
               <a href="{{ env('APP_URL') }}product/{{ $i->id }}"><h2>{{ $i->name }}</h2></a>
               <div class="price">          
                 @if($i->newPrice==0)      
@@ -63,6 +62,8 @@
           @endif
           </div>
      </div>
+     <br><br>
+     <br><br>
      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 @endif
 @endauth
