@@ -161,7 +161,7 @@ footer .row .h5-padding{
 }
 footer .row .about-awtar .desc-hover:hover{
     transition-delay: 0.07s;
-    color:#f9ce8a;
+    color: #f9ce8a!important;;
 }
 footer .row .products h5{
     padding-right: 24px;
@@ -184,6 +184,7 @@ footer .row .products a:focus{
 footer .row .sub-page p{
     font-size: 14px;
     margin-right:10px;
+    color:white;
 }
 footer .row .sub-page .border-circle{
     border-width: 1px;
