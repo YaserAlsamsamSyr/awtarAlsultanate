@@ -40,7 +40,7 @@
                              <p class="flex-fill">{{ $i['price'] }} OMR</p>
                              <div class="d-flex flex-fill select-quantity">
                                      <button class="min-btn" onclick="minusOne({{ $i['id'] }})">-</button>
-                                     <input name="quantity" type="number" id="quan{{ $i['id'] }}" value="{{ $i['quantity'] }}" min="1" max="100" title="الكمية" onkeyup="chcekSize(this)" />
+                                     <input name="quantity" type="number" id="quan{{ $i['id'] }}" value="{{ $i['quantity'] }}" min="1" max="100" readonly title="الكمية" onkeyup="chcekSize(this)" />
                                      <button onclick="plusOne({{ $i['id'] }})" class="plus-btn">+</button>
                              </div>
                              <p class="flex-fill">{{ $i['price']*$i['quantity'] }} OMR</p>
@@ -108,7 +108,7 @@
                 inpt.style.borderColor="red";
                 document.getElementById('f1').style.visibility="hidden";
               } else {
-                inpt.style.color="#4a4a4a";
+                inpt.style.color="#f9ce8a";
                 inpt.style.borderColor="#ffffff";
                 inpt.style.outlineColor="#ffffff";
                 
@@ -117,14 +117,22 @@
                 document.getElementById('f1').style.visibility="visible";
           }
       }
+      function animateCount(inpt) {
+        inpt.classList.add('animate');
+        setTimeout(() => {
+          inpt.classList.remove('animate');
+        }, 200);
+      }
       function plusOne(id) {
         document.getElementById("quan"+id).stepUp();
         let inpt=document.getElementById('quan'+id);
+        animateCount(inpt);
         chcekSize(inpt,id);
       }
       function minusOne(id) {
         document.getElementById("quan"+id).stepDown(); 
         let inpt=document.getElementById('quan'+id);
+        animateCount(inpt);
         chcekSize(inpt,id);
       }
       </script>

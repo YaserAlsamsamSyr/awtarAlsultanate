@@ -37,7 +37,9 @@
       color:#b6b3b3;
       padding-top: 20px;
 }
+/* --------------------------------------------------------- */
 .shipping-card .first-row .section-tow .select-quantity button{
+    /* 
     background-color: black;
     border-width: 2px;
     border-style: solid;
@@ -45,8 +47,23 @@
     color: #706f6f;
     width: 12%;
     height: 30px;
+    */
+    background: transparent;
+    border: 2px solid #f9ce8a;
+    color: #f9ce8a;
+    font-size: 24px;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+.shipping-card .first-row .section-tow .select-quantity button:hover {
+    background-color: #f9ce8a;
+    color: #0e0e0e;
 }
 .shipping-card .first-row .section-tow .select-quantity input{
+    /* 
     background-color: black;
     border-width: 2px;
     border-style: solid;
@@ -58,11 +75,27 @@
     margin: 0px -1px;
     text-align: center;
     z-index: 2;
+     */
+    font-size: 22px;
+    color: #d4af37;
+    font-weight: 600;
+    min-width: 40px;
+    height: 2.4rem;
+    margin-left:1rem ;
+    margin-right:1rem ;
+    text-align: center;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    display: inline-block;
 }
-.shipping-card .first-row .section-tow .select-quantity .min-btn{
+/* .shipping-card .first-row .section-tow .select-quantity .min-btn{
     margin-left: 1px;
     border-left:0px;
+} */
+.shipping-card .first-row .section-tow .select-quantity input.animate {
+    transform: scale(1.3);
+    opacity: 0.7;
 }
+/* --------------------------------------------------------------- */
 .shipping-card .first-row .section-tow p a{
     text-decoration-line:none;
     color:#b6b3b3;
@@ -140,7 +173,7 @@
         align-items: center;
         margin-right: -30px;
     }
-    .shipping-card .first-row .section-tow .select-quantity .plus-btn{
+    /* .shipping-card .first-row .section-tow .select-quantity .plus-btn{
         display: inline-block;
         width: 30px;
     }
@@ -152,7 +185,7 @@
     .shipping-card .first-row .section-tow .select-quantity input{
         display: inline-block;
         width: 60px !important;
-    }
+    } */
 }
 @media (max-width: 575.98px) {
     .shipping-card .second-row .update-card .inpt-ok{
@@ -162,31 +195,31 @@
     .h1-delivery a{
         font-size: 18px;
     }
-    .shipping-card .first-row .section-tow .select-quantity button{
+    /* .shipping-card .first-row .section-tow .select-quantity button{
         width: 24%;
     }
     .shipping-card .first-row .section-tow .select-quantity input{
         width: 26%;
-    }
+    } */
 }
 @media (max-width: 991.98px) {
     .shipping-card .section-tow{
         margin-top: 30px;
     }
-    .shipping-card .first-row .section-tow .select-quantity button{
+    /* .shipping-card .first-row .section-tow .select-quantity button{
         width: 16%;
     }
     .shipping-card .first-row .section-tow .select-quantity input{
         width: 20%;
-    }
+    } */
 }
 @media (max-width: 767.98px) {
-    .shipping-card .first-row .section-tow .select-quantity button{
+    /* .shipping-card .first-row .section-tow .select-quantity button{
         width: 16%;
     }
     .shipping-card .first-row .section-tow .select-quantity input{
         width: 20%;
-    }
+    } */
     .shipping-card .first-row .section-one{
         display: flex;
         flex-direction: column;
@@ -206,4 +239,3 @@
        padding-right: 50px;
     }
 }
-/*  */

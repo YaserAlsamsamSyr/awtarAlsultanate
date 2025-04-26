@@ -1,39 +1,3 @@
-body{
-    background-image: url('../images/footerAndNav/e.jpg');
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-}
-/* .video{
-    width:100%;
-    background-color: black;
-    position: relative;
-}
-.video .ps{
-    position:absolute;
-    color: white;
-    width:auto;
-    padding-left:30px;
-    right:40px;
-    top:200px;
-}
-/* .video p span{} *
-.video p{
-    font-size: 25px;
-    width:auto;
-    line-height: 2.5;
-}
-.video .ps a{
-    background-color: #B89761;
-    color:white;
-    border:0px;
-    text-decoration: none;
-    width:10%;
-    border-radius: 5px;
-    text-align: center;
-}
-.video .ps a:hover{
-    color:black;
-} */
 .gold-section{
     position: relative;
     height: 190PX;
@@ -41,7 +5,7 @@ body{
 }
 .gold-section .elementor-background-overlay {
     background-color: transparent;
-    background-image: linear-gradient(180deg, rgb(15, 12, 4) 4%, #75531c 80%, #996a1f 100%);
+    background-image: linear-gradient(180deg, rgb(0, 0, 0) 4%, #75531c 80%, #996a1f 100%);
     opacity: 0.6;
     height: 190PX;
     width: 100%;
@@ -54,7 +18,7 @@ footer{
 }
 .empty{
     height: 250px;
-    background-color: black;
+    /* background-color: black; */
 }
 /* slideshow */
 .img-slider{
@@ -69,15 +33,13 @@ footer{
     height:auto;
   }
   /* Hide the images by default */
-  .mySlides {
+  .img-slider .mySlides {
     display: none;
-  }
-  
-  .img-slider .mySlidesss {
     position: relative;
     height: auto;
   }
-  .img-slider .mySlidesss div{
+  
+  .img-slider .mySlides div{
       top: 0!important;
       padding-top:20%;
       position:absolute;
@@ -99,19 +61,7 @@ footer{
     text-align: center;
     align-items: center;
   }
-  /* .img-slider .fade .text a{
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: #B89761;
-    color:white;
-    display: block;
-    text-decoration: none;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    margin-top: 30px;
-    width:30%;
-  } */
-  .img-slider .fade .text h2{
+ .img-slider .fade .text h2{
         color:rgb(0, 0, 0);
   }
   .img-slider .fade .text p{
@@ -124,8 +74,7 @@ footer{
   .active, .dot:hover{
     background-color: #e2ad56;
   }  
-  /* Fading animation */
-  .fade {
+ .fade {
     animation-name: fade;
     animation-duration: 20s;
   }
@@ -136,45 +85,36 @@ footer{
   .slideshow-container .circle{
     margin-top: -50px;
   }
-  /*  */
   .today-perfume{
-    background-color: black;
-    /* padding: 70px 20px; */
+    /* background-color: black; */
     align-items: center;
-  }
-  .today-perfume h2{
-        color:#B89761;
-  }
-  /*  */
-  /* list image */
-  .list-img {
-    background-color: black;
   }
   .list-img .d-flex img{
       height:257px;
       width:386px;
   }
+  #h11{
+    background-color:#f9ce8a;
+    color:rgb(0, 0, 0);
+    padding:1rem;
+    width:100%;
+  }
   .empty2{
     height:100px;
   }
-  /*  */
-
     .a-large{
         margin-top:0px;
     }
     .a-large p{
         top:52%;
     }
-  /*  */
   .preview1 .row .columnn,
   .preview2 .columnn{
       text-align: center;
-      /* padding-top: 40px; */
   }
   .preview1 .row .columnn h1,
   .preview2 .columnn h1{
-    /* padding-bottom:20px; */
-    color: #B89761;
+    color: #f9ce8a;
   }
   .preview1 .row .columnn h4,
   .preview2 .columnn h4{
@@ -185,48 +125,26 @@ footer{
        width:100%;
        height:auto;
 }
-
-/* .preview2 .container .row .columnn{
-    padding-right: 0px;
-} */
-  /*  */
-  @keyframes fade {
-           0%{opacity: 0}
-           25%{opacity: 0.9}
-           75%{opacity: 0.9}
-           100%{opacity: 0}
-  }
-  
-
-  @media (max-width: 1200px) {
-    /* .video p{
-        font-size: 20px;
-        top:270px;
-    } */
+@keyframes fade {
+         0%{opacity: 0}
+         25%{opacity: 0.9}
+         75%{opacity: 0.9}
+         100%{opacity: 0}
+}
+@media (max-width: 1200px) {
     .img-slider .fade .text a{
         width:40%;
       }
       .preview1 .row .columnn h4{
         font-size: 19px;
      }
-     /* .preview1 .row .col-md-4 a img{
-          width:150px;
-          height:300px;
-   } */
 }
 @media (max-width: 1100px) {
-    .img-slider .mySlidesss div h2{
+    .img-slider .mySlides div h2{
           font-size: 25px;
     }
 }
 @media (max-width: 991.98px) {
-    /* .video p{
-        font-size: 20px;
-        top:270px;
-    }
-    .video .ps a{
-        width: 16%;
-    } */
     .img-slider .fade .text{
         width: 45%;
     }
@@ -236,37 +154,25 @@ footer{
       .list-img .d-flex img{
         width:390px;
     }
-    .img-slider .mySlidesss div{
+    .img-slider .mySlides div{
           width: 30%!important;;
     }
 }
-
-
 @media (max-width: 771.98px) {
     .container .row div #categorytext{
          font-size:20px!important;
     }
-    .img-slider .mySlidesss div h2{
+    .img-slider .mySlides div h2{
           font-size: 20px;
     }
 }
 @media (max-width: 767.98px) {
-    /* .video p{
-        font-size: 16px;
-    } */
-    /* .today-perfume .view-products .col-lg-3 img{
-        width:30%;
-        height:50%;
-    } */
-    /* .today-perfume .view-products .col-lg-3{
-        height:600px
-    } */
     .list-img,#isdisplay{
         display: none!important;
     }
 }
 @media (max-width: 575.98px) {
-    .img-slider .mySlidesss div h2{
+    .img-slider .mySlides div h2{
           font-size: 15px;
     }
     .img-slider .fade .text{
@@ -275,21 +181,8 @@ footer{
     .img-slider .fade .text a{
         width:60%;
       }
-      /* .today-perfume .view-products .col-lg-3 img{
-        width:50%;
-        height:60%;
-    } */
 }
-/* @media (max-width: 400px) {
-  .today-perfume .view-products .col-lg-3 img{
-      width:60%;
-      height:60%;
-   }
-} */
 @media (max-width: 350px) {
-    /* .video .ps a{
-        width: 30%;x`
-    } */
     .img-slider .fade .text{
         width: 60%;
     }

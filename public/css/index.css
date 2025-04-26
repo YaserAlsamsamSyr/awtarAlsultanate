@@ -38,8 +38,8 @@ header nav .nav-part-2 .border-nav-part-2-element:focus {
 }
 header nav .nav-part-2 .border-nav-part-2-element:hover{
     transition-delay: 0.07s;
-    color: #b89761 !important;
-    border-color: #b89761;
+    color: #f9ce8a !important;
+    border-color: #f9ce8a;
 }
 header nav .nav-part-2 .border-nav-part-2-element{
     width:100%;
@@ -78,7 +78,7 @@ header nav .dropdown:hover .dropdown-menu{
     transition-delay: 0.07s;
     display: block;
     border-top-width: 2px;
-    border-top-color: #b89761;
+    border-top-color: #f9ce8a;
     border-radius: 0px;
     width:300px;
 }
@@ -109,10 +109,10 @@ header nav .nav-part-2 .dropdown-menu-border .dropdown-menu-item{
 }
 header nav .nav-part-2 .dropdown-menu-border .dropdown-menu-item:hover {
     transition-delay: 0.07s;
-    color: #b89761;
+    color: #f9ce8a;
 }
 header nav .nav-part-2 .dropdown-menu-border .dropdown-menu-item:focus {
-    border-color: #b89761;
+    border-color: #f9ce8a;
 }
 header nav .nav-part-2 .icon-handbag:before {
     content: "\e035";
@@ -138,7 +138,7 @@ footer .row .about-awtar img{
     height:46px;
     border-width:2px;
     border-style: solid;
-    border-color: #b89761;  
+    border-color: #f9ce8a;  
 }
 footer .row .about-awtar .d-flex{
     margin:15px;
@@ -161,7 +161,7 @@ footer .row .h5-padding{
 }
 footer .row .about-awtar .desc-hover:hover{
     transition-delay: 0.07s;
-    color:#b89761;
+    color:#f9ce8a;
 }
 footer .row .products h5{
     padding-right: 24px;
@@ -176,10 +176,10 @@ footer .row .products a{
 }
 footer .row .products a:hover{
     transition-delay: 0.07s;
-    color:#b89761;
+    color:#f9ce8a;
 }
 footer .row .products a:focus{
-    border-color: #b89761;
+    border-color: #f9ce8a;
 }
 footer .row .sub-page p{
     font-size: 14px;
@@ -198,7 +198,7 @@ footer .row .sub-page .d-flex{
     height:30px;
 }
 footer .row .sub-page .d-flex:hover .p-content{
-    color:#b89761;
+    color:#f9ce8a;
 }
 footer .row .sub-page .d-flex:hover{
     animation-name: goRight;
@@ -312,7 +312,7 @@ text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.01);
 footer .row .icons .social-icons .facebook:hover,
 footer .row .icons .social-icons .facebook:hover .tooltip,
 footer .row .icons .social-icons .facebook:hover .tooltip::before {
-background: #b89761;
+background: #f9ce8a;
 color: #fff;
 border-color: blue;
 }
@@ -320,7 +320,7 @@ border-color: blue;
 footer .row .icons .social-icons .twitter:hover,
 footer .row .icons .social-icons .twitter:hover .tooltip,
 footer .row .icons .social-icons .twitter:hover .tooltip::before {
-background: #b89761;
+background: #f9ce8a;
 color: #fff;
 border-color: rgb(56, 243, 250);
 }
@@ -328,7 +328,7 @@ border-color: rgb(56, 243, 250);
 footer .row .icons .social-icons .instagram:hover,
 footer .row .icons .social-icons .instagram:hover .tooltip,
 footer .row .icons .social-icons .instagram:hover .tooltip::before {
-background: #b89761;
+background: #f9ce8a;
 color: #fff;
 border-color: rgb(255, 48, 255);
 }
@@ -336,7 +336,7 @@ border-color: rgb(255, 48, 255);
 footer .row .icons .social-icons .youtube:hover,
 footer .row .icons .social-icons .youtube:hover .tooltip,
 footer .row .icons .social-icons .youtube:hover .tooltip::before {
-background: #b89761;
+background: #f9ce8a;
 color: #fff;
 border-color: rgb(255, 17, 17);
 }
@@ -344,14 +344,14 @@ border-color: rgb(255, 17, 17);
 footer .row .icons .social-icons .whatsapp:hover,
 footer .row .icons .social-icons .whatsapp:hover .tooltip,
 footer .row .icons .social-icons .whatsapp:hover .tooltip::before {
-background: #b89761;
+background: #f9ce8a;
 color: #fff;
 border-color:green;
 }
 footer .row .icons .social-icons .tiktok:hover,
 footer .row .icons .social-icons .tiktok:hover .tooltip,
 footer .row .icons .social-icons .tiktok:hover .tooltip::before {
-background: #b89761;
+background: #f9ce8a;
 color: #fff;
 border-color:rgb(33, 34, 33);
 }
@@ -363,7 +363,7 @@ footer .row .icons .social-icons .icon:hover .fa-tiktok{
 }
 footer .row .icons .social-icons .fa{
     padding-top: 8px;
-    color:#b89761;
+    color:#f9ce8a;
 }
 footer .row .icons .social-icons .icon:hover .fa-facebook{
     color:blue;
@@ -563,5 +563,6 @@ body{
 }
 
 #cateee{
-    background-color: black;
+    /* background-color: black; */
+    background-image: url('../images/home/back.svg');
 }

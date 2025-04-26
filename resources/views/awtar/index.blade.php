@@ -23,21 +23,43 @@
     @else  
 
      <div id="cateee">
-        <img src="{{ asset('images/home/index1.jpg') }}" class="img-fluid" >
-        
+        {{--  --}}
+                <section class="img-slider">
+                  <!-- Slideshow container -->
+                    <div class="slideshow-container">
+                    
+                          <!-- Full-width images with number and caption text -->
+                          <div class="mySlides fade first-mySlides">
+                            <img src="{{ asset('images/home/index1.jpg') }}" style="width:100%">
+                          </div>
+                        
+                          <div class="mySlides fade first-mySlides">
+                            <img src="{{ asset('images/home/index2.jpg') }}" style="width:100%">
+                         </div>
+
+                         <div class="mySlides fade first-mySlides">
+                            <img src="{{ asset('images/home/index3.jpg') }}" style="width:100%">
+                         </div>
+                    
+                    </div>    
+                </section>
+        {{--  --}}
         <div class="empty2"></div> 
         {{--  --}}
-            <h1 style="color:#B89761"  align="center" class="m-4">المجموعات</h1>
+              <div id="h11" style="width:100%" align="center">
+                <h1 align="center">المجموعات</h1>
+              </div>
             <div class="container">
-                <div class="row">
-                    @foreach ($categories as $i)
+                <div class="row" dir="ltr">
+                  {{-- {{ $size=count($categories) }} --}}
+                    @for ($i=0;$i<count($categories);$i++)
                         <div class="col-sm-12 col-md-6 col-lg-4 py-5" align="center">
-                            <a href="{{ env('APP_URL') }}product?id={{ $i->id }}" class="nav-link"><img id="headerimg" class="w-75" src="{{ $i->img }}" alt="Image"/></a>
+                            <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><img id="headerimg" class="w-75" src="{{ $categories[$i]->img }}" alt="Image"/></a>
                             <br>
                             <br>
-                            <a href="{{ env('APP_URL') }}product?id={{ $i->id }}" class="nav-link"><h4 class="display-9 text-white animated slideInDown" id="categorytext" style="color:white;" align="center">{{ $i->category }}</h4></a>
+                            <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><h4 class="display-9 text-white animated slideInDown" id="categorytext" style="color:white;" align="center">{{ $categories[$i]->category }}</h4></a>
                         </div>
-                    @endforeach
+                    @endfor
                 </div>
              </div>
     <br>
@@ -49,8 +71,10 @@
 
   </div>
      <section>
+      <div id="h11" align="center">
+            <h1 align="center">عطر الأسبوع</h1>
+      </div>
          <div class="today-perfume d-flex flex-column justify-content-center">
-                 <h2>عطر الاسبوع</h2>
                  <div class="container-fluid items-today view-products">
                          <div class="row">
                                <div class="col-sm-12 col-md-6">
@@ -112,8 +136,10 @@
      </div>
      
      <section>
+      <div id="h11" align="center">
+           <h2 align="center">متوفر الأن</h2>
+      </div>
       <div class="today-perfume d-flex flex-column justify-content-center">
-              <h2 align="center">متوفر الأن</h2>
               <div class="container-fluid items-today view-products">
                       <div class="row">
                         <div class="col-sm-12 col-md-6">
@@ -173,10 +199,10 @@
 
 </div>
      {{--  --}}
-  <h1 align="center" style="color:#B89761">فروعنا</h1>
-  <div class="empty2">
-
-  </div>  
+  <div id="h11" align="center">
+      <h1 align="center" >فروعنا</h1>
+  </div>
+  <div class="empty2"></div>
   <section class="img-slider">
     <!-- Slideshow container -->
         <div class="slideshow-container">
@@ -226,8 +252,10 @@
 
       </div>
       <section>
-        <div class="container" style="background-color: black" align="center">
-            <h1 align="center" style="color:#B89761">لمحة عن الشركة</h1>
+        <div id="h11" align="center">
+            <h1 align="center">لمحة عن الشركة</h1>
+        </div>
+        <div class="container" align="center">
             <br>
             <br>
             <p id="companyOverviewText" class="py-2" align="center"> أوتار السلطنة للعطور التي انطلقت في عام 2007 متخصصة في ابتكار عطور فاخرة تجمع بين الأناقة و روح التقاليد العريقة
@@ -241,7 +269,6 @@
      <div class="empty2">
 
      </div>
-     </div>
      <section class="gold-section">
           <div class="container">
               <div class="elementor-background-overlay">
@@ -251,6 +278,7 @@
                </div>
           </div>
       </section>
+    </div>
       @endif
       
        @include('awtar.footerAndNav.footer')

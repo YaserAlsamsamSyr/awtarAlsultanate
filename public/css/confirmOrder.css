@@ -1,7 +1,7 @@
 .h1-delivery{
     width: 100%;
     text-align: center;
-    background-color:#B89761 ;
+    background-color:#f9ce8a ;
     font-size: 25px;
     padding:5px 0px;
 }
@@ -36,7 +36,7 @@
 }
 .confirmOrder .inpt-sub{
     width:90%;
-    background-color: #B89761;
+    background-color: #f9ce8a;
     color: #ffffff;
     height:55px;
     border-width: 0px;

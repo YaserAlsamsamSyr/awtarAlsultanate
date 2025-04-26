@@ -23,6 +23,9 @@
        .a-large p{
            top:52%;
        }
+       .container-fluid{
+          background-image: url('../images/home/back.svg');
+       }
     </style>
 </head>
 <body>
@@ -51,6 +54,7 @@
                 @endif
               </div>
               <a href="{{ env('APP_URL') }}product/{{ $i->id }}" class="more-info">قراءة المزيد</a>
+            
             </div>
             @if($count==4)
                 </div>
@@ -65,8 +69,8 @@
           </div>
         @endif
           </div>
+          <div> <br><br><br><br></div>
      </div>
-
      @include('awtar.footerAndNav.footer')
      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 </body>

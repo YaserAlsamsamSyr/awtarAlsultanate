@@ -1,4 +1,4 @@
-<footer>
+<footer style="background-color: black">
     <div class="container footer">
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-12 about-awtar">
@@ -58,23 +58,23 @@
           <h5 class="h5-padding h5-padding-md">الصفحات الجانبية</h5>
           <a href={{ route('company') }} class="nav-link d-flex pt-1">
             <P class="border-circle"></P>
-            <P class="p-content">لمحة عن شركة</P>
+            <P class="p-content" style="color:white!important;">لمحة عن شركة</P>
           </a> 
           <a href="{{ route('index') }}" class="nav-link d-flex">
               <P class="border-circle"></P>
-              <P class="p-content">الصفحة الرئيسية</P>
+              <P class="p-content" style="color:white!important;">الصفحة الرئيسية</P>
           </a>
           <a href="{{ route('contactUs') }}" class="nav-link d-flex pt-1">
             <P class="border-circle"></P>
-            <P class="p-content">اتصل بنا</P>
+            <P class="p-content" style="color:white!important;">اتصل بنا</P>
           </a>
           <a href="{{ route('terms') }}" class="nav-link d-flex pt-1">
             <P class="border-circle"></P>
-            <P class="p-content">الاحكام و الشروط</P>
+            <P class="p-content" style="color:white!important;">الاحكام و الشروط</P>
           </a>
           <a href={{ route('policy') }} class="nav-link d-flex pt-1">
             <P class="border-circle"></P>
-            <P class="p-content">سياسة الخصوصية</P>
+            <P class="p-content" style="color:white!important;">سياسة الخصوصية</P>
           </a>  
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12 icons">
@@ -130,6 +130,6 @@
     <br>
     <br>
     <div class="Copyright">
-      <p>Copyright 2024- Awtar Alsultanate for Perfumes</p>
+      <p>Copyright 2025- Awtar Alsultanate for Perfumes</p>
     </div>
   </footer>

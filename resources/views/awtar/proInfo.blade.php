@@ -56,10 +56,9 @@
                                   @endif
                             </div>
                             <div class="quantity">
-                                  
                                   <div class="d-flex flex-fill select-quantity">
                                       <button class="min-btn" onclick="minusOne()">-</button>
-                                      <input name="q" type="number" id="quan" value="1" min="1" max="100" title="الكمية" onkeyup="chcekSize(this)" />
+                                      <input name="q" type="number" id="quan" value="1" min="1" max="100" readonly title="الكمية" onkeyup="chcekSize(this)" />
                                       <button onclick="plusOne()" class="plus-btn">+</button>
                                   </div>
                                   <form action="{{ route('addToCard') }}" method="post">
@@ -107,21 +106,29 @@
             inpt.style.borderColor="red";
             document.getElementById('f1').style.visibility="hidden";
           } else {
-            inpt.style.color="#4a4a4a";
+            inpt.style.color="f9ce8a";
             inpt.style.borderColor="#ffffff";
             inpt.style.outlineColor="#ffffff";
             document.getElementById('qaantity').value=number;
             document.getElementById('f1').style.visibility="visible";
           }
       }
+      function animateCount(inpt) {
+        inpt.classList.add('animate');
+        setTimeout(() => {
+          inpt.classList.remove('animate');
+        }, 200);
+      }
       function plusOne() {
         document.getElementById("quan").stepUp();
         let inpt=document.getElementById('quan');
+        animateCount(inpt);
         chcekSize(inpt);
       }
       function minusOne() {
         document.getElementById("quan").stepDown(); 
         let inpt=document.getElementById('quan');
+        animateCount(inpt);
         chcekSize(inpt);
       }
 
