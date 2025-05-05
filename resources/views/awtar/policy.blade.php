@@ -16,6 +16,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!---->
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap" rel="stylesheet">
+    @if(session('lang') =="en") 
+    <link href="{{ asset('css/EN/style.css') }}" rel="stylesheet">
+    <style>
+         #aa a h4{
+             font-size: 25px;
+         }
+         #text{
+          font-size:20px;
+          direction:ltr; 
+        }
+    </style>
+@endif
 </head>
 <body>
    
@@ -25,7 +37,7 @@
     </div>  
     <img src="{{ asset('images/whiteWave.png') }}" class="wave-img" alt="no image"/>
     <section>
-      <div class="container">
+      <div class="container" id="text">
         <P>
             {{ __('policy.privacy') }}
             <br>

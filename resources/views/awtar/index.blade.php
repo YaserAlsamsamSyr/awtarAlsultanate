@@ -15,6 +15,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!---->
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap" rel="stylesheet">
+            @if(session('lang') =="en") 
+                <link href="{{ asset('css/EN/style.css') }}" rel="stylesheet">
+                <style>
+                     #aa a h4{
+                         font-size: 25px;
+                     }
+                    .more-info{
+                        font-size:20px;
+                    }
+                </style>
+            @endif
 </head>
 <body>
     @include('awtar.footerAndNav.nav')    
@@ -55,9 +66,8 @@
             <div class="container">
                 <div class="row" dir="ltr">
                     @for ($i=0;$i<count($categories);$i++)
-                        <div class="col-sm-12 col-md-6 col-lg-4 py-5" align="center">
+                        <div id="aa" class="col-sm-12 col-md-6 col-lg-4 py-5" align="center">
                             <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><img id="headerimg" class="w-75" src="{{ $categories[$i]->img }}" alt="Image"/></a>
-                            <br>
                             <br>
                             @if(session()->has('lang'))
                                   @if (session('lang')=="ar")
@@ -80,7 +90,7 @@
   </div>
      <section>
       <div class="container" align="center">
-            <div id="h11">
+            <div id="h11_thisweek">
                 <h1 align="center">{{ __('index.perfume_week') }}</h1>
             </div>
       </div>
@@ -160,7 +170,7 @@
      
      <section>
       <div class="container" align="center">
-            <div id="h11">
+            <div id="h11_valid">
                  <h2 align="center">{{ __('index.valid_now') }}</h2>
             </div>
       </div>
@@ -247,7 +257,7 @@
 </div>
      {{--  --}}
   <div class="container" align="center">
-        <div id="h11">
+        <div id="h11_branchs">
             <h1 align="center" >{{ __('index.branches') }}</h1>
         </div>
   </div>
@@ -284,7 +294,7 @@
             <img src="{{ asset('images/home/slide4.jpg') }}" style="width:100%">
             <div class="text d-flex flex-column ">
                 <h2 style="color: white">{{ __('index.Muscat_Qurum') }}</h2>
-                <h2 style="color: white">{{ __('index.Al Araimi_Boulevard_Complex') }}</h2>
+                <h2 style="color: white">{{ __('index.Al_Araimi_Boulevard_Complex') }}</h2>
             </div>
           </div>
           <div class="mySlides fade mySlidesss">
@@ -302,7 +312,7 @@
       </div>
       <section>
         <div class="container" align="center">
-              <div id="h11">
+              <div id="h11_branchs">
                    <h1 align="center">{{ __('index.Company_Profile') }}</h1>
               </div>  
         </div>

@@ -16,6 +16,17 @@
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/register.css') }}" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.jpg') }}">
+      @if(session('lang') =="en") 
+            <link href="{{ asset('css/EN/style.css') }}" rel="stylesheet">
+            <style>
+                 #aa a h4{
+                     font-size: 25px;
+                 }
+                #form{
+                    direction:ltr;
+                }
+            </style>
+      @endif
 </head>
 <body>
      @include('awtar.footerAndNav.nav') 
@@ -33,7 +44,7 @@
                  <h1 class="login-text">{{ __('register.new_account') }}</h1>
                  <br>
                  <div class="login-form">
-                    <form method="POST" action='{{ env('APP_URL') }}register'>
+                    <form method="POST" action='{{ env('APP_URL') }}register' id="form">
                           @csrf
                           <div class="user-name">
                                 <div class="d-flex text">

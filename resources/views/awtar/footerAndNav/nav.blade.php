@@ -2,7 +2,8 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a href="{{ route('index') }}" class="nav-link"><img  src="{{ asset('images/footerAndNav/awtar.png') }}"class="navbar-brand"/></a>
-       <div class="db d-flex">
+      
+        <div class="db d-flex">
         <a class="nav-link text-color d-flex justify-content-center border-nav-part-2-element icon sh a-small" href="{{ route('viewCard') }}">
           <img src="{{ asset('images/footerAndNav/shippingIcon.png') }}" class="shipping-icon"/>
           <img src="{{ asset('images/footerAndNav/msg_icon.png') }}" class="msg-icon"/>
@@ -51,7 +52,7 @@
                 {{ __('nav.cate') }}
                 <i class="arrow down"></i>
               </a>
-              <ul class="dropdown-menu  text-color bg-black dropdown-menu-border">
+              <ul class="dropdown-menu text-color bg-black dropdown-menu-border" style={{ session('lang')=='ar'?"width:300px;":"width:400px;left:0px;" }}>
                 @if(session()->has('lang'))
                     @if (session('lang')=="ar")
                             @foreach ($categories as $c)
@@ -59,7 +60,7 @@
                             @endforeach
                     @else
                             @foreach ($categories as $c)
-                                <li><a class="dropdown-item text-color dropdown-menu-item" href="{{ env('APP_URL') }}product?id={{ $c->id }}">{{ $c->enName }}</a></li>
+                                <li><a style="text-align: left;" class="dropdown-item text-color dropdown-menu-item" href="{{ env('APP_URL') }}product?id={{ $c->id }}">{{ $c->enName }}</a></li>
                             @endforeach
                     @endif
                 @endif

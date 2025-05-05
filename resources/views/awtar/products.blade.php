@@ -27,6 +27,17 @@
           background-image: url('../images/home/back.svg');
        }
     </style>
+    @if(session('lang') =="en") 
+        <link href="{{ asset('css/EN/style.css') }}" rel="stylesheet">
+        <style>
+             #aa a h4{
+                 font-size: 25px;
+             }
+            #form{
+                direction:ltr;
+            }
+        </style>
+    @endif
 </head>
 <body>
      

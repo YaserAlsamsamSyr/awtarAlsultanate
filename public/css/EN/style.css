@@ -1,0 +1,78 @@
+header .navbar a {
+    font-size:19px;
+}
+footer{
+    direction: ltr;
+}
+footer .row .about-awtar img{
+    margin-right:1rem;
+}
+footer .sub-page p{
+    font-size: 18px!important;
+}
+@media (max-width:1200px) {
+    header .navbar a {
+        font-size:15px;
+    }
+    footer .row .about-awtar img{
+        margin-right:1rem;
+        width:15%;
+        height:15%;
+    }
+    footer .sub-page p{
+        font-size: 15px!important;
+    }
+    footer h4{
+        font-size: 19px!important;
+    }
+    footer h3{
+        font-size: 19px!important;
+    }
+    footer .logo-img{
+        width:90%!important;
+    }
+}
+@media (max-width:990px) {
+    header .navbar a {
+        font-size:15px;
+    }
+    header #navbarTogglerDemo01{
+        direction: ltr!important;
+    }
+    footer .logo-img{
+        width:55%!important;
+        height: 40%!important;
+    }
+}
+@media (max-width:760px) {
+    header .navbar a {
+        font-size:15px;
+    }
+     footer .row .about-awtar img{
+            margin-right:1rem;
+            width:10%;
+            height:10%;
+    } 
+    footer .logo-img{
+        width:40%!important;
+        height: 20%!important;
+    }
+}
+@media (max-width:590px) {
+    footer .logo-img{
+        width:80%!important;
+        height: 18%!important;
+    }
+    footer .logo{
+        width:60%!important;
+        margin-left:50px!important;
+        align-content: center!important;
+    }
+}
+@media (max-width:520px) {
+    footer .row .about-awtar img{
+        margin-right:1rem;
+        width:15%;
+        height:15%;
+    } 
+}

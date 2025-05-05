@@ -32,7 +32,17 @@
     <!---->
 
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap" rel="stylesheet">
-
+    @if(session('lang') =="en") 
+        <link href="{{ asset('css/EN/style.css') }}" rel="stylesheet">
+        <style>
+             #aa a h4{
+                font-size: 25px;
+             }
+             #bill,#parts{
+                direction: ltr;
+             }
+        </style>
+    @endif
 </head>
 
 <body>
@@ -46,11 +56,11 @@
            @foreach ($orders as $order)
                            <div class="col-sm-12 d-flex justify-content-center ">
               
-                            <div class="bill">
+                            <div id="bill" class="bill">
               
                                 <h3>{{ __('order.Order') }} {{ $loop->index+1 }} : {{ $order[0]->pivot->day }}\{{ $order[0]->pivot->month }}\{{ $order[0]->pivot->year }}</h3>
                                 
-                                  <div class="order-info d-flex justify-content-around">
+                                  <div id="parts" class="order-info d-flex justify-content-around">
                                       
                                       <div class="part-1">
                                              
@@ -89,14 +99,14 @@
                                             @endphp
                                             @endforeach
                 
-                                           <h4><span style="color:#b7982b;">{{ $total }}</span> ORM</h4>
+                                           <h4><span>{{ $total }}</span> ORM</h4>
                                            <br>
                                            <p>{{ $myCustomers[0]->firstName }}</p>
                                            <p>{{ $myCustomers[0]->lastName }}</p>
                                            <p>{{ $myCustomers[0]->phone }}</p>
                                            <p>{{ $myCustomers[0]->address }}</p>
                                            <p>{{ $myCustomers[0]->city }}</p>
-                                           <p>{{ $myCustomers[0]->notics ?? "{{ __('order.nonotes') }}" }}</p>
+                                           <p>{{ $myCustomers[0]->notics ?? __('order.nonotes') }}</p>
                 
                                       </div>
                                       

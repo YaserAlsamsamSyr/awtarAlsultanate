@@ -15,6 +15,21 @@
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/shippingCard.css') }}" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.jpg') }}">
+    
+    @if(session('lang') =="en") 
+        <link href="{{ asset('css/EN/style.css') }}" rel="stylesheet">
+        <style>
+             #aa a h4{
+                 font-size: 25px;
+             }
+             #orderinfopart{
+              direction: ltr;
+             }
+             #proInfo p{
+              font-size: 20px;
+             }
+        </style>
+    @endif
 </head>
 <body>
   
@@ -35,7 +50,7 @@
                               </div>
                               <a href="{{ env('APP_URL') }}product/{{ $i['id'] }}" ><img src="{{ $i['img'] }}" alt="no image" class="img-fluid "/></a>
                           </div>
-                          <div class="col-md-8 col-sm-12 d-flex align-items-center section-tow">
+                          <div id="proInfo" class="col-md-8 col-sm-12 d-flex align-items-center section-tow">
                              <p class="flex-fill"><a href="{{ env('APP_URL') }}product/{{ $i['id'] }}">{{ $i['name'] }}</a></p>
                              <p class="flex-fill">{{ $i['price'] }} OMR</p>
                              <div class="d-flex flex-fill select-quantity">
@@ -69,7 +84,7 @@
                   <div class="col-md-6 col-sm-12 d-flex flex-column">
                       <h6>{{ __('shiping.Total_Shopping_Cart') }}</h6>
                       <hr>
-                      <div class="info-card d-flex justify-content-around">
+                      <div id="orderinfopart" class="info-card d-flex justify-content-around">
                               <div class="row-with-flex d-flex flex-column">
                                 <h4>{{ __('shiping.Charging') }}</h4>
                                 <h4 class="h4-2">{{ __('index.amounts') }}</h4>

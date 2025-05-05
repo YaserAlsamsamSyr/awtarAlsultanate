@@ -2,7 +2,7 @@
     <div class="container footer">
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-12 about-awtar">
-              <h5 class="h5">{{ __('footers.aboutAwtar') }}</h5>
+              <h4 class="">{{ __('footers.aboutAwtar') }}</h4>
               <div class="item-location d-flex">
                 <img src="{{ asset('images/footerAndNav/location.png') }}"/>
                 <div class="location-desc desc">
@@ -25,47 +25,51 @@
                     </div>
                 </div>
         </div>
+        {{--  --}}
+        @if(session('lang')=='ar')
+{{--         
         <div class="col-lg-3 col-md-6 col-sm-12 products">
-              <h5 class="h5-padding">{{ __('nav.cate') }}</h5>
-              @php
-                $count=1;
-              @endphp
-              @foreach ($categories as $c)
-                  @if($count==1)
-                      <div class="d-flex pt-3">
-                  @endif
-                      @if(session()->has('lang'))
-                          @if (session('lang')=="ar")
-                              <a href="{{ env('APP_URL') }}product?id={{ $c->id }}" class="nav-link">{{ $c->category }}</a>
-                          @else
-                              <a href="{{ env('APP_URL') }}product?id={{ $c->id }}" class="nav-link">{{ $c->enName }}</a>
-                          @endif
+          <h5 class="h5-padding">{{ __('nav.cate') }}</h5>
+          @php
+            $count=1;
+          @endphp
+          @foreach ($categories as $c)
+              @if($count==1)
+                  <div class="d-flex pt-3">
+              @endif
+                  @if(session()->has('lang'))
+                      @if (session('lang')=="ar")
+                          <a href="{{ env('APP_URL') }}product?id={{ $c->id }}" class="nav-link">{{ $c->category }}</a>
+                      @else
+                          <a href="{{ env('APP_URL') }}product?id={{ $c->id }}" class="nav-link">{{ $c->enName }}</a>
                       @endif
-                  @if($count==2)    
-                     </div>
                   @endif
-                  @if ($count==2)
-                     @php
-                       $count=0;
-                     @endphp
-                  @endif
-                  @php
-                     $count++;
-                  @endphp
-                @endforeach
-                @if($count==2)
-                    </div>
-                @endif
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-12 sub-page">
-          <h5 class="h5-padding h5-padding-md">{{ __('footers.sidePages') }}</h5>
+              @if($count==2)    
+                 </div>
+              @endif
+              @if ($count==2)
+                 @php
+                   $count=0;
+                 @endphp
+              @endif
+              @php
+                 $count++;
+              @endphp
+            @endforeach
+            @if($count==2)
+                </div>
+            @endif
+            </div> --}}
+        <div class="col-lg-4 col-md-6 col-sm-12 sub-page">
+          <h4 class="h5-padding h5-padding-md">{{ __('footers.sidePages') }}</h4>
+          <div align="rtl">
           <a href={{ route('company') }} class="nav-link d-flex pt-1">
             <P class="border-circle"></P>
             <P class="p-content">{{ __('footers.companyProfile') }}</P>
           </a> 
           <a href="{{ route('index') }}" class="nav-link d-flex">
               <P class="border-circle"></P>
-              <P class="p-content">{{ __('home') }}</P>
+              <P class="p-content">{{ __('footers.home') }}</P>
           </a>
           <a href="{{ route('contactUs') }}" class="nav-link d-flex pt-1">
             <P class="border-circle"></P>
@@ -80,8 +84,73 @@
             <P class="p-content">{{ __('footers.privecy') }}</P>
           </a>  
         </div>
+        </div>
+        
+        <div class="col-lg-1 col-md-6 col-sm-12 sub-page"></div>
+        @else
+        
+              <div class="col-lg-4 col-md-6 col-sm-12 sub-page">
+                <h4 class="h5-padding h5-padding-md">{{ __('footers.sidePages') }}</h4>
+                <div align="rtl">
+                <a href={{ route('company') }} class="nav-link d-flex pt-1">
+                  <P class="border-circle"></P>
+                  <P class="p-content">{{ __('footers.companyProfile') }}</P>
+                </a> 
+                <a href="{{ route('index') }}" class="nav-link d-flex">
+                    <P class="border-circle"></P>
+                    <P class="p-content">{{ __('footers.home') }}</P>
+                </a>
+                <a href="{{ route('contactUs') }}" class="nav-link d-flex pt-1">
+                  <P class="border-circle"></P>
+                  <P class="p-content">{{ __('footers.contact_us') }}</P>
+                </a>
+                <a href="{{ route('terms') }}" class="nav-link d-flex pt-1">
+                  <P class="border-circle"></P>
+                  <P class="p-content">{{ __('footers.terms') }}</P>
+                </a>
+                <a href={{ route('policy') }} class="nav-link d-flex pt-1">
+                  <P class="border-circle"></P>
+                  <P class="p-content">{{ __('footers.privecy') }}</P>
+                </a>  
+              </div>
+              </div>
+              <div class="col-lg-1 col-md-6 col-sm-12 products"></div>
+{{--               
+              <div class="col-lg-3 col-md-6 col-sm-12 products">
+                <h5 class="h5-padding">{{ __('nav.cate') }}</h5>
+                @php
+                  $count=1;
+                @endphp
+                @foreach ($categories as $c)
+                    @if($count==1)
+                        <div class="d-flex pt-3">
+                    @endif
+                        @if(session()->has('lang'))
+                            @if (session('lang')=="ar")
+                                <a href="{{ env('APP_URL') }}product?id={{ $c->id }}" class="nav-link">{{ $c->category }}</a>
+                            @else
+                                <a href="{{ env('APP_URL') }}product?id={{ $c->id }}" class="nav-link">{{ $c->enName }}</a>
+                            @endif
+                        @endif
+                    @if($count==2)    
+                       </div>
+                    @endif
+                    @if ($count==2)
+                       @php
+                         $count=0;
+                       @endphp
+                    @endif
+                    @php
+                       $count++;
+                    @endphp
+                  @endforeach
+                  @if($count==2)
+                      </div>
+                  @endif
+                  </div> --}}
+        @endif
         <div class="col-lg-3 col-md-6 col-sm-12 icons">
-          <h5 class="h5-padding h5-padding-md">{{ __('footers.our_home') }}</h5>
+          <h3 class="h5-padding h5-padding-md">{{ __('footers.our_home') }}</h3>
                     <div class="social-icons">
                          <div class="d-flex">
                               <!-- Facebook -->

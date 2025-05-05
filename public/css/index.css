@@ -3,7 +3,8 @@ html , body{
 background-color: #000000;
 }
 body{
-    font-family: "El Messiri", sans-serif;
+    font-family: "El Messiri", san
+    s-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
@@ -80,7 +81,7 @@ header nav .dropdown:hover .dropdown-menu{
     border-top-width: 2px;
     border-top-color: #f9ce8a;
     border-radius: 0px;
-    width:300px;
+    
 }
 header nav .dropdown .arrow {
     border: solid #AAAAAA;
@@ -134,11 +135,12 @@ footer h5{
     font-size: 18px;
 }
 footer .row .about-awtar img{
-    width:14%;
+    width:13%;
     height:46px;
     border-width:2px;
     border-style: solid;
     border-color: #f9ce8a;  
+    margin-right:1rem;
 }
 footer .row .about-awtar .d-flex{
     margin:15px;
@@ -447,6 +449,14 @@ footer .Copyright p{
     #companyOverviewText{
         font-size:30px;
     }
+    footer .logo-img{
+        width:90%!important;
+    }
+    footer .row .about-awtar img{
+        margin-right:1rem;
+        width:15%;
+        height:15%;
+    }
 }
 @media (max-width: 1010px) {
     #companyOverviewText{
@@ -483,6 +493,10 @@ footer .Copyright p{
     footer .row .icons .logo-img{
         width:50%;
         height:60px;
+    }   
+    footer .logo-img{
+        width:55%!important;
+        height: 40%!important;
     }
     footer .Copyright{
         margin-bottom: 28px;
@@ -525,8 +539,13 @@ footer .Copyright p{
         height:60px;
     }
     footer .row .about-awtar img{
+        margin-right:1rem;
         width:10%;
         height:40px;
+    }
+    footer .logo-img{
+        width:40%!important;
+        height: 20%!important;
     }
     /*  */
 }
@@ -560,9 +579,28 @@ body{
     #companyOverviewText{
             font-size:20px;
             width:85%;
-        } 
+        }     footer .logo-img{
+        width:80%!important;
+        height: 18%!important;
+    }
+    footer .logo{
+        width:60%!important;
+        margin-left:50px!important;
+        align-content: center!important;
+    }
+    footer .logo-img{
+        width:80%!important;
+        height: 18%!important;
+    }
 }
 
+@media (max-width:520px) {
+    footer .row .about-awtar img{
+        margin-right:1rem;
+        width:15%;
+        height:15%;
+    } 
+}
 #cateee{
     /* background-color: black; */
     background-image: url('../images/home/back.svg');

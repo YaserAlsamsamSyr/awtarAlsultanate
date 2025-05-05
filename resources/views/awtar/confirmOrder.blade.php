@@ -17,6 +17,68 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!---->
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap" rel="stylesheet">
+    
+    @if(session('lang') =="en") 
+        <link href="{{ asset('css/EN/style.css') }}" rel="stylesheet">
+        <style>
+             #aa a h4{
+                 font-size: 25px;
+             }
+             #parts{
+              flex-direction: row-reverse;
+             }
+             #parts .first-part,#parts .second-part{
+              direction:ltr;
+             }
+             #parts .first-part h5{
+              font-size:30px;
+             }
+             #parts .first-part p{
+              font-size:20px;
+             }
+             #parts .second-part h5{
+              font-size:30px;
+             }
+             #parts .second-part p{
+              font-size:18px;
+             }
+             #parts .second-part h6{
+              font-size:18px;
+             }
+             #parts .inpt-sub{
+              font-size: 25px;
+            }
+            #in2{
+              width:112%;
+            }
+            @media (max-width: 1200px) {
+                 
+                #parts .first-part h5{
+                 font-size:20px;
+                }
+                #parts .first-part p{
+                 font-size:16px;
+                }
+                #parts .second-part h5{
+                 font-size:20px;
+                }
+                #parts .second-part p{
+                 font-size:15px;
+                }
+                #parts .second-part h6{
+                 font-size:15px;
+                }
+                #parts .inpt-sub{
+                 font-size: 20px;
+                }    
+            }
+            @media (max-width: 490px) {
+                  #part2{
+                    padding-left: 50px;
+                  }
+            } 
+        </style>
+    @endif
 </head>
 <body>
     
@@ -35,17 +97,17 @@
         <form action="{{ route('confirmOrderPost') }}" method="post">
               @csrf
               <div class="container">
-                  <div class="row">
-                        <div class="col-md-6 col-sm-12 d-flex flex-column first-part">
+                  <div id="parts" class="row">
+                        <div class="col-lg-6 col-sm-12 d-flex flex-column first-part">
                               <h5>{{ __('confirmOrder.Billing_and_Shipping') }}</h5>
-                              <div class="full-name d-flex">
+                              <div class="full-name d-flex gap-4">
                                    <div class="first-name d-flex flex-column">
                                             <p>{{ __('confirmOrder.first_name') }}</p>
                                             <input type="text" name="firstName" value="{{ old('firstName') }}" required autofocus/>
                                    </div>
                                    <div class="last-name d-flex flex-column">
                                             <p>{{ __('confirmOrder.last_name') }}</p>
-                                            <input type="text" name="lastName" value="{{ old('lastName') }}" required  />
+                                            <input type="text" name="lastName" id="in2" value="{{ old('lastName') }}" required  />
                                    </div>
                               </div>
                               <div class="city  d-flex flex-column">
@@ -65,7 +127,8 @@
                                 <textarea name="notics" style="background-color: black;" rows="4" cols="50">{{ old('notics') }}</textarea>
                               </div>
                         </div>
-                        <div class="col-md-6 col-sm-12 d-flex flex-column second-part">
+                        <div class="col-lg-6 col-sm-12 d-flex flex-column second-part">
+                          <br><br>
                           <h5>{{ __('confirmOrder.your_order') }}</h5>
                           <div class="bill d-flex justify-content-around">
                             <div class="section-one d-flex flex-column">
@@ -78,7 +141,7 @@
                                   <p class="H6">{{ __('confirmOrder.total') }}</p>
                                   <p class="H6">{{ __('confirmOrder.shiping') }}</p>
                             </div>
-                            <div class="section-two d-flex flex-column">
+                            <div class="section-two d-flex flex-column" id="part2">
                                   <h6 class="H6">{{ __('confirmOrder.price') }}</h6>
                                   <!-- dynamic based on number of perfumes -->
                                   @foreach ( Session::get('card') as $i )
@@ -93,7 +156,7 @@
                                                 $totalPrice+= $i['quantity']*$i['price']
                                       @endphp
                                   @endforeach
-                                  <p>OMR {{ $totalPrice }}</p>
+                                  <p>{{ $totalPrice }} OMR</p>
                                   <p>{{ __('confirmOrder.Freight_to_be_paid_when_your_order_is_delivered') }}</p>
                             </div>
                           </div>

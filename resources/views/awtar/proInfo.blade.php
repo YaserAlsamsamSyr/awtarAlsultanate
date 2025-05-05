@@ -23,26 +23,41 @@
              width: 60%!important;
         }
     </style>
+    
+    @if(session('lang') =="en") 
+        <link href="{{ asset('css/EN/style.css') }}" rel="stylesheet">
+        <style>
+             #aa a h4{
+                 font-size: 25px;
+             }
+             #descpart{
+              direction:ltr;
+             }
+            #show{
+                flex-direction: row-reverse;
+            }
+        </style>
+    @endif
 </head>
 <body>
     
   @include('awtar.footerAndNav.nav') 
      <div class="container product-info">
-             <div class="row first-row">
+             <div id="show" class="row first-row">
                       <div class="col-sm-12 col-md-12 col-lg-6 first-pa">
-                            <div class="slide-container">
+                            <div id="" class="slide-container">
                                  @foreach ($pro->imgs as $p)
                                        <!-- Full-width images with number text -->
-                                       <div class="mySlides">
+                                       <div class="mySlides" id="">
                                            <img src="{{ $p->img }}" id="imgspe">
                                        </div>
                                   @endforeach
                                   <!-- Next and previous buttons -->
-                                  <a class="prev" onclick="plusSlides(-1)">&#10095;</a>
-                                  <a class="next" onclick="plusSlides(1)">&#10094;</a>
+                                       <a class="next" onclick="plusSlides(1)">&#10094;</a>
+                                       <a class="prev" onclick="plusSlides(-1)">&#10095;</a>
                             </div>
                       </div>
-                      <div class="col-sm-12 col-md-12 col-lg-6 second-part">
+                      <div id="descpart" class="col-sm-12 col-md-12 col-lg-6 second-part">
                            @if(session()->has('lang'))
                                  @if (session('lang')=="ar")
                                       <h2>{{ $pro->name }}</h2>
@@ -61,7 +76,7 @@
                                   @endif
                             </div>
                             <div class="quantity">
-                                  <div class="d-flex flex-fill select-quantity">
+                                  <div id="counter" class="d-flex flex-fill select-quantity">
                                     <button onclick="plusOne()" class="plus-btn">+</button>
                                       <input name="q" type="number" id="quan" value="1" min="1" max="100" readonly title="{{ __('index.amounts') }}" onkeyup="chcekSize(this)" />
                                       <button class="min-btn" onclick="minusOne()">-</button>

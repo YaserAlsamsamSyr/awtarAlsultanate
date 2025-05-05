@@ -93,7 +93,7 @@ footer{
       height:257px;
       width:386px;
   }
-  #h11{
+  #h11,#h11_valid,#h11_thisweek,#h11_branchs{
     background-color:#f9ce8a;
     color:rgb(0, 0, 0);
     padding:1rem;
@@ -157,7 +157,14 @@ footer{
         width:390px;
     }
     .img-slider .mySlides div{
-          width: 30%!important;;
+        width: 30%!important;;
+    }
+    #h11,#h11_valid,#h11_thisweek,#h11_branchs{
+        font-size: 17px!important;
+        padding:0.3rem;
+        padding-top: 1.5rem;
+        width:40%;
+        border-radius: 180px;
     }
 }
 @media (max-width: 771.98px) {
@@ -166,6 +173,31 @@ footer{
     }
     .img-slider .mySlides div h2{
           font-size: 20px;
+    }
+    #h11{
+        font-size: 8px!important;
+        padding-top: 1rem;
+        width:40%;
+    }
+    #h11_branchs{
+      width:55%;
+      font-size: 8px!important;
+      padding-top: 1rem;
+    }
+    #h11_thisweek{
+      width:55%;
+      padding-top: 1rem;
+    }
+    #h11_valid{
+      width:55%;
+      padding-top: 1.3rem;
+      padding-bottom: 0.6rem;
+    }
+    #headerimg{
+      margin:3rem;
+    }
+    #aa a #categorytext{
+      font-size: 35px!important;
     }
 }
 @media (max-width: 767.98px) {
@@ -183,6 +215,21 @@ footer{
     .img-slider .fade .text a{
         width:60%;
       }
+      #headerimg{
+        margin:4rem!important;
+        padding:2rem;
+        padding-bottom: 10px!important;
+        padding-top: 0px!important;
+      }
+      #aa a #categorytext{
+        font-size: 30px!important;
+      }
+}
+@media (max-width: 450px) {
+
+  #headerimg{
+    margin:2rem!important;
+  }
 }
 @media (max-width: 350px) {
     .img-slider .fade .text{
@@ -190,5 +237,8 @@ footer{
     }
     .img-slider .fade .text a{
         width:70%;
+      }
+      #h11_branchs{
+        width:65%;
       }
 }

@@ -10,7 +10,7 @@ return [
   'sidePages'=>'Side pages',
   'companyProfile'=>'company profile',
   'home'=>'home',
-  'contact us'=>'contact us',
+  'contact_us'=>'contact us',
   'terms'=>'terms and conditions',
   'privecy'=>'privacy policy',
   'our_home'=>'From our home to yours',

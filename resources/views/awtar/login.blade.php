@@ -16,6 +16,17 @@
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.jpg') }}">
+      @if(session('lang') =="en") 
+            <link href="{{ asset('css/EN/style.css') }}" rel="stylesheet">
+            <style>
+               #aa a h4{
+                   font-size: 25px;
+               }
+              #form{
+                  direction:ltr;
+              }
+            </style>
+      @endif
 </head>
 <body>
   
@@ -33,7 +44,7 @@
            <h1 class="login-text">{{ __('login.login') }}</h1>
            <br>
            <div class="login-form">
-              <form action="./login" method="post">
+              <form action="./login" method="post" id="form">
                   @csrf
                     <div class="email-text">
                           <div class="d-flex text">
@@ -55,7 +66,7 @@
                         </div>
                     </div>
                      {{--  --}}
-                    <div class="submit-with-remember">
+                    <div class="submit-with-remember" id="rememberrme">
                           {{-- <a href="{{ route('password.request') }}" class="nav-link forget-pass">نسيت كلمة سر ؟</a> --}}
                           <input type="submit" value="{{ __('login.login') }}" class="submit"/>
                           <div class="no-thing"></div>
