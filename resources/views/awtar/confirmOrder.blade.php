@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ __('index.app_name') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
@@ -22,7 +22,7 @@
     
   @include('awtar.footerAndNav.nav') 
      <div class="msg">
-         <h1 class="h1-delivery"><a href="#">الدفع عند توصيل</a></h1>
+         <h1 class="h1-delivery"><a href="#">{{ __('confirmOrder.delivery_duration') }}</a></h1>
 
             @foreach ($errors->all() as $error)
                <div class="alert alert-danger" role="alert">
@@ -37,49 +37,49 @@
               <div class="container">
                   <div class="row">
                         <div class="col-md-6 col-sm-12 d-flex flex-column first-part">
-                              <h5>الفوترة و الشحن</h5>
+                              <h5>{{ __('confirmOrder.Billing_and_Shipping') }}</h5>
                               <div class="full-name d-flex">
                                    <div class="first-name d-flex flex-column">
-                                            <p>الأسم الأول</p>
+                                            <p>{{ __('confirmOrder.first_name') }}</p>
                                             <input type="text" name="firstName" value="{{ old('firstName') }}" required autofocus/>
                                    </div>
                                    <div class="last-name d-flex flex-column">
-                                            <p>الأسم الأخير</p>
+                                            <p>{{ __('confirmOrder.last_name') }}</p>
                                             <input type="text" name="lastName" value="{{ old('lastName') }}" required  />
                                    </div>
                               </div>
                               <div class="city  d-flex flex-column">
-                                <p>المدينة</p>
+                                <p>{{ __('confirmOrder.city') }}</p>
                                 <input type="text" name="city" value="{{ old('city') }}" required  />
                               </div>
                               <div class="address d-flex flex-column">
-                                <p>عنوان السكن</p>
+                                <p>{{ __('confirmOrder.address') }}</p>
                                 <input type="text" name="address" value="{{ old('address') }}" required  />
                               </div>
                               <div class="phone d-flex flex-column">
-                                <p>رقم الهاتف</p>
+                                <p>{{ __('confirmOrder.phone') }}</p>
                                 <input type="text" name="phone" value="{{ old('phone') }}" required  />
                               </div>
                               <div class="notics d-flex flex-column">
-                                <p>ملاحظات (إختياري)</p>
+                                <p>{{ __('confirmOrder.notes') }}</p>
                                 <textarea name="notics" style="background-color: black;" rows="4" cols="50">{{ old('notics') }}</textarea>
                               </div>
                         </div>
                         <div class="col-md-6 col-sm-12 d-flex flex-column second-part">
-                          <h5>طلبك</h5>
+                          <h5>{{ __('confirmOrder.your_order') }}</h5>
                           <div class="bill d-flex justify-content-around">
                             <div class="section-one d-flex flex-column">
-                                  <h6 class="H6">المنتج</h6>
+                                  <h6 class="H6">{{ __('confirmOrder.product') }}</h6>
                                   <!-- dynamic based on number of perfumes -->
                                   @foreach ( Session::get('card') as $i )
                                        <p>{{ $i['name'] }}&nbsp;&nbsp;{{ $i['quantity'] }}x</p>
                                   @endforeach
                                   <!--  -->
-                                  <p class="H6">الإجمالي</p>
-                                  <p class="H6">الشحن</p>
+                                  <p class="H6">{{ __('confirmOrder.total') }}</p>
+                                  <p class="H6">{{ __('confirmOrder.shiping') }}</p>
                             </div>
                             <div class="section-two d-flex flex-column">
-                                  <h6 class="H6">المجموع</h6>
+                                  <h6 class="H6">{{ __('confirmOrder.price') }}</h6>
                                   <!-- dynamic based on number of perfumes -->
                                   @foreach ( Session::get('card') as $i )
                                       <p>{{ $i['price'] }} ORM</p>
@@ -94,10 +94,10 @@
                                       @endphp
                                   @endforeach
                                   <p>OMR {{ $totalPrice }}</p>
-                                  <p>حساب شحن عند توصيل</p>
+                                  <p>{{ __('confirmOrder.Freight_to_be_paid_when_your_order_is_delivered') }}</p>
                             </div>
                           </div>
-                          <input type="submit" class="inpt-sub" value="تأكيد الطلب"/>
+                          <input type="submit" class="inpt-sub" value="{{ __('confirmOrder.confirm_order') }}"/>
                         </div>
                     </div>
                 </div>

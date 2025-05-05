@@ -2,34 +2,31 @@
     <div class="container footer">
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-12 about-awtar">
-              <h5 class="h5">عن أوتار السلطنة</h5>
+              <h5 class="h5">{{ __('footers.aboutAwtar') }}</h5>
               <div class="item-location d-flex">
                 <img src="{{ asset('images/footerAndNav/location.png') }}"/>
                 <div class="location-desc desc">
-                  <h5>العنوان</h5>
-                  <p class="margin-top" style="color:white!important;">سلطنة عمان - مسقط - الخوض</p>
+                  <h5>{{ __("footers.adresss") }}</h5>
+                  <p class="margin-top" style="color:white!important;">{{ __('footers.addresssVal') }}</p>
                 </div>
               </div>
                 <div class="item-call d-flex">
                   <img src="{{ asset('images/footerAndNav/call.png') }}"/>
                   <div class="call-desc desc">
-                    <h5>هاتف</h5>
+                    <h5>{{ __('footers.phone') }}</h5>
                     <a href="tel:0096895310290" class="nav-link margin-top desc-hover">+968-95310290</a>
                   </div>
                 </div>
                 <div class="item-email d-flex">
                     <img src="{{ asset('images/footerAndNav/email.png') }}"/>
                     <div class="email-desc desc">
-                      <h5>ايميل</h5>
+                      <h5>{{ __('footers.email') }}</h5>
                       <a href="mailto:awtaralstanate@gmail.com" class="nav-link margin-top desc-hover">awtaralstanate@gmail.com</a>
                     </div>
                 </div>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12 products">
-              <h5 class="h5-padding">المنتجات</h5>
-              {{-- <div class="d-flex">
-                  <a href="{{ env('APP_URL') }}product?id=-1" class="nav-link">جميع المنتجات</a>
-              </div> --}}
+              <h5 class="h5-padding">{{ __('nav.cate') }}</h5>
               @php
                 $count=1;
               @endphp
@@ -37,7 +34,13 @@
                   @if($count==1)
                       <div class="d-flex pt-3">
                   @endif
-                      <a href="{{ env('APP_URL') }}product?id={{ $c->id }}" class="nav-link">{{ $c->category }}</a>
+                      @if(session()->has('lang'))
+                          @if (session('lang')=="ar")
+                              <a href="{{ env('APP_URL') }}product?id={{ $c->id }}" class="nav-link">{{ $c->category }}</a>
+                          @else
+                              <a href="{{ env('APP_URL') }}product?id={{ $c->id }}" class="nav-link">{{ $c->enName }}</a>
+                          @endif
+                      @endif
                   @if($count==2)    
                      </div>
                   @endif
@@ -55,30 +58,30 @@
                 @endif
         </div>
         <div class="col-lg-2 col-md-6 col-sm-12 sub-page">
-          <h5 class="h5-padding h5-padding-md">الصفحات الجانبية</h5>
+          <h5 class="h5-padding h5-padding-md">{{ __('footers.sidePages') }}</h5>
           <a href={{ route('company') }} class="nav-link d-flex pt-1">
             <P class="border-circle"></P>
-            <P class="p-content">لمحة عن شركة</P>
+            <P class="p-content">{{ __('footers.companyProfile') }}</P>
           </a> 
           <a href="{{ route('index') }}" class="nav-link d-flex">
               <P class="border-circle"></P>
-              <P class="p-content">الصفحة الرئيسية</P>
+              <P class="p-content">{{ __('home') }}</P>
           </a>
           <a href="{{ route('contactUs') }}" class="nav-link d-flex pt-1">
             <P class="border-circle"></P>
-            <P class="p-content">اتصل بنا</P>
+            <P class="p-content">{{ __('footers.contact_us') }}</P>
           </a>
           <a href="{{ route('terms') }}" class="nav-link d-flex pt-1">
             <P class="border-circle"></P>
-            <P class="p-content">الاحكام و الشروط</P>
+            <P class="p-content">{{ __('footers.terms') }}</P>
           </a>
           <a href={{ route('policy') }} class="nav-link d-flex pt-1">
             <P class="border-circle"></P>
-            <P class="p-content">سياسة الخصوصية</P>
+            <P class="p-content">{{ __('footers.privecy') }}</P>
           </a>  
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12 icons">
-          <h5 class="h5-padding h5-padding-md">من دارنا الى دارك</h5>
+          <h5 class="h5-padding h5-padding-md">{{ __('footers.our_home') }}</h5>
                     <div class="social-icons">
                          <div class="d-flex">
                               <!-- Facebook -->
@@ -130,6 +133,6 @@
     <br>
     <br>
     <div class="Copyright">
-      <p>Copyright 2025- Awtar Alsultanate for Perfumes</p>
+      <p>{{ __('footers.copy_right') }}</p>
     </div>
   </footer>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ __('index.app_name') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
 <body>
   
   @include('awtar.footerAndNav.nav') 
-     <h1 class="h1-delivery"><a href="#">الدفع عند توصيل</a></h1>
+     <h1 class="h1-delivery"><a href="#">{{ __('shiping.pay') }}</a></h1>
       @if(Session::has('card'))
      <section>
             <div class="container shipping-card">
@@ -40,7 +40,7 @@
                              <p class="flex-fill">{{ $i['price'] }} OMR</p>
                              <div class="d-flex flex-fill select-quantity">
                                      <button onclick="plusOne({{ $i['id'] }})" class="plus-btn">+</button>
-                                     <input name="quantity" type="number" id="quan{{ $i['id'] }}" value="{{ $i['quantity'] }}" min="1" max="100" readonly title="الكمية" onkeyup="chcekSize(this)" />
+                                     <input name="quantity" type="number" id="quan{{ $i['id'] }}" value="{{ $i['quantity'] }}" min="1" max="100" readonly title="{{ __('index.amounts') }}" onkeyup="chcekSize(this)" />
                                      <button class="min-btn" onclick="minusOne({{ $i['id'] }})">-</button>
                              </div>
                              <p class="flex-fill">{{ $i['price']*$i['quantity'] }} OMR</p>
@@ -57,7 +57,7 @@
                                     <input type="hidden" id="pro{{ $i['id'] }}quan" name="pro{{ $i['id'] }}quan" value="{{ $i['quantity'] }}"/>    
                                 @endforeach
                                 
-                                <input type="submit" id="f1" class="inpt-ok" value="تحديث سلة التسوق" />
+                                <input type="submit" id="f1" class="inpt-ok" value="{{ __('shiping.update_cart') }}" />
                             </div>
                       </div>
                       
@@ -67,16 +67,16 @@
                 <div class="row third-row">
                   <div class="col-sm-12 col-md-6"></div>
                   <div class="col-md-6 col-sm-12 d-flex flex-column">
-                      <h6>اجمالي سلة المشتريات</h6>
+                      <h6>{{ __('shiping.Total_Shopping_Cart') }}</h6>
                       <hr>
                       <div class="info-card d-flex justify-content-around">
                               <div class="row-with-flex d-flex flex-column">
-                                <h4>الشحن</h4>
-                                <h4 class="h4-2">الكمية</h4>
-                                <h4 class="h4-2">الاجمالي</h4>
+                                <h4>{{ __('shiping.Charging') }}</h4>
+                                <h4 class="h4-2">{{ __('index.amounts') }}</h4>
+                                <h4 class="h4-2">{{ __('confirmOrder.total') }}</h4>
                               </div>
                               <div class="row-with-flex d-flex flex-column">
-                                <p>التوصيل خلال يومان</p>
+                                <p>{{ __('shiping.delivery') }}</p>
                                 <p  class="pp-2">{{ session('quan') }}</p>
                                 @php
                                    $totalPrice=0;
@@ -90,7 +90,7 @@
                               </div>
                       </div>
                       @foreach ( Session::get('card') as $i )
-                           <a href="{{ route('confirmOrder') }}">التقدم لاتمام الطلب</a>
+                           <a href="{{ route('confirmOrder') }}">{{ __('shiping.Apply_to_complete_the_order') }}</a>
                            @break
                       @endforeach
                   </div>

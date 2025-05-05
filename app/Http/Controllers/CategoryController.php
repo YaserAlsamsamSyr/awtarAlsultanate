@@ -48,6 +48,7 @@ class CategoryController extends Controller
                 if($accType=="aaddmmii0n0n"){
                           $cat=new Category();
                           $cat->category=$req->category;
+                          $cat->enName=$req->enName;
                           // img
                           if($req->hasFile('img')){
                                $file=$req->file('img');
@@ -100,6 +101,7 @@ class CategoryController extends Controller
                 if($accType=="aaddmmii0n0n"){
                        $cat=Category::find($id);
                        $cat->category=$req->category;
+                       $cat->enName=$req->enName;
                        // img
                        if($req->hasFile('img')){
                             // delete old image first

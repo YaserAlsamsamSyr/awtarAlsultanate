@@ -11,7 +11,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable=['img','category','user_id','isDeleted'];
+    protected $fillable=['enName','img','category','user_id','isDeleted'];
 
     protected $hidden=[
         'created_at','updated_at'

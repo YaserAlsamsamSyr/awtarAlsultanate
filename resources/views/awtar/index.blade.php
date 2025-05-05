@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ __('index.app_name') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/products.css') }}" rel="stylesheet">
@@ -49,18 +49,23 @@
         
         <div class="container" align="center">
               <div id="h11">
-                <h1 align="center">المجموعات</h1>
+                <h1 align="center">{{ __('index.cat_name') }}</h1>
               </div>
         </div>
             <div class="container">
                 <div class="row" dir="ltr">
-                  {{-- {{ $size=count($categories) }} --}}
                     @for ($i=0;$i<count($categories);$i++)
                         <div class="col-sm-12 col-md-6 col-lg-4 py-5" align="center">
                             <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><img id="headerimg" class="w-75" src="{{ $categories[$i]->img }}" alt="Image"/></a>
                             <br>
                             <br>
-                            <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><h4 class="display-9 text-white animated slideInDown" id="categorytext" style="color:white;" align="center">{{ $categories[$i]->category }}</h4></a>
+                            @if(session()->has('lang'))
+                                  @if (session('lang')=="ar")
+                                      <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><h4 class="display-9 text-white animated slideInDown" id="categorytext" style="color:white;" align="center">{{ $categories[$i]->category }}</h4></a>
+                                  @else
+                                      <a href="{{ env('APP_URL') }}product?id={{ $categories[$i]->id }}" class="nav-link"><h4 class="display-9 text-white animated slideInDown" id="categorytext" style="color:white;" align="center">{{ $categories[$i]->enName }}</h4></a>
+                                  @endif
+                            @endif
                         </div>
                     @endfor
                 </div>
@@ -76,7 +81,7 @@
      <section>
       <div class="container" align="center">
             <div id="h11">
-                <h1 align="center">عطر الأسبوع</h1>
+                <h1 align="center">{{ __('index.perfume_week') }}</h1>
             </div>
       </div>
          <div class="today-perfume d-flex flex-column justify-content-center">
@@ -84,7 +89,14 @@
                          <div class="row">
                                <div class="col-sm-12 col-md-6">
                                      <a href="{{ env('APP_URL') }}product/{{ $products[0]->id }}"><img src="{{ $products[0]->imgs[0]->img }}"/></a>
-                                     <a href="{{ env('APP_URL') }}product/{{ $products[0]->id }}"><h2>{{ $products[0]->name }}</h2></a>
+                                     
+                                      @if(session()->has('lang'))
+                                         @if (session('lang')=="ar")
+                                              <a href="{{ env('APP_URL') }}product/{{ $products[0]->id }}"><h2>{{ $products[0]->name }}</h2></a>
+                                          @else
+                                              <a href="{{ env('APP_URL') }}product/{{ $products[0]->id }}"><h2>{{ $products[0]->enName }}</h2></a>
+                                          @endif
+                                      @endif
                                      <div class="price">
                                       @if($products[0]->newPrice==0)
                                           <h5 class="offre">{{ $products[0]->oldPrice }} OMR</h5>
@@ -92,11 +104,17 @@
                                           <h5 class="offre">{{ $products[0]->newPrice }} OMR</h5>
                                       @endif
                                      </div>
-                                     <a href="{{ env('APP_URL') }}product/{{ $products[0]->id }}" class="more-info">قراءة المزيد</a>
+                                     <a href="{{ env('APP_URL') }}product/{{ $products[0]->id }}" class="more-info">{{ __('index.read_more') }}</a>
                                </div>
                                <div class="col-sm-12 col-md-6">
                                      <a href="{{ env('APP_URL') }}product/{{ $products[1]->id }}"><img src="{{ $products[1]->imgs[0]->img }}" class="navbar-brand" /></a>
-                                     <a href="{{ env('APP_URL') }}product/{{ $products[1]->id }}"><h2>{{ $products[1]->name }}</h2></a>
+                                     @if(session()->has('lang'))
+                                        @if (session('lang')=="ar")
+                                              <a href="{{ env('APP_URL') }}product/{{ $products[1]->id }}"><h2>{{ $products[1]->name }}</h2></a>
+                                         @else
+                                              <a href="{{ env('APP_URL') }}product/{{ $products[1]->id }}"><h2>{{ $products[1]->enName }}</h2></a>
+                                         @endif
+                                     @endif
                                      <div class="price">
                                       @if($products[1]->newPrice==0)
                                           <h5 class="offre">{{ $products[1]->oldPrice }} OMR</h5>
@@ -104,7 +122,7 @@
                                           <h5 class="offre">{{ $products[1]->newPrice }} OMR</h5>
                                       @endif
                                      </div>
-                                     <a href="{{ env('APP_URL') }}product/{{ $products[1]->id }}" class="more-info">قراءة المزيد</a>
+                                     <a href="{{ env('APP_URL') }}product/{{ $products[1]->id }}" class="more-info">{{ __('index.read_more') }}</a>
                                </div>
 
                          </div>
@@ -127,7 +145,7 @@
                                     <div>
                                         <h1>{{ $alrohname }}</h1>
                                         <br>
-                                        <h4 style="color:white;padding-left:30px;">يجسد عطر روح توازن الأصالة و الإبداع , مستوحى من التراث العماني وسحر الطبيعة ليقدم تجربة عطرية لاتنسى تعكس هوية أوتار السلطنة</h4>
+                                        <h4 style="color:white;padding-left:30px;">{{ __('index.alroh_desc') }}</h4>
                                     </div>
                               </div>
 
@@ -143,7 +161,7 @@
      <section>
       <div class="container" align="center">
             <div id="h11">
-                 <h2 align="center">متوفر الأن</h2>
+                 <h2 align="center">{{ __('index.valid_now') }}</h2>
             </div>
       </div>
       <div class="today-perfume d-flex flex-column justify-content-center">
@@ -151,7 +169,13 @@
                       <div class="row">
                         <div class="col-sm-12 col-md-6">
                           <a href="{{ env('APP_URL') }}product/{{ $products[2]->id }}"><img src="{{ $products[2]->imgs[0]->img }}" class="navbar-brand" /></a>
-                          <a href="{{ env('APP_URL') }}product/{{ $products[2]->id }}"><h2>{{ $products[2]->name }}</h2></a>
+                          @if(session()->has('lang'))
+                              @if (session('lang')=="ar")
+                                    <a href="{{ env('APP_URL') }}product/{{ $products[2]->id }}"><h2>{{ $products[2]->name }}</h2></a>
+                               @else
+                                    <a href="{{ env('APP_URL') }}product/{{ $products[2]->id }}"><h2>{{ $products[2]->enName }}</h2></a>
+                               @endif
+                           @endif
                           <div class="price">
                            @if($products[2]->newPrice==0)
                                <h5 class="offre">{{ $products[2]->oldPrice }} OMR</h5>
@@ -159,11 +183,17 @@
                                <h5 class="offre">{{ $products[2]->newPrice }} OMR</h5>
                            @endif
                           </div>
-                          <a href="{{ env('APP_URL') }}product/{{ $products[2]->id }}" class="more-info">قراءة المزيد</a>
+                          <a href="{{ env('APP_URL') }}product/{{ $products[2]->id }}" class="more-info">{{ __('index.read_more') }}</a>
                     </div>
                     <div class="col-sm-12 col-md-6">
                       <a href="{{ env('APP_URL') }}product/{{ $products[3]->id }}"><img src="{{ $products[3]->imgs[0]->img }}" class="navbar-brand" /></a>
-                      <a href="{{ env('APP_URL') }}product/{{ $products[3]->id }}"><h2>{{ $products[3]->name }}</h2></a>
+                      @if(session()->has('lang'))
+                          @if (session('lang')=="ar")
+                                 <a href="{{ env('APP_URL') }}product/{{ $products[3]->id }}"><h2>{{ $products[3]->name }}</h2></a>
+                           @else
+                                 <a href="{{ env('APP_URL') }}product/{{ $products[3]->id }}"><h2>{{ $products[3]->enName }}</h2></a>
+                           @endif
+                       @endif
                       <div class="price">
                        @if($products[3]->newPrice==0)
                            <h5 class="offre">{{ $products[3]->oldPrice }} OMR</h5>
@@ -171,7 +201,7 @@
                            <h5 class="offre">{{ $products[3]->newPrice }} OMR</h5>
                        @endif
                       </div>
-                      <a href="{{ env('APP_URL') }}product/{{ $products[3]->id }}" class="more-info">قراءة المزيد</a>
+                      <a href="{{ env('APP_URL') }}product/{{ $products[3]->id }}" class="more-info">{{ __('index.read_more') }}</a>
                 </div>
 
                       </div>
@@ -190,11 +220,21 @@
                             <a href="{{ env('APP_URL') }}product/{{ $products[4]->id }}"><img src="{{ $products[4]->imgs[0]->img }}"/></a>
                           </div>
                           <div class="col-sm-12 col-md-6 d-flex align-items-center justify-content-start">
-                                <div>
-                                    <h1>{{ $products[4]->name }}</h1>
-                                    <br>
-                                    <h4 style="color:white;padding-left:30px;">{{ $products[4]->desc }}</h4>
-                                </div>
+                                @if(session()->has('lang'))
+                                    @if (session('lang')=="ar")
+                                        <div>
+                                            <h1>{{ $products[4]->name }}</h1>
+                                            <br>
+                                            <h4 style="color:white;padding-left:30px;">{{ $products[4]->desc }}</h4>
+                                        </div>
+                                     @else
+                                        <div>
+                                            <h1>{{ $products[4]->enName }}</h1>
+                                            <br>
+                                            <h4 style="color:white;padding-left:30px;">{{ $products[4]->enDesc }}</h4>
+                                        </div>
+                                     @endif
+                                 @endif
                           </div>
 
                     </div>
@@ -208,7 +248,7 @@
      {{--  --}}
   <div class="container" align="center">
         <div id="h11">
-            <h1 align="center" >فروعنا</h1>
+            <h1 align="center" >{{ __('index.branches') }}</h1>
         </div>
   </div>
   <div class="empty2"></div>
@@ -220,38 +260,38 @@
           <div class="mySlides fade mySlidesss">
             <img src="{{ asset('images/home/slide1.jpg') }}" style="width:100%">
             <div class="text d-flex flex-column ">
-                <h2 style="color: white">مسقط الغبرة</h2>
-                <h2 style="color: white">أفينيوز مول</h2>
+                <h2 style="color: white">{{ __('index.Muscat_Al_Ghubrah') }}</h2>
+                <h2 style="color: white">{{ __('index.Avenues_Mall') }}</h2>
             </div>
           </div>
         
           <div class="mySlides fade mySlidesss">
              <img src="{{ asset('images/home/slide2.jpg') }}" style="width:100%">
              <div class="text d-flex flex-column ">
-                <h2 style="color: white">مسقط السيب</h2>
-                <h2 style="color: white">العريمي بوليفارد</h2>
+                <h2 style="color: white">{{ __('index.Muscat_Seeb') }}</h2>
+                <h2 style="color: white">{{ __('index.Al_Araimi_Boulevard') }}</h2>
              </div>
           </div>
         
           <div class="mySlides fade mySlidesss">
             <img src="{{ asset('images/home/slide3.jpg') }}" style="width:100%">
             <div class="text d-flex flex-column ">
-                <h2 style="color: white">مسقط السيب</h2>
-                <h2 style="color: white">العريمي بوليفارد</h2>
+                <h2 style="color: white">{{ __('index.Muscat_Seeb') }}</h2>
+                <h2 style="color: white">{{ __('index.Al_Araimi_Boulevard') }}</h2>
             </div>
           </div>
           <div class="mySlides fade mySlidesss">
             <img src="{{ asset('images/home/slide4.jpg') }}" style="width:100%">
             <div class="text d-flex flex-column ">
-                <h2 style="color: white">مسقط القرم</h2>
-                <h2 style="color: white">مجمع العريمي بوليفارد</h2>
+                <h2 style="color: white">{{ __('index.Muscat_Qurum') }}</h2>
+                <h2 style="color: white">{{ __('index.Al Araimi_Boulevard_Complex') }}</h2>
             </div>
           </div>
           <div class="mySlides fade mySlidesss">
             <img src="{{ asset('images/home/slide5.jpg') }}" style="width:100%">
             <div class="text d-flex flex-column ">
-                <h2 style="color: white">مسقط القرم</h2>
-                <h2 style="color: white">بوليفارد مقابل دار الأوبرا</h2>
+                <h2 style="color: white">{{ __('index.Muscat_Qurum') }}</h2>
+                <h2 style="color: white">{{ __('index.Boulevard_in_front_of_the_Opera_House') }}</h2>
             </div>
           </div>
         </div>    
@@ -263,17 +303,14 @@
       <section>
         <div class="container" align="center">
               <div id="h11">
-                   <h1 align="center">لمحة عن الشركة</h1>
+                   <h1 align="center">{{ __('index.Company_Profile') }}</h1>
               </div>  
         </div>
         <div class="container" align="center">
             <br>
             <br>
-            <p id="companyOverviewText" class="py-2" align="center"> أوتار السلطنة للعطور التي انطلقت في عام 2007 متخصصة في ابتكار عطور فاخرة تجمع بين الأناقة و روح التقاليد العريقة
-             تقع الشركة في مسقط، عمان، وتتخصص في ابتكار العطور الفاخرة ومنتجات العود المستوحاة من التراث الثقافي الغني للمنطقة
-             من خلال التزام عميق بالجودة، تجمع أوتار السلطنة بين الحرفية التقليدية واﻻبتكار الحديث لتقديم روائح تتميز باﻷصالة والرقي و
-             تشمل قيمها اﻷساسية التميز , اﻹبداع ، والحفاظ على جوهر الثقافة العمانية . اكتسبت الشركة سمعة مرموقة بفضل منتجاتها المتميزة
-             المتوفرة في جميع فروعها في سلطنة عمان ، والتي تلبي احتياجات اﻷفراد الباحثين عن عطور فريدة طويلة اﻷمد . <a href="{{ route('company') }}" >المزيد ...</a></p>
+            <p id="companyOverviewText" class="py-2" align="center">
+                {{ __('index.overview') }}<a href="{{ route('company') }}" >{{ __('index.more') }}</a></p>
         </div>
      </section>
 

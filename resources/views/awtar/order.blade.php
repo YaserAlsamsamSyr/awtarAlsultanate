@@ -9,7 +9,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ __('index.app_name') }}</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -48,13 +48,13 @@
               
                             <div class="bill">
               
-                                <h3>الطلب {{ $loop->index+1 }} : {{ $order[0]->pivot->day }}\{{ $order[0]->pivot->month }}\{{ $order[0]->pivot->year }}</h3>
+                                <h3>{{ __('order.Order') }} {{ $loop->index+1 }} : {{ $order[0]->pivot->day }}\{{ $order[0]->pivot->month }}\{{ $order[0]->pivot->year }}</h3>
                                 
                                   <div class="order-info d-flex justify-content-around">
                                       
                                       <div class="part-1">
                                              
-                                           <h4>المنتج</h4>
+                                           <h4>{{ __('order.product') }}</h4>
                                             
                                            <br>
               
@@ -63,19 +63,19 @@
                                             @endforeach
                 
                 
-                                           <h4>الإجمالي</h4>
+                                           <h4>{{ __('order.total') }}</h4>
                                            <br>
-                                           <p>الأسم</p>
-                                           <p>اللقب</p>
-                                           <p>رقم الهاتف</p>
-                                           <p>العنوان</p>
-                                           <p>المدينة</p>
-                                           <p>ملاحظات</p>
+                                           <p>{{ __('order.first_name') }}</p>
+                                           <p>{{ __('order.last_name') }}</p>
+                                           <p>{{ __('order.phone') }}</p>
+                                           <p>{{ __('order.address') }}</p>
+                                           <p>{{ __('order.city') }}</p>
+                                           <p>{{ __('order.notes') }}</p>
                 
                                       </div>
                   
                                       <div class="part-2">
-                                           <h4>المجموع</h4>
+                                           <h4>{{ __('order.total') }}</h4>
                 
                                            <br>
 
@@ -96,7 +96,7 @@
                                            <p>{{ $myCustomers[0]->phone }}</p>
                                            <p>{{ $myCustomers[0]->address }}</p>
                                            <p>{{ $myCustomers[0]->city }}</p>
-                                           <p>{{ $myCustomers[0]->notics ?? "لا يوجد ملاحظات" }}</p>
+                                           <p>{{ $myCustomers[0]->notics ?? "{{ __('order.nonotes') }}" }}</p>
                 
                                       </div>
                                       

@@ -87,9 +87,11 @@
                               <p>(صور عن المنتج) يجب اعادة اختيار صور </p>
                               <input type="file" accept="image/jpeg, image/jpg, image/png, image/gif" title="اختر اكثر من صورة" name="imgs[]" multiple="multiple" required />
                             
-                              <p>اسم العطر</p>
+                              <p>اسم العطر(عربي)</p>
                               <input type="text" name="name" value="{{ $pro->name }}" required />
-                            
+                              <p>اسم العطر(انكليزي)</p>
+                              <input type="text" name="enName" value="{{ $pro->enName }}" required />
+                                                       
                               <p>سعر العرض (اختياري)</p>
                               <input type="text" name="newPrice" value="{{ $pro->newPrice }}" required  />
                          
@@ -103,11 +105,13 @@
                                    <option value="{{ $c->id }}">{{ $c->category }}</option>
                                 @endforeach
                               </select>
-                                 <p>وصف المنتج</p>
-                                 <textarea name="desc" style="height:200px;" rows="4" cols="50" required>{{ $pro->desc }}</textarea>
-                            <br>
+                              <p>وصف المنتج(عربي)</p>
+                              <textarea name="desc" style="height:200px;" rows="4" cols="50" required>{{ $pro->desc }}</textarea>
+                              <br>
+                              <p>وصف المنتج(انكليزي)</p>
+                              <textarea name="enDesc" style="height:200px;" rows="4" cols="50" required>{{ $pro->desc }}</textarea>
+                              <br>
                               <input type="submit" class="inpt-sub" value="تعديل"/>
-                            
                     </form>
                       </div>
              </div>

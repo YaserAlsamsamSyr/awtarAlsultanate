@@ -14,6 +14,8 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable=[
+        'enName',
+        'enDesc',
         'name',
         'desc',
         'newPrice',

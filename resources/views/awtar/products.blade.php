@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ __('index.app_name') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
@@ -43,7 +43,13 @@
             <div class="col-sm-12 col-md-6 col-lg-3 mt-5">
            
               <a href="{{ env('APP_URL') }}product/{{ $i->id }}"><img src='{{ $i->imgs[0]->img }}' class="p-2" /></a>
-              <a href="{{ env('APP_URL') }}product/{{ $i->id }}"><h2>{{ $i->name }}</h2></a>
+              @if(session()->has('lang'))
+                  @if (session('lang')=="ar")
+                      <a href="{{ env('APP_URL') }}product/{{ $i->id }}"><h2>{{ $i->name }}</h2></a>
+                  @else
+                      <a href="{{ env('APP_URL') }}product/{{ $i->id }}"><h2>{{ $i->enName }}</h2></a>
+                  @endif
+              @endif
               <div class="price">          
                 @if($i->newPrice==0)      
                    <br><div class="height" style="height:17px;"></div>
@@ -53,7 +59,7 @@
                    <h5 class="offre">{{ $i->newPrice }} OMR</h5>
                 @endif
               </div>
-              <a href="{{ env('APP_URL') }}product/{{ $i->id }}" class="more-info">قراءة المزيد</a>
+              <a href="{{ env('APP_URL') }}product/{{ $i->id }}" class="more-info">{{ __('index.read_more') }}</a>
             
             </div>
             @if($count==4)

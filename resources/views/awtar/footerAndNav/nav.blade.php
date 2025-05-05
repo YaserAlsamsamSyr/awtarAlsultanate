@@ -18,6 +18,15 @@
     </div>
         <div class="collapse navbar-collapse nav-part-2" id="navbarTogglerDemo01">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              @if(session()->has('lang'))
+                  @if (session('lang')=="en")
+                      <a class="nav-link text-color border-nav-part-2-element"  href="{{ route('toggle.lang') }}"><span>عربي</span></a>
+                  @else
+                      <a class="nav-link text-color border-nav-part-2-element"  href="{{ route('toggle.lang') }}"><span>English</span></a>
+                  @endif
+              @endif
+            </li>
             @auth
             @if(auth()->user()->accountType=="aaddmmii0n0n")
               <li class="nav-item">
@@ -27,37 +36,45 @@
             <li class="nav-item">
                <form action="{{ route('logout') }}" method="POST">
                 @csrf
-               <a class="nav-link text-color border-nav-part-2-element with-in"><input type="submit" value="تسجيل الخروج"  /></a> 
+               <a class="nav-link text-color border-nav-part-2-element with-in"><input type="submit" value="{{ __('nav.logout') }}"  /></a> 
                </form>
             </li>
             @endauth
             <li class="nav-item">
-              <a class="nav-link text-color border-nav-part-2-element"  href="{{ route('index') }}"><span>الصفحة الرئيسية</span></a>
+              <a class="nav-link text-color border-nav-part-2-element"  href="{{ route('index') }}"><span>{{ __('footers.home') }}</span></a>
             </li>
             {{-- <li class="nav-item">
               <a class="nav-link text-color border-nav-part-2-element" href="{{ env('APP_URL') }}product?id=-1">جميع المنتجات</a>
             </li> --}}
             <li class="nav-item dropdown">
               <a class="nav-link text-color border-nav-part-2-element  dropdown-hidden" href="#" role="button" aria-expanded="false">
-                عطور ومجموعات دار السلطنة
+                {{ __('nav.cate') }}
                 <i class="arrow down"></i>
               </a>
               <ul class="dropdown-menu  text-color bg-black dropdown-menu-border">
-                @foreach ($categories as $c)
-                    <li><a class="dropdown-item text-color dropdown-menu-item" href="{{ env('APP_URL') }}product?id={{ $c->id }}">{{ $c->category }}</a></li>
-                @endforeach
+                @if(session()->has('lang'))
+                    @if (session('lang')=="ar")
+                            @foreach ($categories as $c)
+                                <li><a class="dropdown-item text-color dropdown-menu-item" href="{{ env('APP_URL') }}product?id={{ $c->id }}">{{ $c->category }}</a></li>
+                            @endforeach
+                    @else
+                            @foreach ($categories as $c)
+                                <li><a class="dropdown-item text-color dropdown-menu-item" href="{{ env('APP_URL') }}product?id={{ $c->id }}">{{ $c->enName }}</a></li>
+                            @endforeach
+                    @endif
+                @endif
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-color border-nav-part-2-element" href="{{ route('log') }}">حسابي</a>
+              <a class="nav-link text-color border-nav-part-2-element" href="{{ route('log') }}">{{ __('nav.account') }}</a>
             </li>
             @auth
                   <li class="nav-item">
-                    <a class="nav-link text-color border-nav-part-2-element" href="{{ route('myOrders') }}">طلباتي</a>
+                    <a class="nav-link text-color border-nav-part-2-element" href="{{ route('myOrders') }}">{{ __('nav.myorder') }}</a>
                   </li>
             @else
                   <li class="nav-item">
-                    <a class="nav-link text-color border-nav-part-2-element" href="{{ route('register') }}">انشاء حساب</a>
+                    <a class="nav-link text-color border-nav-part-2-element" href="{{ route('register') }}">{{ __('nav.register') }}</a>
                   </li>
             @endauth
             <li class="nav-item">

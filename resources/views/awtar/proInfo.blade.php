@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ __('index.app_name') }}</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -43,10 +43,15 @@
                             </div>
                       </div>
                       <div class="col-sm-12 col-md-12 col-lg-6 second-part">
-                            <h2>{{ $pro->name }}</h2>
-                            <p>{{ $pro->desc }}</p>
-                            
-
+                           @if(session()->has('lang'))
+                                 @if (session('lang')=="ar")
+                                      <h2>{{ $pro->name }}</h2>
+                                      <p>{{ $pro->desc }}</p>
+                                 @else
+                                      <h2>{{ $pro->enName }}</h2>
+                                      <p>{{ $pro->enDesc }}</p>
+                                 @endif
+                            @endif
                             <div class="price d-flex">
                                   @if($pro->newPrice==0)
                                      <div class="offer">{{ $pro->oldPrice }} OMR</div>
@@ -58,7 +63,7 @@
                             <div class="quantity">
                                   <div class="d-flex flex-fill select-quantity">
                                     <button onclick="plusOne()" class="plus-btn">+</button>
-                                      <input name="q" type="number" id="quan" value="1" min="1" max="100" readonly title="الكمية" onkeyup="chcekSize(this)" />
+                                      <input name="q" type="number" id="quan" value="1" min="1" max="100" readonly title="{{ __('index.amounts') }}" onkeyup="chcekSize(this)" />
                                       <button class="min-btn" onclick="minusOne()">-</button>
                                   </div>
                                   <form action="{{ route('addToCard') }}" method="post">
@@ -70,7 +75,13 @@
                                          <input type="hidden" name="proPrice" value="{{ $pro->newPrice }}"/>
                                       @endif
                                       <input type="hidden" name="proId" value="{{ $pro->id }}"/>
-                                      <input type="hidden" name="proName" value="{{ $pro->name }}"/>
+                                      @if(session()->has('lang'))
+                                           @if (session('lang')=="ar")
+                                              <input type="hidden" name="proName" value="{{ $pro->name }}"/>
+                                           @else
+                                              <input type="hidden" name="proName" value="{{ $pro->enName }}"/>
+                                           @endif
+                                      @endif
                                       <input type="hidden" name="proImg" value="{{ $pro->imgs[0]->img }}"/>
                                       <?php
                                          $isFound=false;
@@ -84,9 +95,9 @@
                                           @endforeach
                                       @endif
                                       @if($isFound==true)
-                                          <p>تمت اضافة العنصر الى سلة التسوق</p>
+                                          <p>{{ __('index.addedToCard') }}</p>
                                       @else
-                                          <input type="submit" id="f1" class="submit" value="أضافة إلى سلة التسوق" />
+                                          <input type="submit" id="f1" class="submit" value="{{ __('index.add_to_cart') }}" />
                                       @endif
                                   </form>
                             </div>

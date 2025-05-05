@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ __('index.app_name') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
@@ -24,11 +24,11 @@
      <section class="container contact-us d-flex flex-column justify-content-center" >
          
               <div class="fisrt-part">
-                    <p>رقم الهاتف</p>
+                    <p>{{ __('contact.phone') }}</p>
                     <a href="tel:0096895310290">+968-95310290</a>
                     <br>
                     <br>
-                    <p>بريدنا الإلكتروني</p>
+                    <p>{{ __('contact.E_mail') }}</p>
                     <a href="mailto:awtaralstanate@gmail.com" class="email">awtaralstanate@gmail.com</a>
               </div>
         

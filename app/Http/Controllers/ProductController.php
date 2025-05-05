@@ -24,17 +24,31 @@ class ProductController extends Controller
             if(!preg_match($pattern, $cat)){
                 return;
             }
-            $category=Category::select('id','category')->where('isDeleted',false)->get();
+            $lang=session('lang');
+            $category='';
+            if($lang=='ar')
+                 $category=Category::select('id','category')->where('isDeleted',false)->get();
+            else
+                 $category=Category::select('id','enName')->where('isDeleted',false)->get();
             // here I am
             $products='';
-            if($cat==-1)
-                $products=Product::select('id','name', 'newPrice','oldPrice')->where('isDeleted',false)->orderBy('id', 'desc')->with(['imgs'])->get();
-            else
-                $products=Product::where('category_id',$cat)->select('id','name', 'newPrice','oldPrice')->where('isDeleted',false)->orderBy('id', 'desc')->with(['imgs'])->get();        
+            if($cat==-1){
+                if($lang=='ar')
+                   $products=Product::select('id','name', 'newPrice','oldPrice')->where('isDeleted',false)->orderBy('id', 'desc')->with(['imgs'])->get();
+                else
+                   $products=Product::select('id','enName', 'newPrice','oldPrice')->where('isDeleted',false)->orderBy('id', 'desc')->with(['imgs'])->get();
+            } else{
+                if($lang=='ar')
+                    $products=Product::where('category_id',$cat)->select('id','name', 'newPrice','oldPrice')->where('isDeleted',false)->orderBy('id', 'desc')->with(['imgs'])->get();
+                else
+                    $products=Product::where('category_id',$cat)->select('id','enName', 'newPrice','oldPrice')->where('isDeleted',false)->orderBy('id', 'desc')->with(['imgs'])->get();     
+            }
             if (Auth::check()){
                 $accType = Auth::user()->accountType;
-                if($accType=="aaddmmii0n0n")     
+                if($accType=="aaddmmii0n0n") {  
+                    $category=Category::select('id','category')->where('isDeleted',false)->get();
                     return view('awtar.admin.adminHome',['categories'=>$category,'products'=>$products,'accType'=>$accType]);
+                }
             }
             return view('awtar.products',['categories'=>$category,'pros'=>$products]);
         }catch( Exception $err){
@@ -71,12 +85,14 @@ class ProductController extends Controller
                 $accType = Auth::user()->accountType;
                 if($accType=="aaddmmii0n0n"){
                     $product=[
-                    'name'=>$req->name,
-                    'desc'=>$req->desc,
-                    'newPrice'=>$req->newPrice,
-                    'oldPrice'=>$req->oldPrice,
-                    'user_id'=>Auth::user()->id,
-                    'category_id'=>$req->category
+                        'enName'=>$req->enName,
+                        'enDesc'=>$req->enDesc,
+                        'name'=>$req->name,
+                        'desc'=>$req->desc,
+                        'newPrice'=>$req->newPrice,
+                        'oldPrice'=>$req->oldPrice,
+                        'user_id'=>Auth::user()->id,
+                        'category_id'=>$req->category
                     ];
                     $pro=Product::create($product);
                     // upload imgs
@@ -112,12 +128,19 @@ class ProductController extends Controller
             if(!preg_match($pattern, $id)){
                 return;
             }
-            $category=Category::select('id','category')->where('isDeleted',false)->get();
+            $lang=session('lang');
+            $category='';
+            if($lang=='ar')
+                 $category=Category::select('id','category')->where('isDeleted',false)->get();
+            else
+                 $category=Category::select('id','enName')->where('isDeleted',false)->get();
             $product=Product::with(['imgs','category'])->where('isDeleted',false)->find($id);
             if (Auth::check()){
                 $accType = Auth::user()->accountType;
-                if($accType=="aaddmmii0n0n")     
+                if($accType=="aaddmmii0n0n"){
+                    $category=Category::select('id','category')->where('isDeleted',false)->get();
                     return view('awtar.admin.proInfo',['categories'=>$category,'pro'=>$product,'accType'=>$accType]);
+                }  
             }
             return view('awtar.proInfo',['categories'=>$category,'pro'=>$product]);
         } catch(Exception $err){
@@ -149,6 +172,8 @@ class ProductController extends Controller
                 $req->validated();
                 $pro=Product::find($id);
                 $pro->update([
+                    'enName'=>$req->enName,
+                    'enDesc'=>$req->enDesc,
                     'name'=>$req->name,
                     'desc'=>$req->desc,
                     'newPrice'=>$req->newPrice,

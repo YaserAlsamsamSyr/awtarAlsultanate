@@ -43,7 +43,7 @@
                                 <input type="file" accept="image/jpeg, image/jpg, image/png, image/gif" title="اختر اكثر من صورة" name="imgs[]" multiple="multiple" />
                               </div>
                               <div class="city  d-flex flex-column">
-                                <p>اسم العطر</p>
+                                <p>اسم العطر(عربي)</p>
                                 <input type="text" name="name" value="{{ old('name') }}" required autofocus/>
                               </div>
                               <div class="city  d-flex flex-column">
@@ -65,12 +65,24 @@
                         </div>
                         <div class="col-md-6 col-sm-12 d-flex flex-column second-part">
                           <div class="bill d-flex flex-column justify-content-around">
-                            <div class="notics d-flex flex-column">
-                              <p>وصف المنتج</p>
-                              <textarea name="desc" style="height:200px;" rows="4" cols="50">{{ old('desc') }}</textarea>
+                            <div class="city  d-flex flex-column">
+                              <p>اسم العطر(أنكليزي)</p>
+                              <input type="text" name="enName" value="{{ old('name') }}" required autofocus/>
                             </div>
-                              <input type="submit" class="inpt-sub" value="أنشاء"/>
                         </div>
+                        <div class="bill d-flex flex-column justify-content-around">
+                          <div class="notics d-flex flex-column">
+                            <p>وصف المنتج(عربي)</p>
+                            <textarea name="desc" style="height:200px;" rows="4" cols="50">{{ old('desc') }}</textarea>
+                          </div>
+                      </div>
+                      <div class="bill d-flex flex-column justify-content-around">
+                        <div class="notics d-flex flex-column">
+                          <p>وصف المنتج(أنكليزي)</p>
+                          <textarea name="enDesc" style="height:200px;" rows="4" cols="50">{{ old('desc') }}</textarea>
+                        </div>
+                          <input type="submit" class="inpt-sub" value="أنشاء"/>
+                    </div>
                     </div>
                 </div>
         </form>

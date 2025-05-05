@@ -84,7 +84,8 @@
                 <form action="{{ env('APP_URL') }}category" method="post" class="create" enctype="multipart/form-data" >
                         @csrf
                         <input type="file" name="img" required /><br><br><br>
-                        <input type="text" name="category" value="{{ old('category') }}" class="txt" required/>
+                        <input type="text" name="category" value="{{ old('category') }}" placeholder="عربي" ="txt" required/><br>
+                        <input type="text" name="enName" value="{{ old('enName') }}" placeholder="أنكليزي" class="txt" required/>
                         <input type="submit" value="انشاء" class="sub" />
                 </form>
 
@@ -100,7 +101,8 @@
                                         @csrf
                                         @method('PUT')
                                         <input type="file" name="img" required /><br><br><br>
-                                        <input class="txt" type="text" name="category" value="{{ $cat->category }}" required/>
+                                        <input class="txt" type="text" name="category" value="{{ $cat->category }}" placeholder="عربي" required/><br>
+                                        <input class="txt" type="text" name="enName" value="{{ $cat->enName }}" placeholder="أنكليزي" required/>
                                         <input class="sub" type="submit" value="تعديل" />
                                 </form>
                                 <div class="flex">

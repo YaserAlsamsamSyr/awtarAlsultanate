@@ -19,7 +19,12 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        $category=Category::select('id','category','img')->where('isDeleted',false)->orderBy('id','desc')->get();
+        $lang=session('lang');
+        $category='';
+        if($lang=='ar')
+             $category=Category::select('id','category','img')->where('isDeleted',false)->get();
+        else
+             $category=Category::select('id','enName','img')->where('isDeleted',false)->get();
         return view('awtar.register',['categories'=>$category]);
     }
 
