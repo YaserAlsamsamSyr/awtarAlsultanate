@@ -43,14 +43,15 @@ class adminController extends Controller
     public function getBarcode(String $name,int $id){
         try{
             // create parcode for new product and send it to admin
-            QrCode::size(400)->margin(5)->generate(config('app.url').'product/'.$id, public_path('images/qrcode.svg') );
+            // QrCode::size(600)->color(255,153,0)->margin(5)->generate("https://awtaralsultanate.com/".'AwtarContacts', public_path('images/qrcode.svg') );
+            QrCode::size(600)->margin(5)->generate(config('app.url').'product/'.$id, public_path('images/qrcode.svg') );
             $file= public_path(). "/images/qrcode.svg";
             $headers = array(
                       'Content-Type: application/svg',
                     );
             return response()->download($file, $name.'.svg', $headers);
             //
-        }catch(Exception $err){
+        } catch(Exception $err){
             return response()->json(['message'=>$err->getMessage()]);
         }
     }
