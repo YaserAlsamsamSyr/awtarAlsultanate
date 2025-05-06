@@ -10,6 +10,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Customer;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
@@ -63,7 +64,7 @@ class adminController extends Controller
                 if($accType=="aaddmmii0n0n"){
                     $category=Category::select('id','category')->where('isDeleted',false)->get();
                     // $users=User::where('accountType','!=','aaddmmii0n0n')->select('name','email','id')->latest()->paginate(10);
-                    $users=User::select('name','email','id')->latest()->paginate(1);
+                    $users=User::select('name','email','id')->latest()->paginate(10);
                     return view('awtar.admin.viewUsers',['categories'=>$category,'users'=>$users,'accType'=>$accType]);
                 }
             }
@@ -138,6 +139,29 @@ class adminController extends Controller
             return view('awtar.admin.money',['data'=>$orders,'categories'=>$category]);
         }catch(Exception $err){
             return response()->json(['message'=>$err->getMessage()]);
+        }
+    }
+
+    public function ordersNoAccounts(){
+        try{
+            if (Auth::check()){
+                $accType = Auth::user()->accountType;
+                if($accType=="aaddmmii0n0n"){
+                    $myCustomers=Customer::where('user_id',null)->latest()->paginate(10);
+                    $category=Category::select('id','category')->where('isDeleted',false)->get();
+                    if (sizeof($myCustomers)==0)
+                        return view('awtar.admin.order',['myCustomers'=>[],'orders'=>[],'categories'=>$category]);
+                    $allOrder=array($myCustomers[0]->products()->select('name')->get());
+                    for($i=1;$i<count($myCustomers);$i++){
+                       $pros=$myCustomers[$i]->products()->select('name')->get();
+                       array_push($allOrder,$pros);
+                    }
+                    return view('awtar.admin.order',['myCustomers'=>$myCustomers,'orders'=>$allOrder,'categories'=>$category]);
+                }
+            }
+            return ;
+        } catch(Exception $err){
+            return response()->json(['message'=>$err->getMessage()],500);
         }
     }
 }

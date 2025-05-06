@@ -34,7 +34,7 @@
 <body>
   
   @include('awtar.footerAndNav.nav') 
-     <h1 class="h1-delivery"><a href="#">{{ __('shiping.pay') }}</a></h1>
+     {{-- <h1 class="h1-delivery"><a href="#">{{ __('shiping.pay') }}</a></h1> --}}
       @if(Session::has('card'))
      <section>
             <div class="container shipping-card">
@@ -91,7 +91,7 @@
                                 <h4 class="h4-2">{{ __('confirmOrder.total') }}</h4>
                               </div>
                               <div class="row-with-flex d-flex flex-column">
-                                <p>{{ __('shiping.delivery') }}</p>
+                                {{-- <p>{{ __('shiping.delivery') }}</p> --}}
                                 <p  class="pp-2">{{ session('quan') }}</p>
                                 @php
                                    $totalPrice=0;

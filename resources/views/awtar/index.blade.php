@@ -8,6 +8,7 @@
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/products.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/whats.css') }}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.jpg') }}">
@@ -29,10 +30,11 @@
 </head>
 <body>
     @include('awtar.footerAndNav.nav')    
+    
     @if($alrohId=='')
     <h1 style="color:white;background-color:black;">قم بإدخال 6 منتجات اولا ومن بينهم عجم و نهاوند و عطر الروح و هزام</h1>
     @else  
-
+    @include('awtar.whats')
      <div id="cateee">
         {{--  --}}
                 <section class="img-slider">

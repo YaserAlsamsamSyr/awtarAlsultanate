@@ -9,6 +9,7 @@
     
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/products.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/whats.css') }}" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.jpg') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,6 +43,7 @@
 <body>
      
     @include('awtar.footerAndNav.nav') 
+    @include('awtar.whats')
      <div class="container-fluid">
         <?php
           $count=1;

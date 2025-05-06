@@ -1,0 +1,30 @@
+#whats{  
+    position: fixed;
+    z-index: 100;
+    right: 10px;
+    bottom: 30px;
+}
+
+#whats img{
+    width:60%;
+    height:60%;
+}
+@media (max-width: 740px) {
+    #whats {
+        right:10px;
+     }
+}
+@media (max-width: 707px) {
+    #whats {
+        right:-80px;
+     }
+}
+@media (max-width: 580px) {
+    #whats {
+        right:0px;
+     }
+     #whats img{
+        width:60%;
+        height:60%;
+     }
+}

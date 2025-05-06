@@ -21,6 +21,9 @@
               <a class="nav-link text-color border-nav-part-2-element"  href="{{ env('APP_URL') }}product/create"><span>اضافة منتج</span></a>
             </li>
             <li class="nav-item">
+              <a class="nav-link text-color border-nav-part-2-element"  href="{{ env('APP_URL') }}orders/noAccounts"><span>طلبات من دون حساب</span></a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link text-color border-nav-part-2-element"  href="{{ route('money') }}"><span>القسم المالي</span></a>
             </li>
             <li class="nav-item dropdown">

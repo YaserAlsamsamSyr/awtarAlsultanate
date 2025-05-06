@@ -18,6 +18,7 @@
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/order.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/whats.css') }}" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     
@@ -50,6 +51,7 @@
     
   @include('awtar.footerAndNav.nav') 
 
+  @include('awtar.whats')
     <div class="container">
 
         <div class="row">

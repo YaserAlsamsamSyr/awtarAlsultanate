@@ -84,7 +84,7 @@
     
   @include('awtar.footerAndNav.nav') 
      <div class="msg">
-         <h1 class="h1-delivery"><a href="#">{{ __('confirmOrder.delivery_duration') }}</a></h1>
+         {{-- <h1 class="h1-delivery"><a href="#">{{ __('confirmOrder.delivery_duration') }}</a></h1> --}}
 
             @foreach ($errors->all() as $error)
                <div class="alert alert-danger" role="alert">
@@ -99,7 +99,8 @@
               <div class="container">
                   <div id="parts" class="row">
                         <div class="col-lg-6 col-sm-12 d-flex flex-column first-part">
-                              <h5>{{ __('confirmOrder.Billing_and_Shipping') }}</h5>
+                          
+                          <h5>{{ __('confirmOrder.Billing_and_Shipping') }}</h5>
                               <div class="full-name d-flex gap-4">
                                    <div class="first-name d-flex flex-column">
                                             <p>{{ __('confirmOrder.first_name') }}</p>
@@ -148,7 +149,7 @@
                                   @endforeach
                                   <!--  -->
                                   <p class="H6">{{ __('confirmOrder.total') }}</p>
-                                  <p class="H6">{{ __('confirmOrder.shiping') }}</p>
+                                  {{-- <p class="H6">{{ __('confirmOrder.shiping') }}</p> --}}
                             </div>
                             <div class="section-two d-flex flex-column" id="part2">
                                   <h6 class="H6">{{ __('confirmOrder.price') }}</h6>
@@ -166,7 +167,7 @@
                                       @endphp
                                   @endforeach
                                   <p>{{ $totalPrice }} OMR</p>
-                                  <p>{{ __('confirmOrder.Freight_to_be_paid_when_your_order_is_delivered') }}</p>
+                                  {{-- <p>{{ __('confirmOrder.Freight_to_be_paid_when_your_order_is_delivered') }}</p> --}}
                             </div>
                           </div>
                           <input type="submit" class="inpt-sub" value="{{ __('confirmOrder.confirm_order') }}"/>

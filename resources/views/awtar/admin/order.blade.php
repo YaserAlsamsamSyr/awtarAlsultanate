@@ -67,6 +67,7 @@
                                            <br>
                                            <p>الأسم</p>
                                            <p>اللقب</p>
+                                           <p>الحساب</p>
                                            <p>رقم الهاتف</p>
                                            <p>العنوان</p>
                                            <p>المدينة</p>
@@ -91,12 +92,13 @@
                 
                                             <h4><span style="color:#b7982b;">{{ $total }}</span> ORM</h4>
                                             <br>
-                                            <p>{{ $myCustomers[0]->firstName }}</p>
-                                            <p>{{ $myCustomers[0]->lastName }}</p>
-                                            <p>{{ $myCustomers[0]->phone }}</p>
-                                            <p>{{ $myCustomers[0]->address }}</p>
-                                            <p>{{ $myCustomers[0]->city }}</p>
-                                            <p>{{ $myCustomers[0]->notics ?? "لا يوجد ملاحظات" }}</p>
+                                            <p>{{ $myCustomers[$loop->index]->firstName }}</p>
+                                            <p>{{ $myCustomers[$loop->index]->lastName }}</p>
+                                            <p>{{ $myCustomers[$loop->index]->email }}</p>
+                                            <p>{{ $myCustomers[$loop->index]->phone }}</p>
+                                            <p>{{ $myCustomers[$loop->index]->address }}</p>
+                                            <p>{{ $myCustomers[$loop->index]->city }}</p>
+                                            <p>{{ $myCustomers[$loop->index]->notics ?? "لا يوجد ملاحظات" }}</p>
                  
                                       </div>
                                       

@@ -28,6 +28,8 @@ Route::middleware('lang')->group(function(){
     
     Route::middleware('auth')->group(function () {
         //admin
+        
+        Route::get('/orders/noAccounts',[adminController::class,'ordersNoAccounts']);
         Route::get('/adminHome',[adminController::class,'aHome'])->name('adminHome');
         Route::get('/viewUsers',[adminController::class,'viewUsers'])->name('viewUsers');
         Route::delete('/deleteUser/{id}',[adminController::class,'deleteUser']);
