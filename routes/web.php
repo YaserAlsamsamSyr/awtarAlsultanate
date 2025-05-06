@@ -16,7 +16,7 @@ Route::middleware('lang')->group(function(){
     Route::get('/company',[HomeController::class,'company'])->name('company');
     Route::resource('product', productController::class);
     // http://localhost:8000/downloadAwtarContacts
-    Route::get('/downloadAwtarContacts',[HomeController::class,'contactsDownload']);
+    Route::get('/AwtarContacts',[HomeController::class,'contactsDownload']);
     Route::get('/getBarcode/{string}/{id}',[adminController::class,'getBarcode']);
     // for card
     Route::post('/addToCard',[HomeController::class,'addToCard'])->name('addToCard');///////////////ready
@@ -45,9 +45,9 @@ Route::middleware('lang')->group(function(){
 });
 Route::get('/langToggle',[HomeController::class,'langToggle'])->name('toggle.lang');
 
-// use Telegram\Bot\Laravel\Facades\Telegram;
-// Route::get('/get-updates', function () {
-//     $updates = Telegram::getUpdates();
-//     return $updates;
-//     });
+use Telegram\Bot\Laravel\Facades\Telegram;
+Route::get('/get-updates', function () {
+    $updates = Telegram::getUpdates();
+    return $updates;
+    });
        
