@@ -22,6 +22,7 @@ class CustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'email' => ['required', 'string','email', 'max:255'],
             'firstName'=> ['required', 'string', 'max:255'],
             'lastName'=> ['required', 'string', 'max:255'],
             'phone'=>['required','regex:/^[0-9]{7,20}$/'],

@@ -18,6 +18,13 @@ Route::middleware('lang')->group(function(){
     // http://localhost:8000/downloadAwtarContacts
     Route::get('/downloadAwtarContacts',[HomeController::class,'contactsDownload']);
     Route::get('/getBarcode/{string}/{id}',[adminController::class,'getBarcode']);
+    // for card
+    Route::post('/addToCard',[HomeController::class,'addToCard'])->name('addToCard');///////////////ready
+    Route::get('/viewCard',[HomeController::class,'viewCard'])->name('viewCard');////////////////ready
+    Route::get('/removeFromCard/{id}',[HomeController::class,'removeFromCard']);/////////////////ready
+    Route::post('/updateCard',[HomeController::class,'updateCard']);///////////////ready
+    Route::get('/confirmOrder',[HomeController::class,'confirmOrder'])->name('confirmOrder');/////////////ready
+    Route::post('/confirmOrder',[HomeController::class,'confirmOrderPost'])->name('confirmOrderPost');///////////ready
     
     Route::middleware('auth')->group(function () {
         //admin
@@ -29,12 +36,6 @@ Route::middleware('lang')->group(function(){
         Route::get('viewOrders/{id}', [adminController::class,'viewOrders'])->name('viewOrders');
         Route::get('getMoney', [adminController::class,'getMoney'])->name('money');
         //
-        Route::post('/addToCard',[HomeController::class,'addToCard'])->name('addToCard');
-        Route::get('/viewCard',[HomeController::class,'viewCard'])->name('viewCard');
-        Route::get('/removeFromCard/{id}',[HomeController::class,'removeFromCard']);
-        Route::post('/updateCard',[HomeController::class,'updateCard']);
-        Route::get('/confirmOrder',[HomeController::class,'confirmOrder'])->name('confirmOrder');
-        Route::post('/confirmOrder',[HomeController::class,'confirmOrderPost'])->name('confirmOrderPost');
         Route::get('/myOrders',[HomeController::class,'myOrders'])->name('myOrders');
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

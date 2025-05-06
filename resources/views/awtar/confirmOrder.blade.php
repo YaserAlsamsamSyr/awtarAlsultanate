@@ -110,6 +110,15 @@
                                             <input type="text" name="lastName" id="in2" value="{{ old('lastName') }}" required  />
                                    </div>
                               </div>
+                              <div class="address d-flex flex-column">
+                                <p>{{ __('login.Email') }}</p>
+                                @auth
+                                    <input type="email" name="email" value="{{ auth()->user()->email }}" required  />
+                                @endauth
+                                @guest
+                                    <input type="email" name="email" value="{{ old('email') }}" required  />
+                                @endguest
+                              </div>
                               <div class="city  d-flex flex-column">
                                 <p>{{ __('confirmOrder.city') }}</p>
                                 <input type="text" name="city" value="{{ old('city') }}" required  />

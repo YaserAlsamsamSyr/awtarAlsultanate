@@ -67,12 +67,15 @@
                                            <h4>{{ __('order.product') }}</h4>
                                             
                                            <br>
-              
-                                           @foreach ($order as $item)
-                                              <p>{{ $item->name }} x{{ $item->pivot->quantity }}</p>
-                                            @endforeach
-                
-                
+                                           @if(session('lang')=='ar')
+                                                 @foreach ($order as $item)
+                                                   <p>{{ $item->name }} x{{ $item->pivot->quantity }}</p>
+                                                 @endforeach
+                                            @else
+                                                 @foreach ($order as $item)
+                                                    <p>{{ $item->enName }} x{{ $item->pivot->quantity }}</p>
+                                                  @endforeach
+                                            @endif
                                            <h4>{{ __('order.total') }}</h4>
                                            <br>
                                            <p>{{ __('order.first_name') }}</p>

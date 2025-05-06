@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Models\Category;
+use App\Models\Customer;
 class RegisteredUserController extends Controller
 {
     /**
@@ -37,7 +38,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -50,6 +51,14 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+        
+        ///
+        $customers=Customer::where('email',$request->email)->get();
+        for($i=0;$i<sizeof($customers);$i++){
+            $customers[$i]->user_id=auth()->id();
+            $customers[$i]->save();
+        }
+        ///
 
         return redirect(route('index', absolute: false));
     }

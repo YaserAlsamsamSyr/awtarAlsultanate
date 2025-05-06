@@ -169,18 +169,27 @@ class HomeController extends Controller
         }
 
         public function confirmOrderPost(CustomerRequest $req){
+            $help='';
             try{
                 $msg='';
                 $req->validated();
-                $user=User::find(auth()->id());
                 $customer=new Customer();
+                $customer->email=$req->email;
                 $customer->firstName=$req->firstName;
                 $customer->lastName=$req->lastName;
                 $customer->city=$req->city;
                 $customer->address=$req->address;
                 $customer->phone=$req->phone;
                 $customer->notics=$req->notics;
-                $cusId=$user->customers()->save($customer);
+                $cusId='';
+                ///// check
+                if (Auth::check()) {
+                    $user=User::find(auth()->id());
+                    $cusId=$user->customers()->save($customer);
+                } else{
+                    $customer->save();
+                    $cusId=$customer;
+                }
                 // get email and ubove info then get card and send them
                 $category=$req->session()->get('card');
                 $req->session()->get('quan');
@@ -203,7 +212,7 @@ class HomeController extends Controller
                 $msg=
                     "تاريخ الطلب ==>> ".now()."\n".
                     "رقم الطلب ==>> ". $cusId->id." \n".
-                    "الحساب ==>> ".$user->email." \n".
+                    "الحساب ==>> ".$customer->email." \n".
                     "الأسم الأول ==>> ".$customer->firstName." \n".
                     "الكنية ==>> ".$customer->lastName." \n".
                     "المدينة ==>> ".$customer->city." \n".
@@ -216,15 +225,21 @@ class HomeController extends Controller
                     $orderinf.
                     "\n". 
                     "السعر النهائي ==>> ".$finalPrice." OMR";
-                Telegram::sendMessage([
+                    $req->session()->forget('quan');
+                    $req->session()->forget('card');
+                    $help=$msg;
+                    Telegram::sendMessage([
                     'chat_id' => '962019183',
-                    'text' =>$msg,
+                    'text' =>$help,
                 ]);
                 //
-                $req->session()->forget('quan');
-                $req->session()->forget('card');
                 return redirect()->route('index');
             } catch(Exception $err){
+                if($help!='')
+                    Telegram::sendMessage([
+                        'chat_id' => '962019183',
+                        'text' =>$help,
+                ]);
                 return response()->json(['message'=>$err->getMessage()]);
             }
         }
@@ -241,19 +256,11 @@ class HomeController extends Controller
                 if (sizeof($myCustomers)==0)
                      return view('awtar.order',['myCustomers'=>[],'orders'=>[],'categories'=>$category]);
                 $allOrder=[];
-                if($lang=='ar'){
-                    $allOrder=array($myCustomers[0]->products()->select('name')->get());
+                    $allOrder=array($myCustomers[0]->products()->select('enName','name')->get());
                     for($i=1;$i<count($myCustomers);$i++){
-                       $pros=$myCustomers[$i]->products()->select('name')->get();
+                       $pros=$myCustomers[$i]->products()->select('enName','name')->get();
                        array_push($allOrder,$pros);
                     }
-                } else {
-                    $allOrder=array($myCustomers[0]->products()->select('enName')->get());
-                    for($i=1;$i<count($myCustomers);$i++){
-                       $pros=$myCustomers[$i]->products()->select('enName')->get();
-                       array_push($allOrder,$pros);
-                    }
-                }   
                 return view('awtar.order',['myCustomers'=>$myCustomers,'orders'=>$allOrder,'categories'=>$category]);
             } catch(Exception $err){
                 return response()->json(['message'=>$err->getMessage()]);
