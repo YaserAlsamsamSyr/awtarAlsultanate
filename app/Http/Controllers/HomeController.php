@@ -235,6 +235,8 @@ class HomeController extends Controller
                 //
                 return redirect()->route('index');
             } catch(Exception $err){
+                $req->session()->forget('quan');
+                $req->session()->forget('card');
                 if($help!='')
                     Telegram::sendMessage([
                         'chat_id' => '962019183',
