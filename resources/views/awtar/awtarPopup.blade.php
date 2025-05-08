@@ -25,7 +25,7 @@
         <div>
             @if (session('quan'))
                 {{ session('quan') }}
-            @endif 33
+            @endif
         </div>
       </div>
       <div id="btns">
