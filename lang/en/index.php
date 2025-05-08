@@ -20,5 +20,9 @@ return [
     "more"=>" more",
     "amounts"=>"amount",
     "addedToCard"=>"Item added to cart",
-    "add_to_cart"=>"add to cart"
+    "add_to_cart"=>"add to cart",
+    "addedd"=>"Added success",
+    "amountInCard"=>" amount of perfumes in shopping cart ",
+    "viewCard"=>"view shopping cart",
+    "continueShop"=>"continue shopping"
 ];

@@ -359,4 +359,18 @@ class HomeController extends Controller
                 return response()->json(['message'=>$err->getMessage()]);
             }
         }
+
+        public function continueShop(){
+            try{
+                $lang=session('lang');
+                $category='';
+                if($lang=='ar')
+                     $category=Category::select('id','category')->where('isDeleted',false)->first();
+                else
+                     $category=Category::select('id','enName')->where('isDeleted',false)->first();
+                return redirect('/product?id='.$category->id);
+            }catch( Exception $err){
+                return response()->json(['message'=>$err->getMessage()]);
+            }
+        }
 }

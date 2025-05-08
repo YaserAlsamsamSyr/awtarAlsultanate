@@ -15,6 +15,7 @@ Route::middleware('lang')->group(function(){
     Route::get('/policy',[HomeController::class,'policy'])->name('policy');
     Route::get('/company',[HomeController::class,'company'])->name('company');
     Route::resource('product', productController::class);
+    Route::get('/continue/shop',[HomeController::class,'continueShop'])->name('con');
     // http://localhost:8000/downloadAwtarContacts
     Route::get('/AwtarContacts',[HomeController::class,'contactsDownload']);
     Route::get('/getBarcode/{string}/{id}',[adminController::class,'getBarcode']);

@@ -1,30 +1,52 @@
 #whats{  
     position: fixed;
     z-index: 100;
+    display: flex;
     right: 10px;
     bottom: 30px;
 }
 
 #whats img{
-    width:60%;
-    height:60%;
+    width:85%;
+    height:85%;
+}
+#whats #img2{
+    
+    height:75%;
+    margin-top: 10px;
+    width:100%;
 }
 @media (max-width: 740px) {
     #whats {
         right:10px;
      }
+     #whats img{
+         width:75%;
+         height:85%;
+     }
+     
+#whats #img2{
+    margin-top: 5px;
+}
 }
 @media (max-width: 707px) {
     #whats {
-        right:-80px;
+        right:-4rem;
      }
+
 }
-@media (max-width: 580px) {
+@media (max-width: 592px) {
     #whats {
-        right:0px;
+        right:20px;
      }
      #whats img{
         width:60%;
-        height:60%;
-     }
+        height:75%;
+    }
+}
+@media (max-width: 580px) {
+     #whats img{
+        width:65%;
+        height:80%;
+    }
 }

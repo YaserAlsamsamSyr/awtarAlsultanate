@@ -86,7 +86,7 @@
                       <hr>
                       <div id="orderinfopart" class="info-card d-flex justify-content-around">
                               <div class="row-with-flex d-flex flex-column">
-                                <h4>{{ __('shiping.Charging') }}</h4>
+                                {{-- <h4>{{ __('shiping.Charging') }}</h4> --}}
                                 <h4 class="h4-2">{{ __('index.amounts') }}</h4>
                                 <h4 class="h4-2">{{ __('confirmOrder.total') }}</h4>
                               </div>

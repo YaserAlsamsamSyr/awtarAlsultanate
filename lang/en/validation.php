@@ -20,7 +20,7 @@ return [
     'after_or_equal' => 'The :attribute field must be a date after or equal to :date.',
     'alpha' => 'The :attribute field must only contain letters.',
     'alpha_dash' => 'The :attribute field must only contain letters, numbers, dashes, and underscores.',
-    'alpha_num' => ':attribut هذا الحقل يجب أن يحوي حروف و أرقام فقط',
+    'alpha_num' => 'The :attribute field must only contain letters and numbers.',
     'array' => 'The :attribute field must be an array.',
     'ascii' => 'The :attribute field must only contain single-byte alphanumeric characters and symbols.',
     'before' => 'The :attribute field must be a date before :date.',
@@ -33,9 +33,9 @@ return [
     ],
     'boolean' => 'The :attribute field must be true or false.',
     'can' => 'The :attribute field contains an unauthorized value.',
-    'confirmed' => ':attribute لم تتم مطابقتها بشكل صحيح',
+    'confirmed' => 'The :attribute field confirmation does not match.',
     'contains' => 'The :attribute field is missing a required value.',
-    'current_password' => 'كلمة سر غير صحيحة',
+    'current_password' => 'The password is incorrect.',
     'date' => 'The :attribute field must be a valid date.',
     'date_equals' => 'The :attribute field must be a date equal to :date.',
     'date_format' => 'The :attribute field must match the format :format.',
@@ -49,7 +49,7 @@ return [
     'distinct' => 'The :attribute field has a duplicate value.',
     'doesnt_end_with' => 'The :attribute field must not end with one of the following: :values.',
     'doesnt_start_with' => 'The :attribute field must not start with one of the following: :values.',
-    'email' => ':attribute يجب أن يكون حساب',
+    'email' => 'The :attribute field must be a valid email address.',
     'ends_with' => 'The :attribute field must end with one of the following: :values.',
     'enum' => 'The selected :attribute is invalid.',
     'exists' => 'The selected :attribute is invalid.',
@@ -118,7 +118,7 @@ return [
     'not_regex' => 'The :attribute field format is invalid.',
     'numeric' => 'The :attribute field must be a number.',
     'password' => [
-        'letters' => ':attribute يجب أن يحوي الحقل على الأقل حرف واحد',
+        'letters' => 'The :attribute field must contain at least one letter.',
         'mixed' => 'The :attribute field must contain at least one uppercase and one lowercase letter.',
         'numbers' => 'The :attribute field must contain at least one number.',
         'symbols' => 'The :attribute field must contain at least one symbol.',
@@ -133,8 +133,8 @@ return [
     'prohibited_if' => 'The :attribute field is prohibited when :other is :value.',
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
     'prohibits' => 'The :attribute field prohibits :other from being present.',
-    'regex' => ':attribute غير صحيح',
-    'required' => ':attribute هذا الحقل مطلوب',
+    'regex' => 'The :attribute field format is invalid.',
+    'required' => 'The :attribute field is required.',
     'required_array_keys' => 'The :attribute field must contain entries for: :values.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_if_accepted' => 'The :attribute field is required when :other is accepted.',
@@ -152,7 +152,7 @@ return [
         'string' => 'The :attribute field must be :size characters.',
     ],
     'starts_with' => 'The :attribute field must start with one of the following: :values.',
-    'string' => ':attribute يجب ان يكون محارف',
+    'string' => 'The :attribute field must be a string.',
     'timezone' => 'The :attribute field must be a valid timezone.',
     'unique' => 'The :attribute has already been taken.',
     'uploaded' => 'The :attribute failed to upload.',
@@ -174,72 +174,71 @@ return [
 
     'custom' => [
         'email' => [
-            'required' => 'يجب أدخال الايميل',
-            'string'=>'الايميل يجب ان يكون مؤلق من محارف فقط',
-            'email'=>"الايميل يجب أن يكون من شكل محارف @ محارف",
-            'max:255'=>"الايميل يجب ان يكون مؤلف من 255 حرف على لاكثر"
+            'required' => 'You must enter the email',
+            'string'=>'The email must be made of characters only',
+            'email'=>"The email must be EX:example@example.com",
+            'max:255'=>"Email must be maximum 255 characters"
         ],
         'category'=>[
-            'required'=>"يجب أدخال الفئة",
-            'string'=>"يجب ان الفئة مؤلفة من محارف فقط",
-            'max:255'=>"يجب ان تكون الفئة مؤلفة على لأكثر من 255 حرف"
+            'required'=>"category required",
+            'string'=>"category must be string",
+            'max:255'=>"category must be maximum 255 characters"
         ],
         'firstName'=>[
-            'required'=>"يجب أدخال الأسم",
-            'string'=>"يجب ان يكون لأسم مؤلف من محارف فقط",
-            'max:255'=>"يجب ان يكون لأسم مؤلف على لأكثر من 255 حرف"
+            'required'=>"first name required",
+            'string'=>"first name must be string",
+            'max:255'=>"first name must be maximum 255 characters"
         ],
         'lastName'=>[
-            'required'=>"يجب أدخال الكنية",
-            'string'=>"يجب ان تكون الكنية مؤلفة من محارف فقط",
-            'max:255'=>"يجب ان تكون الكنية مؤلفة على لأكثر من 255 حرف"
+            'required'=>"last name required",
+            'string'=>"last name must be string",
+            'max:255'=>"last name must be maximum 255 characters"
         ],
         'address'=>[
-            'required'=>"يجب أدخال العنوان",
-            'string'=>"يجب ان يكون العنوان مؤلف من محارف فقط",
-            'max:500'=>"يجب ان يكون العنوان مؤلف على لأكثر من 500 حرف"
+            'required'=>"address required",
+            'string'=>"address must be string",
+            'max:500'=>"address must be maximum 500 characters"
         ],
         'imgs'=>[
-            'image'=>"يجب أدخال صورة",
-            'mimes'=>"يجب ان تكون الصورة من أحد الصيغ التالية (jpeg,jpg,png,gif)"
+            'image'=>"image required",
+            'mimes'=>"image extintion must be of the following => [jpeg,jpg,png,gif]"
         ],
         'city'=>[
-            'required'=>"يجب أدخال المدينة",
-            'string'=>"يجب ان تكون المدينة مؤلفة من محارف فقط",
-            'max:255'=>"يجب ان تكون المدينة مؤلفة على لأكثر من 255 حرف"
+            'required'=>"city required",
+            'string'=>"city must be string",
+            'max:255'=>"city must be maximum 255 characters"
         ],
         'notics'=>[
-            'string'=>"يجب ان تكون الملاحظة مؤلفة من محارف فقط",
-            'max:1000'=>"يجب ان تكون الملاحظة مؤلفة على لأكثر من 1000 حرف"
+            'string'=>"notes must be string",
+            'max:1000'=>"notes must be maximum 1000 characters"
         ],
         'phone'=>[
-            'required'=>'يجب أدخال رقم الهاتف',
-            'regex'=>'رقم الهاتف غير صالح'
+            'required'=>"phone required",
+            'regex'=>'phone number invalid'
         ],
         'password'=>[
-            'required'=>'يحب أدخال كلمة السر',
-            'max'=>'كلمة السر يجب أن تكون على الأكثر مؤلفة من 255 محرف',
-            'unique'=>'كلمة السر مستخدمة من قبل شخص أخر'
+            'required'=>"password required",
+            'max'=>"password must be maximum 255 characters",
         ],
         'desc'=>[
-            'required'=>"يجب أدخال الشرح",
-            'string'=>"يجب ان يكون الشرح مؤلف من محارف فقط",
-            'max:500'=>"يجب ان يكون الشرح مؤلف على لأكثر من 500 حرف"
+            'required'=>"description required",
+            'string'=>"description must be string",
+            'max:500'=>"description must be maximum 500 characters"
         ],
         'name'=>[
-            'required'=>"يجب أدخال الاسم",
-            'string'=>"يجب ان يكون الاسم مؤلف من محارف فقط",
-            'max:255'=>"يجب ان يكون الاسم مؤلف على لأكثر من 255 حرف"
+                'required'=>"name required",
+                'string'=>"name must be string",
+                'max:255'=>"name must be maximum 255 characters"
         ],
         'newPrice'=>[
-            'required'=>"يجب أدخال السعر",
-            'numeric'=>"يجب ان يكون السعر مؤلف من محارف فقط",
-            'max:200'=>"يجب ان يكون السعر على لأكثر 200 "
+            'required'=>"offer price required",
+            'numeric'=>"offer price must be numeric only",
+            'max:200'=>"offer price must be maximum 200 digits"
         ],
         'oldPrice'=>[
-            'required'=>"يجب أدخال السعر",
-            'numeric'=>"يجب ان يكون السعر مؤلف من محارف فقط",
-            'max:200'=>"يجب ان يكون السعر على لأكثر 200 "
+            'required'=>"price required",
+            'numeric'=>"price must be numeric only",
+            'max:200'=>"price must be maximum 200 digits"
         ],
     ],
 
@@ -255,21 +254,21 @@ return [
     */
 
     'attributes' => [
-        'email'=>'الايميل',
-        'category'=>'الفئة',
-        'firstName'=>'الأسم',
-        'lastName'=>'الكنية',
-        'address'=>'العنوان',
-        'city'=>'المدينة',
-        'notics'=>'ملاحظات',
-        'password'=>'كلمة السر',
-        'phone'=>'رقم الهاتف',
-        'imgs'=>'الصور',
-        'name'=>'لاسم',
-        'desc'=>'وصف المنتج',
-        'newPrice'=>'سعر العرض',
-        'oldPrice'=>'سعر المنتج',
-        'offerNotic'=>'ملاحظات العرض'
+        'email'=>'email',
+        'category'=>'category',
+        'firstName'=>'first name',
+        'lastName'=>'last name',
+        'address'=>'address',
+        'city'=>'city',
+        'notics'=>'notes',
+        'password'=>'password',
+        'phone'=>'phone',
+        'imgs'=>'images',
+        'name'=>'name',
+        'desc'=>'description',
+        'newPrice'=>'offer price',
+        'oldPrice'=>'price',
+        'offerNotic'=>'offer note'
     ],
 
 ];

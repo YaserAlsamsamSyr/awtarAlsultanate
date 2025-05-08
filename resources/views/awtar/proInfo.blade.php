@@ -41,7 +41,20 @@
     @endif
 </head>
 <body>
-    
+  <?php
+     $isFound=false;
+  ?>
+  @if (session('card'))
+      @foreach (Session::get('card') as $i)
+          @if($i['id'] == $pro->id)
+             <?php $isFound=true; ?>
+             @break
+          @endif
+      @endforeach
+  @endif
+  @if($isFound==true)
+      @include('awtar.awtarPopup')
+  @endif
   @include('awtar.footerAndNav.nav') 
   @include('awtar.whats')
      <div class="container product-info">
@@ -100,17 +113,6 @@
                                            @endif
                                       @endif
                                       <input type="hidden" name="proImg" value="{{ $pro->imgs[0]->img }}"/>
-                                      <?php
-                                         $isFound=false;
-                                      ?>
-                                      @if (session('card'))
-                                          @foreach (Session::get('card') as $i)
-                                              @if($i['id'] == $pro->id)
-                                                 <?php $isFound=true; ?>
-                                                 @break
-                                              @endif
-                                          @endforeach
-                                      @endif
                                       @if($isFound==true)
                                           <p>{{ __('index.addedToCard') }}</p>
                                       @else
@@ -124,6 +126,7 @@
 
      @include('awtar.footerAndNav.footer')
      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+     
      <script>
       function chcekSize(inpt) {
           let number=inpt.value;
@@ -187,8 +190,8 @@ function showSlides(n) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
   slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;
+  // dots[slideIndex-1].className += " active";
+  // captionText.innerHTML = dots[slideIndex-1].alt;
 }
      </script>
 </body>
