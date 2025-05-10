@@ -26,6 +26,8 @@ Route::middleware('lang')->group(function(){
     Route::post('/updateCard',[HomeController::class,'updateCard']);///////////////ready
     Route::get('/confirmOrder',[HomeController::class,'confirmOrder'])->name('confirmOrder');/////////////ready
     Route::post('/confirmOrder',[HomeController::class,'confirmOrderPost'])->name('confirmOrderPost');///////////ready
+    Route::get('/pay/fail',[HomeController::class,'fail'])->name('fail');///////////ready
+    Route::get('/pay/success',[HomeController::class,'success'])->name('success');///////////ready
     
     Route::middleware('auth')->group(function () {
         //admin

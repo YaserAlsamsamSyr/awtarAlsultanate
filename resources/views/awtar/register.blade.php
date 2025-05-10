@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="html yes-js js_active js" dir="rtl" lang="ar">
+<html class="html yes-js js_active js" dir="rtl" lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

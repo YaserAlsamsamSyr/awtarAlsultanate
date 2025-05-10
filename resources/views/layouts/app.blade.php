@@ -23,7 +23,7 @@
             }
         </style>
     </head>
-    <body class="font-sans antialiased bg-white dark:bg-black" dir="rtl">
+    <body class="font-sans antialiased bg-white dark:bg-black" dir="{{ session('lang')=='ar'? "rtl" : "ltr" }}">
         <div class="min-h-screen bg-white dark:bg-black">
             @include('layouts.navigation')
 

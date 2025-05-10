@@ -13,7 +13,12 @@ use App\Http\Requests\CustomerRequest;
 use Telegram\Bot\Laravel\Facades\Telegram;
 use Exception;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\App;
+use Faker\Test\Provider\Collection;
+use Illuminate\Queue\Jobs\SyncJob;
+use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client;
+
+use function Pest\Laravel\json;
 
 class HomeController extends Controller
 {
@@ -167,85 +172,6 @@ class HomeController extends Controller
                 return response()->json(['message'=>$err->getMessage()]);
             }
         }
-
-        public function confirmOrderPost(CustomerRequest $req){
-            $help='';
-            try{
-                $msg='';
-                $req->validated();
-                $customer=new Customer();
-                $customer->email=$req->email;
-                $customer->firstName=$req->firstName;
-                $customer->lastName=$req->lastName;
-                $customer->city=$req->city;
-                $customer->address=$req->address;
-                $customer->phone=$req->phone;
-                $customer->notics=$req->notics;
-                $cusId='';
-                ///// check
-                if (Auth::check()) {
-                    $user=User::find(auth()->id());
-                    $cusId=$user->customers()->save($customer);
-                } else{
-                    $customer->save();
-                    $cusId=$customer;
-                }
-                // get email and ubove info then get card and send them
-                $category=$req->session()->get('card');
-                $req->session()->get('quan');
-                $a=array();
-                $finalPrice=0;
-                $orderinf='';
-                for($i=0;$i<count($category);$i++){
-                    $a=array($category[$i]['id']=>[
-                        'totalPrice'=>$category[$i]['price']*$category[$i]['quantity'],
-                        'quantity'=>$category[$i]['quantity'],
-                        'month'=>Carbon::now()->month,
-                        'year'=>Carbon::now()->year,
-                        'day'=>Carbon::now()->day
-                    ]);
-                    $orderinf.="             ".$category[$i]['quantity']."X    ".$category[$i]['name']." \n";
-                    $finalPrice+=$category[$i]['price']*$category[$i]['quantity'];
-                    $cusId->products()->attach($a);
-                }
-                // send message to admin
-                $msg=
-                    "تاريخ الطلب ==>> ".now()."\n".
-                    "رقم الطلب ==>> ". $cusId->id." \n".
-                    "الحساب ==>> ".$customer->email." \n".
-                    "الأسم الأول ==>> ".$customer->firstName." \n".
-                    "الكنية ==>> ".$customer->lastName." \n".
-                    "المدينة ==>> ".$customer->city." \n".
-                    "العنوان ==>> ".$customer->address." \n".
-                    "رقم الهاتف ==>> ".$customer->phone." \n".
-                    "ملاحظات ==>> \n".
-                    $customer->notics.
-                    " \n".
-                    "الطلب : \n".
-                    $orderinf.
-                    "\n". 
-                    "السعر النهائي ==>> ".$finalPrice." OMR";
-                    $req->session()->forget('quan');
-                    $req->session()->forget('card');
-                    $help=$msg;
-                    Telegram::sendMessage([
-                    'chat_id' => '6293673780',
-                    'text' =>$help,
-                ]);
-                //
-                return redirect()->route('index');
-            } catch(Exception $err){
-                $req->session()->forget('quan');
-                $req->session()->forget('card');
-                if($help!='')
-                    Telegram::sendMessage([
-                        //962019183
-                        'chat_id' => '6293673780',
-                        'text' =>$help,
-                ]);
-                return response()->json(['message'=>$err->getMessage()]);
-            }
-        }
         
         public function myOrders(){
             try{
@@ -370,6 +296,186 @@ class HomeController extends Controller
                      $category=Category::select('id','enName')->where('isDeleted',false)->first();
                 return redirect('/product?id='.$category->id);
             }catch( Exception $err){
+                return response()->json(['message'=>$err->getMessage()]);
+            }
+        }
+
+        public function confirmOrderPost(CustomerRequest $req){
+            try{
+                $req->validated();
+                $customer=new Customer();
+                $customer->email=$req->email;
+                $customer->firstName=$req->firstName;
+                $customer->lastName=$req->lastName;
+                $customer->city=$req->city;
+                $customer->address=$req->address;
+                $customer->phone=$req->phone;
+                $customer->notics=$req->notics;
+                $cusId='';
+                // ///// check
+                if (Auth::check()) {
+                    $user=User::find(auth()->id());
+                    $cusId=$user->customers()->save($customer);
+                } else{
+                    $customer->save();
+                    $cusId=$customer;
+                }
+                // // get email and ubove info then get card and send them
+                $category=$req->session()->get('card');
+                $req->session()->get('quan');
+                $a=array();
+                $data=array();
+                $finalPrice=0;
+                $orderinf='';
+                for($i=0;$i<count($category);$i++){
+                    $a=array($category[$i]['id']=>[
+                        'totalPrice'=>$category[$i]['price']*$category[$i]['quantity'],
+                        'quantity'=>$category[$i]['quantity'],
+                        'month'=>Carbon::now()->month,
+                        'year'=>Carbon::now()->year,
+                        'day'=>Carbon::now()->day
+                    ]);
+                    array_push($data,[
+                        'name'=>$category[$i]['name'],
+                        'quantity'=>$category[$i]['quantity'],
+                        'unit_amount'=>$category[$i]['price']*1000
+                    ]);
+                    $orderinf.="             ".$category[$i]['quantity']."X    ".$category[$i]['name']." \n";
+                    $finalPrice+=$category[$i]['price']*$category[$i]['quantity'];
+                    $cusId->products()->attach($a);
+                }
+                // thawani
+                $headers=[
+                    'thawani-api-key'=>'rRQ26GcsZzoEhbrP2HZvLYDbn9C9et',
+                ];
+                $body=[
+                    "client_reference_id"=>$cusId->id,
+                    "mode"=>"payment",
+                    "products"=>$data,
+                    "success_url"=> env('APP_URL')."pay/success",
+                    "cancel_url"=> env('APP_URL')."pay/fail",
+                    "metadata"=> [
+                      "Customer name"=> "somename",
+                      "order id"=>0
+                    ]
+                ];
+                // return $body;
+                $response='';
+                try{
+                    $response =Http::async(false)->withHeaders($headers)->post('https://uatcheckout.thawani.om/api/v1/checkout/session',$body);
+                }catch (Exception $err){
+                    $response =Http::async(false)->withHeaders($headers)->post('https://uatcheckout.thawani.om/api/v1/checkout/session',$body);
+                }
+                $res=$response->json();
+                $sessionId= $res['data']['session_id'];
+                $invId=$res['data']['invoice'];
+                $invId='';
+                $msg=
+                    "تاريخ الطلب ==>> ".now()."\n".
+                    "رقم الطلب ==>> ". $cusId->id." \n".
+                    "اشعار الدفع ==>> ".$invId.
+                    "الحساب ==>> ".$customer->email." \n".
+                    "الأسم الأول ==>> ".$customer->firstName." \n".
+                    "الكنية ==>> ".$customer->lastName." \n".
+                    "المدينة ==>> ".$customer->city." \n".
+                    "العنوان ==>> ".$customer->address." \n".
+                    "رقم الهاتف ==>> ".$customer->phone." \n".
+                    "ملاحظات ==>> \n".
+                    $customer->notics.
+                    " \n".
+                    "الطلب : \n".
+                    $orderinf.
+                    "\n". 
+                    "السعر النهائي ==>> ".$finalPrice." OMR";
+                $req->session()->put('invoicId',$invId);
+                $req->session()->put('msg',$msg);
+                $req->session()->put('orderId',$cusId->id);
+                return redirect('https://uatcheckout.thawani.om/pay/'.$sessionId.'?key=HGvTMLDssJghr9tlN9gr4DVYt0qyBy');
+            } catch(Exception $err){
+                return response()->json(['message'=>$err->getMessage()]);
+            }
+        }
+
+        public function fail(Request $req){
+            try{
+                // delete order
+                $orderId=$req->session()->get('orderId');
+                try{
+                    $order=Customer::find($orderId);
+                    if($order)
+                        $order->delete();
+                } catch(Exception $err){
+                    $order=Customer::find($orderId);
+                    if($order)
+                        $order->delete();
+                }
+                $req->session()->forget('invoicId');
+                $req->session()->forget('msg');
+                $req->session()->forget('orderId');
+                return redirect()->route('confirmOrder');
+            }catch( Exception $err){
+                return response()->json(['message'=>$err->getMessage()]);
+            }
+        }
+
+        public function success(Request $req){
+            $help='';
+            $orderId='';
+            $invo='';
+            $check=false;
+            try{
+                // update order [add invoice id to it]
+                $invo=$req->session()->get('invoicId');
+                $orderId=$req->session()->get('orderId');
+                $order=Customer::find($orderId);
+                if($order){
+                    $order->invoId=$invo;
+                    $order->save();
+                    $check=true;
+                }
+                $help=$req->session()->get('msg');
+                Telegram::sendMessage([
+                    'chat_id' => '6293673780',
+                    'text' =>$help,
+                ]);
+                $req->session()->forget('invoicId');
+                $req->session()->forget('msg');
+                $req->session()->forget('orderId');
+                $req->session()->forget('quan');
+                $req->session()->forget('card');
+                return view('awtar.success');
+            }catch( Exception $err){
+                if(!$check){
+                    $order=Customer::find($orderId);
+                    if($order){
+                        $order->invoId=$invo;
+                        $order->save();
+                        $check=true;
+                    }
+                    $help=$req->session()->get('msg');
+                    try{
+                        Telegram::sendMessage([
+                            'chat_id' => '6293673780',
+                            'text' =>$help,
+                        ]);
+                    } catch(Exception $err){
+                        Telegram::sendMessage([
+                            'chat_id' => '6293673780',
+                            'text' =>$help,
+                        ]);
+                    }
+                }
+                $req->session()->forget('invoicId');
+                $req->session()->forget('msg');
+                $req->session()->forget('orderId');
+                $req->session()->forget('quan');
+                $req->session()->forget('card');
+                if($help!='')
+                    Telegram::sendMessage([
+                        //962019183
+                        'chat_id' => '6293673780',
+                        'text' =>$help,
+                ]);
                 return response()->json(['message'=>$err->getMessage()]);
             }
         }

@@ -19,7 +19,8 @@ class Customer extends Model
         'address',
         'city',
         'notics',
-        'user_id'
+        'user_id',
+        'invoId'
     ];
     public $timestamps = true;
     protected $hidden=[

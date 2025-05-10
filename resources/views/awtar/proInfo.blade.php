@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="html yes-js js_active js" dir="rtl" lang="ar">
+<html class="html yes-js js_active js" dir="rtl" lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,8 +55,8 @@
   @if($isFound==true)
       @include('awtar.awtarPopup')
   @endif
-  @include('awtar.footerAndNav.nav') 
   @include('awtar.whats')
+  @include('awtar.footerAndNav.nav') 
      <div class="container product-info">
              <div id="show" class="row first-row">
                       <div class="col-sm-12 col-md-12 col-lg-6 first-pa">

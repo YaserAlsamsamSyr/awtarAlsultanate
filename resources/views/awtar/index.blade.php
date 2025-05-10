@@ -1,8 +1,16 @@
 <!DOCTYPE html>
-<html class="html yes-js js_active js" dir="rtl" lang="ar">
+<html class="html yes-js js_active js" dir="rtl" lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{--  --}}
+        <!-- Google / Search Engine Tags -->
+        <meta itemprop="name" content="Awtar Alsultanate For Perfume" />
+        <meta itemprop="description" content="{{ __('index.overview') }}" />
+        <meta itemprop="image" content="{{ asset('images/aawtar.jpg') }}" />
+        {{-- SEO --}}
+        <meta name="keywords" content="اوتار , اوتار السلطنة , اوتار السلطنة للعطور , awtar , awtar alsultanate , awtar alsultanate for perfume">
+    {{--  --}}
     <title>{{ __('index.app_name') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
