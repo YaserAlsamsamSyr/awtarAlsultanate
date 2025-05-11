@@ -302,24 +302,24 @@ class HomeController extends Controller
 
         public function confirmOrderPost(CustomerRequest $req){
             try{
-                $req->validated();
-                $customer=new Customer();
-                $customer->email=$req->email;
-                $customer->firstName=$req->firstName;
-                $customer->lastName=$req->lastName;
-                $customer->city=$req->city;
-                $customer->address=$req->address;
-                $customer->phone=$req->phone;
-                $customer->notics=$req->notics;
-                $cusId='';
-                // ///// check
-                if (Auth::check()) {
-                    $user=User::find(auth()->id());
-                    $cusId=$user->customers()->save($customer);
-                } else{
-                    $customer->save();
-                    $cusId=$customer;
-                }
+                // $req->validated();
+                // $customer=new Customer();
+                // $customer->email=$req->email;
+                // $customer->firstName=$req->firstName;
+                // $customer->lastName=$req->lastName;
+                // $customer->city=$req->city;
+                // $customer->address=$req->address;
+                // $customer->phone=$req->phone;
+                // $customer->notics=$req->notics;
+                // $cusId='';
+                // // ///// check
+                // if (Auth::check()) {
+                //     $user=User::find(auth()->id());
+                //     $cusId=$user->customers()->save($customer);
+                // } else{
+                //     $customer->save();
+                //     $cusId=$customer;
+                // }
                 // // get email and ubove info then get card and send them
                 $category=$req->session()->get('card');
                 $req->session()->get('quan');
@@ -340,16 +340,16 @@ class HomeController extends Controller
                         'quantity'=>$category[$i]['quantity'],
                         'unit_amount'=>$category[$i]['price']*1000
                     ]);
-                    $orderinf.="             ".$category[$i]['quantity']."X    ".$category[$i]['name']." \n";
+                    // $orderinf.="             ".$category[$i]['quantity']."X    ".$category[$i]['name']." \n";
                     $finalPrice+=$category[$i]['price']*$category[$i]['quantity'];
-                    $cusId->products()->attach($a);
+                    // $cusId->products()->attach($a);
                 }
                 // thawani
                 $headers=[
                     'thawani-api-key'=>'rRQ26GcsZzoEhbrP2HZvLYDbn9C9et',
                 ];
                 $body=[
-                    "client_reference_id"=>$cusId->id,
+                    "client_reference_id"=>"123412",
                     "mode"=>"payment",
                     "products"=>$data,
                     "success_url"=> env('APP_URL')."pay/success",
@@ -366,30 +366,36 @@ class HomeController extends Controller
                 }catch (Exception $err){
                     $response =Http::async(false)->withHeaders($headers)->post('https://uatcheckout.thawani.om/api/v1/checkout/session',$body);
                 }
+                // if($response->failed()){
+                //         $cus=Customer::find($cusId->id);
+                //         $cus->delete();
+                //         return redirect()->route('confirmOrder');
+                // }
+                   
                 $res=$response->json();
                 $sessionId= $res['data']['session_id'];
                 $invId=$res['data']['invoice'];
                 $invId='';
-                $msg=
-                    "تاريخ الطلب ==>> ".now()."\n".
-                    "رقم الطلب ==>> ". $cusId->id." \n".
-                    "اشعار الدفع ==>> ".$invId.
-                    "الحساب ==>> ".$customer->email." \n".
-                    "الأسم الأول ==>> ".$customer->firstName." \n".
-                    "الكنية ==>> ".$customer->lastName." \n".
-                    "المدينة ==>> ".$customer->city." \n".
-                    "العنوان ==>> ".$customer->address." \n".
-                    "رقم الهاتف ==>> ".$customer->phone." \n".
-                    "ملاحظات ==>> \n".
-                    $customer->notics.
-                    " \n".
-                    "الطلب : \n".
-                    $orderinf.
-                    "\n". 
-                    "السعر النهائي ==>> ".$finalPrice." OMR";
-                $req->session()->put('invoicId',$invId);
-                $req->session()->put('msg',$msg);
-                $req->session()->put('orderId',$cusId->id);
+                // $msg=
+                //     "تاريخ الطلب ==>> ".now()."\n".
+                //     "رقم الطلب ==>> ". $cusId->id." \n".
+                //     "اشعار الدفع ==>> ".$invId.
+                //     "الحساب ==>> ".$customer->email." \n".
+                //     "الأسم الأول ==>> ".$customer->firstName." \n".
+                //     "الكنية ==>> ".$customer->lastName." \n".
+                //     "المدينة ==>> ".$customer->city." \n".
+                //     "العنوان ==>> ".$customer->address." \n".
+                //     "رقم الهاتف ==>> ".$customer->phone." \n".
+                //     "ملاحظات ==>> \n".
+                //     $customer->notics.
+                //     " \n".
+                //     "الطلب : \n".
+                //     $orderinf.
+                //     "\n". 
+                //     "السعر النهائي ==>> ".$finalPrice." OMR";
+                // $req->session()->put('invoicId',$invId);
+                // $req->session()->put('msg',$msg);
+                // $req->session()->put('orderId',$cusId->id);
                 return redirect('https://uatcheckout.thawani.om/pay/'.$sessionId.'?key=HGvTMLDssJghr9tlN9gr4DVYt0qyBy');
             } catch(Exception $err){
                 return response()->json(['message'=>$err->getMessage()]);
@@ -424,6 +430,7 @@ class HomeController extends Controller
             $invo='';
             $check=false;
             try{
+                return $req;
                 // update order [add invoice id to it]
                 $invo=$req->session()->get('invoicId');
                 $orderId=$req->session()->get('orderId');
