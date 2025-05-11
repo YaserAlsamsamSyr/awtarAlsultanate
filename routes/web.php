@@ -32,6 +32,7 @@ Route::middleware('lang')->group(function(){
     Route::middleware('auth')->group(function () {
         //admin
         
+        Route::get('/orders/notComplete',[adminController::class,'ordersNotComplete']);
         Route::get('/orders/noAccounts',[adminController::class,'ordersNoAccounts']);
         Route::get('/adminHome',[adminController::class,'aHome'])->name('adminHome');
         Route::get('/viewUsers',[adminController::class,'viewUsers'])->name('viewUsers');
@@ -49,10 +50,12 @@ Route::middleware('lang')->group(function(){
     require __DIR__.'/auth.php';
 });
 Route::get('/langToggle',[HomeController::class,'langToggle'])->name('toggle.lang');
-
-use Telegram\Bot\Laravel\Facades\Telegram;
-Route::get('/get-updates', function () {
-    $updates = Telegram::getUpdates();
-    return $updates;
-    });
+Route::fallback(function(){
+    return view('awtar.notFound');
+});
+// use Telegram\Bot\Laravel\Facades\Telegram;
+// Route::get('/get-updates', function () {
+//     $updates = Telegram::getUpdates();
+//     return $updates;
+//     });
        

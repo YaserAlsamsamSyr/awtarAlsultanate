@@ -71,6 +71,8 @@
                                            <p>رقم الهاتف</p>
                                            <p>العنوان</p>
                                            <p>المدينة</p>
+                                           <p>اشعار الدفع</p>
+                                           <p>حالة الدفع</p>
                                            <p>ملاحظات</p>
                                       </div>
                   
@@ -98,6 +100,8 @@
                                             <p>{{ $myCustomers[$loop->index]->phone }}</p>
                                             <p>{{ $myCustomers[$loop->index]->address }}</p>
                                             <p>{{ $myCustomers[$loop->index]->city }}</p>
+                                            <p>{{ $myCustomers[$loop->index]->invoId }}</p>
+                                            <p>{{ $myCustomers[$loop->index]->check }}</p>
                                             <p>{{ $myCustomers[$loop->index]->notics ?? "لا يوجد ملاحظات" }}</p>
                  
                                       </div>

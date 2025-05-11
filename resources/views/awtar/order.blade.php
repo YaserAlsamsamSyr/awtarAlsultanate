@@ -85,6 +85,8 @@
                                            <p>{{ __('order.phone') }}</p>
                                            <p>{{ __('order.address') }}</p>
                                            <p>{{ __('order.city') }}</p>
+                                           <p>{{ __('order.invId') }}</p>
+                                           <p>{{ __('order.status') }}</p>
                                            <p>{{ __('order.notes') }}</p>
                 
                                       </div>
@@ -111,6 +113,8 @@
                                            <p>{{ $myCustomers[0]->phone }}</p>
                                            <p>{{ $myCustomers[0]->address }}</p>
                                            <p>{{ $myCustomers[0]->city }}</p>
+                                           <p>{{ $myCustomers[0]->invoId }}</p>
+                                           <p>{{ $myCustomers[0]->check==true ? __('order.yes') :  __('order.no')}}</p>
                                            <p>{{ $myCustomers[0]->notics ?? __('order.nonotes') }}</p>
                 
                                       </div>

@@ -371,9 +371,9 @@ class HomeController extends Controller
                 ];
                 $response='';
                 try{
-                    $response =Http::async(false)->withHeaders($headers)->post('https://uatcheckout.thawani.om/api/v1/checkout/session',$body);
+                    $response =Http::async(false)->withHeaders($headers)->post('https://checkout.thawani.om/api/v1/checkout/session',$body);
                 }catch (Exception $err){
-                    $response =Http::async(false)->withHeaders($headers)->post('https://uatcheckout.thawani.om/api/v1/checkout/session',$body);
+                    $response =Http::async(false)->withHeaders($headers)->post('https://checkout.thawani.om/api/v1/checkout/session',$body);
                 }
                 if(!$response->successful()){
                         $cus=Customer::find($cusId->id);
@@ -403,7 +403,7 @@ class HomeController extends Controller
                 $req->session()->put('invoicId',$invId);
                 $req->session()->put('msg',$msg);
                 $req->session()->put('orderId',$cusId->id);
-                return redirect('https://uatcheckout.thawani.om/pay/'.$sessionId.'?key=NGfaiGQdP8WzkabgcCQfPh7c1VWx0Y');
+                return redirect('https://checkout.thawani.om/pay/'.$sessionId.'?key=NGfaiGQdP8WzkabgcCQfPh7c1VWx0Y');
             } catch(Exception $err){
                 return response()->json(['message'=>$err->getMessage()]);
             }
@@ -425,6 +425,14 @@ class HomeController extends Controller
                 $req->session()->forget('invoicId');
                 $req->session()->forget('msg');
                 $req->session()->forget('orderId');
+                
+                $lang=session('lang');
+                $errMsg='';
+                if($lang=='ar')
+                    $errMsg='لم تتم عملية الدفع بنجاح أعد المحاولة';
+                else
+                    $errMsg='The payment process was not completed successfully. Please try again';
+                $req->session()->put('error',$errMsg);
                 return redirect()->route('confirmOrder');
             }catch( Exception $err){
                 return response()->json(['message'=>$err->getMessage()]);
@@ -443,6 +451,7 @@ class HomeController extends Controller
                 $order=Customer::find($orderId);
                 if($order){
                     $order->invoId=$invo;
+                    $order->check=true;
                     $order->save();
                     $check=true;
                 }
@@ -462,6 +471,7 @@ class HomeController extends Controller
                     $order=Customer::find($orderId);
                     if($order){
                         $order->invoId=$invo;
+                        $order->check=true;
                         $order->save();
                         $check=true;
                     }

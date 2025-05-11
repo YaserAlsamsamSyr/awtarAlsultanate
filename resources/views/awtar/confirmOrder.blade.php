@@ -85,7 +85,11 @@
   @include('awtar.footerAndNav.nav') 
      <div class="msg">
          {{-- <h1 class="h1-delivery"><a href="#">{{ __('confirmOrder.delivery_duration') }}</a></h1> --}}
-
+            @if (Session::has('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ Session::get('error') }}
+                </div>
+            @endif
             @foreach ($errors->all() as $error)
                <div class="alert alert-danger" role="alert">
                 {{ $error }}
@@ -94,6 +98,7 @@
             @endforeach
      </div>
      <section class="confirmOrder">
+       @if(Session::has('card'))
         <form action="{{ route('confirmOrderPost') }}" method="post">
               @csrf
               <div class="container">
@@ -175,6 +180,7 @@
                     </div>
                 </div>
         </form>
+        @endif
      </section>
 
  @include('awtar.footerAndNav.footer')
