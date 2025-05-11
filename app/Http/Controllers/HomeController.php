@@ -345,7 +345,7 @@ class HomeController extends Controller
                 }
                 // thawani
                 $headers=[
-                    'thawani-api-key'=>'rRQ26GcsZzoEhbrP2HZvLYDbn9C9et',
+                    'thawani-api-key'=>'JJM93P5SRJSVMJz03QaoHSShfzn4aR',
                 ];
                 $body=[
                     "client_reference_id"=>$cusId->id,
@@ -354,8 +354,19 @@ class HomeController extends Controller
                     "success_url"=> env('APP_URL')."pay/success",
                     "cancel_url"=> env('APP_URL')."pay/fail",
                     "metadata"=> [
-                      "Customer name"=> "somename",
-                      "order id"=>$cusId->id
+                      "customer_id"=> $cusId->id,
+                      "order id"=>$cusId->id,
+                      "firstName"=>$customer->firstName,
+                      "lastName"=>$customer->lastName,
+                      "email"=>$customer->email,
+                      "city"=>$customer->city,
+                      "address"=>$customer->address,
+                      "phone"=>$customer->phone,
+                      "notes"=>$customer->notics,
+                      "finalPrice"=>$finalPrice,
+                      "currency"=>"OMR",
+                      "created_at"=>$cusId->created_at,
+                      "language"=>session('lang'),
                     ]
                 ];
                 $response='';
@@ -364,7 +375,7 @@ class HomeController extends Controller
                 }catch (Exception $err){
                     $response =Http::async(false)->withHeaders($headers)->post('https://uatcheckout.thawani.om/api/v1/checkout/session',$body);
                 }
-                if($response->failed()){
+                if(!$response->successful()){
                         $cus=Customer::find($cusId->id);
                         $cus->delete();
                         return redirect()->route('confirmOrder');
@@ -374,7 +385,7 @@ class HomeController extends Controller
                 $invId=$res['data']['invoice'];
                 $msg=
                     "تاريخ الطلب ==>> ".now()."\n".
-                    "رقم الطلب ==>> ". $customer->id." \n".
+                    "رقم الطلب ==>> ". $cusId->id." \n".
                     "اشعار الدفع ==>> ".$customer->invoId.
                     "الحساب ==>> ".$customer->email." \n".
                     "الأسم الأول ==>> ".$customer->firstName." \n".
@@ -389,12 +400,10 @@ class HomeController extends Controller
                     $orderinf.
                     "\n". 
                     "السعر النهائي ==>> ".$finalPrice." OMR";
-                // $cusId->invoId=$invId;
-                // $cusId->save();
                 $req->session()->put('invoicId',$invId);
                 $req->session()->put('msg',$msg);
                 $req->session()->put('orderId',$cusId->id);
-                return redirect('https://uatcheckout.thawani.om/pay/'.$sessionId.'?key=HGvTMLDssJghr9tlN9gr4DVYt0qyBy');
+                return redirect('https://uatcheckout.thawani.om/pay/'.$sessionId.'?key=NGfaiGQdP8WzkabgcCQfPh7c1VWx0Y');
             } catch(Exception $err){
                 return response()->json(['message'=>$err->getMessage()]);
             }
@@ -428,7 +437,6 @@ class HomeController extends Controller
             $invo='';
             $check=false;
             try{
-                // https://uatcheckout.thawani.om/api/v1/checkout/session/{session_id}
                 // update order [add invoice id to it]
                 $invo=$req->session()->get('invoicId');
                 $orderId=$req->session()->get('orderId');
