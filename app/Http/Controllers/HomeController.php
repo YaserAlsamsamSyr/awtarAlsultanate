@@ -354,7 +354,6 @@ class HomeController extends Controller
                     "success_url"=> env('APP_URL')."pay/success",
                     "cancel_url"=> env('APP_URL')."pay/fail",
                     "metadata"=> [
-                      "customer_id"=> $cusId->id,
                       "order id"=>$cusId->id,
                       "firstName"=>$customer->firstName,
                       "lastName"=>$customer->lastName,
@@ -362,8 +361,6 @@ class HomeController extends Controller
                       "city"=>$customer->city,
                       "address"=>$customer->address,
                       "phone"=>$customer->phone,
-                      "notes"=>$customer->notics,
-                      "finalPrice"=>$finalPrice,
                       "currency"=>"OMR",
                       "created_at"=>$cusId->created_at,
                       "language"=>session('lang'),
