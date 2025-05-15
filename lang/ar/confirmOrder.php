@@ -15,5 +15,9 @@ return [
      "price"=>"المجموع",
      "Freight_to_be_paid_when_your_order_is_delivered"=>"حساب شحن عند توصيل",
      "confirm_order"=>"تأكيد الطلب",
-     "your_order"=>"طلبك"
+     "your_order"=>"طلبك",
+     "vat"=>"ضريبة القيمة المضافة",
+     "delivery"=>"تكلفة التوصيل",
+     "finalPrice"=>"المبلغ النهائي",
+     "selectCountry"=>"اختر البلد اولا"
 ];

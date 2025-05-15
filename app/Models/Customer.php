@@ -21,9 +21,13 @@ class Customer extends Model
         'notics',
         'user_id',
         'invoId',
-        'check'
+        'check',
+        'vat',
+        'delivery'
     ];
+
     public $timestamps = true;
+    
     protected $hidden=[
         'created_at','updated_at'
     ];

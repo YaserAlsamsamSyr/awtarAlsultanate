@@ -101,6 +101,8 @@
        @if(Session::has('card'))
         <form action="{{ route('confirmOrderPost') }}" method="post">
               @csrf
+              <input id="vat" type="hidden" name="vat"/>
+              <input id="delivery" type="hidden" name="delivery"/>
               <div class="container">
                   <div id="parts" class="row">
                         <div class="col-lg-6 col-sm-12 d-flex flex-column first-part">
@@ -127,7 +129,21 @@
                               </div>
                               <div class="city  d-flex flex-column">
                                 <p>{{ __('confirmOrder.city') }}</p>
-                                <input type="text" name="city" value="{{ old('city') }}" required  />
+                                {{-- <input list="city" id="selectCountry" name="city" required /> --}}
+      
+                                <select onchange="calculatePrice(this)" multiple style="height:120px;padding-left:20px;padding-right:20px;" name="city" required >
+                                    @if(session()->has('lang'))
+                                        @if(session('lang')=="en")
+                                            @foreach ($countries as $country)
+                                              <option value="{{ $country->price->vat }}+{{ $country->price->delivery }}">{{ $country->enName }}</option>
+                                            @endforeach
+                                        @else
+                                            @foreach ($countries as $country)
+                                              <option value="{{ $country->price->vat }}+{{ $country->price->delivery }}">{{ $country->name }}</option>
+                                            @endforeach
+                                        @endif
+                                    @endif
+                                </select>
                               </div>
                               <div class="address d-flex flex-column">
                                 <p>{{ __('confirmOrder.address') }}</p>
@@ -153,7 +169,10 @@
                                        <p>{{ $i['name'] }}&nbsp;&nbsp;{{ $i['quantity'] }}x</p>
                                   @endforeach
                                   <!--  -->
-                                  <p class="H6">{{ __('confirmOrder.total') }}</p>
+                                  <p class="H6" style="color:#da9932;">{{ __('confirmOrder.total') }}</p>
+                                  <p class="H6" style="color:#da9932;">{{ __('confirmOrder.vat') }}</p>
+                                  <p class="H6" style="color:#da9932;">{{ __('confirmOrder.delivery') }}</p>
+                                  <p class="H6">{{ __('confirmOrder.finalPrice') }}</p>
                                   {{-- <p class="H6">{{ __('confirmOrder.shiping') }}</p> --}}
                             </div>
                             <div class="section-two d-flex flex-column" id="part2">
@@ -171,7 +190,10 @@
                                                 $totalPrice+= $i['quantity']*$i['price']
                                       @endphp
                                   @endforeach
-                                  <p>{{ $totalPrice }} OMR</p>
+                                  <p id="firstPrice" style="color:#da9932;">{{ $totalPrice }} OMR</p>
+                                  <p id="displayVat" style="color:#da9932;">{{ __('confirmOrder.selectCountry') }}</p>
+                                  <p id="displayDelivery" style="color:#da9932;">{{ __('confirmOrder.selectCountry') }}</p>
+                                  <p id="displayFinalPrice">{{ __('confirmOrder.selectCountry') }}</p>
                                   {{-- <p>{{ __('confirmOrder.Freight_to_be_paid_when_your_order_is_delivered') }}</p> --}}
                             </div>
                           </div>
@@ -183,7 +205,23 @@
         @endif
      </section>
 
- @include('awtar.footerAndNav.footer')
-     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    @include('awtar.footerAndNav.footer')
+    <script>
+          function calculatePrice(btn){
+             let val=btn.value;
+             let vat=Number(val.split("+")[0]);
+             let delivery=Number(val.split("+")[1]);
+             let price=Number(document.getElementById('firstPrice').textContent.split(" ")[0]);
+             vat=(vat/100)*price;
+             price+=vat;
+             price+=delivery;
+             document.getElementById('displayVat').textContent=vat+" OMR";
+             document.getElementById('displayDelivery').textContent=delivery+" OMR";
+             document.getElementById('displayFinalPrice').textContent=price+" OMR";
+             document.getElementById('vat').value=vat;
+             document.getElementById('delivery').value=delivery;
+          }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 </body>
 </html>

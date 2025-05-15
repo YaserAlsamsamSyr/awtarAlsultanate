@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('invoId')->nullable();
             $table->boolean('check')->default(false);
             $table->string('city')->nullable(false);
+            $table->string('vat')->nullable(false);
+            $table->string('delivery')->nullable(false);
             $table->string('notics')->nullable(true);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->nullable()->references('id')->on('users')->onDelete('cascade');

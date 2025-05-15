@@ -15,5 +15,9 @@ return [
      "price"=>"price",
      "Freight_to_be_paid_when_your_order_is_delivered"=>"Freight to be paid when your order is delivered",
      "confirm_order"=>"confirm order",
-     "your_order"=>"your order"
+     "your_order"=>"your order",
+     "vat"=>"vat",
+     "delivery"=>"delivery",
+     "finalPrice"=>"final price",
+     "selectCountry"=>"select city first"
 ];

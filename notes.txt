@@ -1,0 +1,422 @@
+canada => 4 [vat=30 ,delivery=30]
+america => 2 [vat=30 ,delivery=20]
+auroba => 1 [vat=30 ,delivery=18]
+khalieg => 3 [vat=10 ,delivery=7]
+eg_jo => 5 [vat=10 ,delivery=15]
+iraq => 6 [vat=10 ,delivery=16]
+australia => 7 [vat=30 ,delivery=32]
+oman => 8 [vat=5 ,delivery=2]
+
+            $countries=[
+                [   
+                    "name"     => "ألبانيا",
+                    "enName"   => "Albania",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "أندورا",
+                    "enName"   => "Andorra",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "النمسا",
+                    "enName"   => "Austria",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "بلجيكا",
+                    "enName"   => "Belgium",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "بلغاريا",
+                    "enName"   => "Bulgaria",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "كرواتيا",
+                    "enName"   => "Croatia",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "قبرص",
+                    "enName"   => "Cyprus",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "التشيك",
+                    "enName"   => "Czech Republic",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "الدنمارك",
+                    "enName"   => "Denmark",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "استونيا",
+                    "enName"   => "Estonia",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "فنلندا",
+                    "enName"   => "Finland",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "فرنسا",
+                    "enName"   => "France",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "ألمانيا",
+                    "enName"   => "Germany",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "اليونان",
+                    "enName"   => "Greece",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "المجر",
+                    "enName"   => "Hungary",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "أيسلندا",
+                    "enName"   => "Iceland",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "إيطاليا",
+                    "enName"   => "Italy",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "لاتفيا",
+                    "enName"   => "Latvia",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "ليتوانيا",
+                    "enName"   => "Lithuania",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "لوكسمبورغ",
+                    "enName"   => "Luxembourg",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "مالطا",
+                    "enName"   => "Malta",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "مولدوفا",
+                    "enName"   => "Moldova",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "موناكو",
+                    "enName"   => "Monaco",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "النرويج",
+                    "enName"   => "Norway",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "بولندا",
+                    "enName"   => "Poland",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "البرتغال",
+                    "enName"   => "Portugal",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "رومانيا",
+                    "enName"   => "Romania",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "سان مارينو",
+                    "enName"   => "San Marino",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "صربيا",
+                    "enName"   => "Serbia",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "سلوفاكيا",
+                    "enName"   => "Slovakia",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "سلوفينيا",
+                    "enName"   => "Slovenia",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "إسبانيا",
+                    "enName"   => "Spain",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "السويد",
+                    "enName"   => "Sweden",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "سويسرا",
+                    "enName"   => "Switzerland",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "المملكة المتحدة",
+                    "enName"   => "United Kingdom",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "أوكرانيا",
+                    "enName"   => "Ukraine",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "فاتيكان",
+                    "enName"   => "Vatican",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ],[
+                    "name"     => "أنتيغوا وبربودا",
+                    "enName"   => "Antigua and Barbuda",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"=>"امريكا",
+                    "enName"=>"america",
+                    "type"=>"america",
+                    "price_id"=>2
+                ],[
+                    "name"     => "باهاماس",
+                    "enName"   => "Bahamas",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "هندوراس",
+                    "enName"   => "Honduras",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "بربادوس",
+                    "enName"   => "Barbados",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "بنما",
+                    "enName"   => "Panama",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "بيليز",
+                    "enName"   => "Belize",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "ترينيداد وتوباج",
+                    "enName"   => "Trinidad and Tobago",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "غواتيمالا",
+                    "enName"   => "Guatemala",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "دومينيكا",
+                    "enName"   => "Dominica",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "الدومينيكان",
+                    "enName"   => "Dominican",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "سانت فينسنت والغرينادينز",
+                    "enName"   => "RepublicSaint Vincent and the Grenadines",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "سانت كيتس ونيفيس",
+                    "enName"   => "Saint Kitts and Nevis",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "سانت لوسيا",
+                    "enName"   => "Saint Lucia",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "السلفادور",
+                    "enName"   => "ElSalvador",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "غرينادا",
+                    "enName"   => "Grenada",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "كندا",
+                    "enName"   => "Canada",
+                    "type"     => "canada",
+                    "price_id" => 4
+                ],[
+                    "name"     => "كوبا",
+                    "enName"   => "Cuba",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "كوستاريكا",
+                    "enName"   => "Costarica",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "المكسيك",
+                    "enName"   => "Mexico",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "نيكارجوا",
+                    "enName"   => "Nicaragua",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "هاييتي",
+                    "enName"   => "Haiti",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "الأرجنتين",
+                    "enName"   => "Argentina",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "بوليفيا",
+                    "enName"   => "Bolivia",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "البرازيل",
+                    "enName"   => "Brazil",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "تشيلي ",
+                    "enName"   => "Chile",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "كولومبيا",
+                    "enName"   => "Colombia",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "الإكوادور",
+                    "enName"   => "Ecuador",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "غيانا",
+                    "enName"   => "Guyana",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "باراجواي",
+                    "enName"   => "Paraguay",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "بيرو",
+                    "enName"   => "Peru",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "سورينام",
+                    "enName"   => "Suriname",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "أوروغواي",
+                    "enName"   => "Uruguay",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[
+                    "name"     => "فنزويلا",
+                    "enName"   => "Venezuela",
+                    "type"     => "america",
+                    "price_id" => 2
+                ],[    
+                    "name"     => "الإمارات",
+                    "enName"   => "United Arab Emirates",
+                    "type"     => "khalieg",
+                    "price_id" => 3
+                ],[
+                    "name"     => "السعوديّة",
+                    "enName"   => "Saudi Arabia",
+                    "type"     => "khalieg",
+                    "price_id" => 3
+                ],[
+                    "name"     => "الكويت",
+                    "enName"   => "Kuwait",
+                    "type"     => "khalieg",
+                    "price_id" => 3
+                ],[
+                    "name"     => "قطر",
+                    "enName"   => "Qatar",
+                    "type"     => "khalieg",
+                    "price_id" => 3
+                ],[
+                    "name"     => "سلطنة عُمان",
+                    "enName"   => "Oman",
+                    "type"     => "oman",
+                    "price_id" => 8
+                ],[
+                    "name"     => "البحرين",
+                    "enName"   => "Bahrain",
+                    "type"     => "khalieg",
+                    "price_id" => 3
+                ],[
+                    "name"     => "مصر",
+                    "enName"   => "Egypt",
+                    "type"     => "eg_jo",
+                    "price_id" => 5
+                ],[
+                    "name"     => "الاردن",
+                    "enName"   => "Jordan",
+                    "type"     => "eg_jo",
+                    "price_id" => 5
+                ],[
+                    "name"     => "العراق",
+                    "enName"   => "Iraq",
+                    "type"     => "iraq",
+                    "price_id" => 6
+                ],[
+                    "name"     => "استراليا",
+                    "enName"   => "Australia",
+                    "type"     => "australia",
+                    "price_id" => 7
+                ],[
+                    "name"     => "بريطانيا",
+                    "enName"   => "Britain",
+                    "type"     => "auroba",
+                    "price_id" => 1
+                ]
+            ];

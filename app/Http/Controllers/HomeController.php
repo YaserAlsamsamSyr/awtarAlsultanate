@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Customer;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Country;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CustomerRequest;
 use Telegram\Bot\Laravel\Facades\Telegram;
@@ -163,11 +164,23 @@ class HomeController extends Controller
             try{    
                 $lang=session('lang');
                 $category='';
-                if($lang=='ar')
+                $countries='';
+                if($lang=='ar') {
                      $category=Category::select('id','category')->where('isDeleted',false)->get();
-                else
-                     $category=Category::select('id','enName')->where('isDeleted',false)->get();
-                return view('awtar.confirmOrder',['categories'=>$category]); 
+                     $countries=Country::select('name','price_id')->with(
+                        ['price' => function ($query) {
+                            $query->select('id','vat', 'delivery');
+                        }]
+                    )->get();
+                } else {
+                    $category=Category::select('id','enName')->where('isDeleted',false)->get();
+                    $countries=Country::select('enName','price_id')->with(
+                       ['price' => function ($query) {
+                           $query->select('id','vat', 'delivery');
+                       }]
+                    )->get();
+                }
+                return view('awtar.confirmOrder',['categories'=>$category,'countries'=>$countries]); 
             } catch(Exception $err){
                 return response()->json(['message'=>$err->getMessage()]);
             }
@@ -311,6 +324,8 @@ class HomeController extends Controller
                 $customer->address=$req->address;
                 $customer->phone=$req->phone;
                 $customer->notics=$req->notics;
+                $customer->vat=$req->vat;
+                $customer->delivery=$req->delivery;
                 $cusId='';
                 // // ///// check
                 if (Auth::check()) {
@@ -343,6 +358,17 @@ class HomeController extends Controller
                     $finalPrice+=$category[$i]['price']*$category[$i]['quantity'];
                     $cusId->products()->attach($a);
                 }
+                array_push($data,[
+                    'name'=>"vat",
+                    'quantity'=>1,
+                    'unit_amount'=>floatval($req->vat)*1000
+                ]);
+                array_push($data,[
+                    'name'=>"delivery",
+                    'quantity'=>1,
+                    'unit_amount'=>floatval($req->delivery)*1000
+                ]);
+                $finalPrice=$finalPrice+floatval($req->delivery)+floatval($req->vat);
                 // thawani
                 $headers=[
                     'thawani-api-key'=>'JJM93P5SRJSVMJz03QaoHSShfzn4aR',
@@ -396,6 +422,8 @@ class HomeController extends Controller
                     "الطلب : \n".
                     $orderinf.
                     "\n". 
+                    "الضريبة ==>> ".$req->vat." OMR".
+                    "التوصيل ==>> ".$req->delivery." OMR".
                     "السعر النهائي ==>> ".$finalPrice." OMR";
                 $req->session()->put('invoicId',$invId);
                 $req->session()->put('msg',$msg);
