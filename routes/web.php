@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SendMsgController;
 
 Route::middleware('lang')->group(function(){
     Route::get('/',[HomeController::class,'home'])->name('index');
@@ -50,6 +51,7 @@ Route::middleware('lang')->group(function(){
     require __DIR__.'/auth.php';
 });
 Route::get('/langToggle',[HomeController::class,'langToggle'])->name('toggle.lang');
+Route::get('/send-email', [SendMsgController::class, 'sendEmail']);
 
 Route::fallback(function(){
     return view('awtar.notFound');
@@ -63,7 +65,67 @@ Route::fallback(function(){
 // use App\Models\Country;
 // Route::get('/create', function(){
 //             $countries=[
-//                 [   
+//                 [
+//                     "name"=>"استلام من متجر أواتار",
+//                     "enName"=>"United Arab Emirates",
+//                     "type"=>"awtar",
+//                     "price_id"=>3
+//                 ],[   
+//                     "name"=>"الإمارات",
+//                     "enName"=>"United Arab Emirates",
+//                     "type"=>"khalieg",
+//                     "price_id"=>3
+//                 ],[
+//                     "name"=>"السعوديّة",
+//                     "enName"=>"Saudi Arabia",
+//                     "type"=>"khalieg",
+//                     "price_id"=>3
+//                 ],[
+//                     "name"=>"الكويت",
+//                     "enName"=>"Kuwait",
+//                     "type"=>"khalieg",
+//                     "price_id"=>3
+//                 ],[
+//                     "name"=>"قطر",
+//                     "enName"=>"Qatar",
+//                     "type"=>"khalieg",
+//                     "price_id"=>3
+//                 ],[
+//                     "name"=>"سلطنة عُمان",
+//                     "enName"=>"Oman",
+//                     "type"=>"oman",
+//                     "price_id"=>8
+//                 ],[
+//                     "name"=>"البحرين",
+//                     "enName"=>"Bahrain",
+//                     "type"=>"khalieg",
+//                     "price_id"=>3
+//                 ],[
+//                     "name"=>"مصر",
+//                     "enName"=>"Egypt",
+//                     "type"=>"eg_jo",
+//                     "price_id"=>5
+//                 ],[
+//                     "name"=>"الاردن",
+//                     "enName"=>"Jordan",
+//                     "type"=>"eg_jo",
+//                     "price_id"=>5
+//                 ],[
+//                     "name"=>"العراق",
+//                     "enName"=>"Iraq",
+//                     "type"=>"iraq",
+//                     "price_id"=>6
+//                 ],[
+//                     "name"=>"استراليا",
+//                     "enName"=>"Australia",
+//                     "type"=>"australia",
+//                     "price_id"=>7
+//                 ],[
+//                     "name"=>"بريطانيا",
+//                     "enName"=>"Britain",
+//                     "type"=>"auroba",
+//                     "price_id"=>1
+//                 ],[   
 //                     "name"=>"ألبانيا",
 //                     "enName"=>"Albania",
 //                     "type"=>"auroba",
@@ -418,62 +480,7 @@ Route::fallback(function(){
 //                     "enName"=>"Venezuela",
 //                     "type"=>"america",
 //                     "price_id"=>2
-//                 ],[   
-//                     "name"=>"الإمارات",
-//                     "enName"=>"United Arab Emirates",
-//                     "type"=>"khalieg",
-//                     "price_id"=>3
-//                 ],[
-//                     "name"=>"السعوديّة",
-//                     "enName"=>"Saudi Arabia",
-//                     "type"=>"khalieg",
-//                     "price_id"=>3
-//                 ],[
-//                     "name"=>"الكويت",
-//                     "enName"=>"Kuwait",
-//                     "type"=>"khalieg",
-//                     "price_id"=>3
-//                 ],[
-//                     "name"=>"قطر",
-//                     "enName"=>"Qatar",
-//                     "type"=>"khalieg",
-//                     "price_id"=>3
-//                 ],[
-//                     "name"=>"سلطنة عُمان",
-//                     "enName"=>"Oman",
-//                     "type"=>"oman",
-//                     "price_id"=>8
-//                 ],[
-//                     "name"=>"البحرين",
-//                     "enName"=>"Bahrain",
-//                     "type"=>"khalieg",
-//                     "price_id"=>3
-//                 ],[
-//                     "name"=>"مصر",
-//                     "enName"=>"Egypt",
-//                     "type"=>"eg_jo",
-//                     "price_id"=>5
-//                 ],[
-//                     "name"=>"الاردن",
-//                     "enName"=>"Jordan",
-//                     "type"=>"eg_jo",
-//                     "price_id"=>5
-//                 ],[
-//                     "name"=>"العراق",
-//                     "enName"=>"Iraq",
-//                     "type"=>"iraq",
-//                     "price_id"=>6
-//                 ],[
-//                     "name"=>"استراليا",
-//                     "enName"=>"Australia",
-//                     "type"=>"australia",
-//                     "price_id"=>7
-//                 ],[
-//                     "name"=>"بريطانيا",
-//                     "enName"=>"Britain",
-//                     "type"=>"auroba",
-//                     "price_id"=>1
-//                 ]        
+//                 ]      
 //             ];
 //             foreach($countries as $i)
 //                 Country::create($i);

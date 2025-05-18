@@ -9,7 +9,7 @@
     
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/confirmOrder.css') }}" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.jpg') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.png') }}">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

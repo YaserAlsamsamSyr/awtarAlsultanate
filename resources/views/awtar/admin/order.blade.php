@@ -21,7 +21,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.jpg') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.png') }}">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -63,6 +63,8 @@
                                             @endforeach
                 
                 
+                                           <h4>الضريبة</h4>
+                                           <h4>التوصيل</h4>
                                            <h4>الإجمالي</h4>
                                            <br>
                                            <p>الأسم</p>
@@ -91,7 +93,8 @@
                                               $total+=$item->pivot->totalPrice;
                                             @endphp
                                             @endforeach
-                
+                                            <h4>{{ $myCustomers[$loop->index]->vat }} OMR</h4>
+                                            <h4>{{ $myCustomers[$loop->index]->delivery }} OMR</h4>
                                             <h4><span style="color:#b7982b;">{{ $total }}</span> ORM</h4>
                                             <br>
                                             <p>{{ $myCustomers[$loop->index]->firstName }}</p>

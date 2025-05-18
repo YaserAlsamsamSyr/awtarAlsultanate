@@ -9,7 +9,7 @@
     
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/confirmOrder.css') }}" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.jpg') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.png') }}">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,21 +129,32 @@
                               </div>
                               <div class="city  d-flex flex-column">
                                 <p>{{ __('confirmOrder.city') }}</p>
-                                {{-- <input list="city" id="selectCountry" name="city" required /> --}}
-      
-                                <select onchange="calculatePrice(this)" multiple style="height:120px;padding-left:20px;padding-right:20px;" name="city" required >
+                                <input 
+                                    list="city"
+                                    @if(session()->has('lang'))
+                                        @if(session('lang')=="ar")
+                                            onchange="calculatePrice(this,'اختر مدينة من القائمة حصرا')"
+                                        @else
+                                            onchange="calculatePrice(this,'Select a city from the list')"
+                                        @endif
+                                    @endif
+                                    id="selectCountry"
+                                    name="city"
+                                    required 
+                                  />
+                                <datalist id="city" style="height:120px;padding-left:20px;padding-right:20px;" name="city" required >
                                     @if(session()->has('lang'))
                                         @if(session('lang')=="en")
                                             @foreach ($countries as $country)
-                                              <option value="{{ $country->price->vat }}+{{ $country->price->delivery }}">{{ $country->enName }}</option>
+                                              <option value="{{ $country->enName }}" id="city{{ $country->enName }}" class="{{ $country->price->vat }}+{{ $country->price->delivery }}"></option>
                                             @endforeach
                                         @else
                                             @foreach ($countries as $country)
-                                              <option value="{{ $country->price->vat }}+{{ $country->price->delivery }}">{{ $country->name }}</option>
+                                              <option value="{{ $country->name }}" id="city{{ $country->name }}" class="{{ $country->price->vat }}+{{ $country->price->delivery }}"></option>
                                             @endforeach
                                         @endif
                                     @endif
-                                </select>
+                                </datalist>
                               </div>
                               <div class="address d-flex flex-column">
                                 <p>{{ __('confirmOrder.address') }}</p>
@@ -155,7 +166,7 @@
                               </div>
                               <div class="notics d-flex flex-column">
                                 <p>{{ __('confirmOrder.notes') }}</p>
-                                <textarea name="notics" style="background-color: black;" rows="4" cols="50">{{ old('notics') }}</textarea>
+                                <textarea name="notics" style="background-color: black;color:white;" rows="4" cols="50">{{ old('notics') }}</textarea>
                               </div>
                         </div>
                         <div class="col-lg-6 col-sm-12 d-flex flex-column second-part">
@@ -179,7 +190,7 @@
                                   <h6 class="H6">{{ __('confirmOrder.price') }}</h6>
                                   <!-- dynamic based on number of perfumes -->
                                   @foreach ( Session::get('card') as $i )
-                                      <p>{{ $i['price'] }} ORM</p>
+                                      <p>{{ $i['price'] }} OMR</p>
                                   @endforeach
                                   <!--  -->
                                   @php
@@ -197,7 +208,8 @@
                                   {{-- <p>{{ __('confirmOrder.Freight_to_be_paid_when_your_order_is_delivered') }}</p> --}}
                             </div>
                           </div>
-                          <input type="submit" class="inpt-sub" value="{{ __('confirmOrder.confirm_order') }}"/>
+                          <div id="subP" class="inpt-sub" style="justify-content:center;align-self:center;padding-top:0.5rem;display:none"></div>
+                          <input id="subInpt" type="submit" class="inpt-sub" style="align-self:center;" value="{{ __('confirmOrder.confirm_order') }}"/>
                         </div>
                     </div>
                 </div>
@@ -207,19 +219,32 @@
 
     @include('awtar.footerAndNav.footer')
     <script>
-          function calculatePrice(btn){
-             let val=btn.value;
-             let vat=Number(val.split("+")[0]);
-             let delivery=Number(val.split("+")[1]);
-             let price=Number(document.getElementById('firstPrice').textContent.split(" ")[0]);
-             vat=(vat/100)*price;
-             price+=vat;
-             price+=delivery;
-             document.getElementById('displayVat').textContent=vat+" OMR";
-             document.getElementById('displayDelivery').textContent=delivery+" OMR";
-             document.getElementById('displayFinalPrice').textContent=price+" OMR";
-             document.getElementById('vat').value=vat;
-             document.getElementById('delivery').value=delivery;
+          function calculatePrice(btn,text){
+             let inputVal=btn.value;
+             let val=document.getElementById("city"+inputVal);
+             if(!val){
+                  document.getElementById("subInpt").style.display="none";
+                  document.getElementById("subP").style.display="flex";
+                  document.getElementById("subP").textContent=text;
+                  document.getElementById('displayVat').textContent="0 OMR";
+                  document.getElementById('displayDelivery').textContent="0 OMR";
+                  document.getElementById('displayFinalPrice').textContent="0 OMR";
+             } else{
+                  document.getElementById("subInpt").style.display="flex";
+                  document.getElementById("subP").style.display="none";
+                  val=val.attributes[2].value;
+                  let vat=Number(val.split("+")[0]);
+                  let delivery=Number(val.split("+")[1]);
+                  let price=Number(document.getElementById('firstPrice').textContent.split(" ")[0]);
+                  vat=(vat/100)*price;
+                  price+=vat;
+                  price+=delivery;
+                  document.getElementById('displayVat').textContent=vat+" OMR";
+                  document.getElementById('displayDelivery').textContent=delivery+" OMR";
+                  document.getElementById('displayFinalPrice').textContent=price+" OMR";
+                  document.getElementById('vat').value=vat;
+                  document.getElementById('delivery').value=delivery;
+             }
           }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

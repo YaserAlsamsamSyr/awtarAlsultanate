@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap" rel="stylesheet">
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/shippingCard.css') }}" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.jpg') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.png') }}">
     
     @if(session('lang') =="en") 
         <link href="{{ asset('css/EN/style.css') }}" rel="stylesheet">

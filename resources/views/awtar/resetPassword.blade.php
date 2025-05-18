@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap" rel="stylesheet">
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/resetPassword.css') }}" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.jpg') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.png') }}">
 </head>
 <body>
   

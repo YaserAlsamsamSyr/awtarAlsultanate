@@ -2,24 +2,21 @@
 
 namespace App\Http\Controllers;
 
+// use Telegram\Bot\Laravel\Facades\Telegram;
+use App\Http\Requests\CustomerRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Mail\SentMsgMail;
 use App\Models\Category;
 use App\Models\Customer;
-use App\Models\User;
 use App\Models\Product;
 use App\Models\Country;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\CustomerRequest;
-use Telegram\Bot\Laravel\Facades\Telegram;
-use Exception;
+use App\Models\User;
 use Carbon\Carbon;
-use Faker\Test\Provider\Collection;
-use Illuminate\Queue\Jobs\SyncJob;
-use Illuminate\Support\Facades\Http;
-use GuzzleHttp\Client;
-
-use function Pest\Laravel\json;
+use Exception;
 
 class HomeController extends Controller
 {
@@ -75,11 +72,14 @@ class HomeController extends Controller
 
         public function addToCard(Request $req){
             try{
+                $pro=Product::find($req->proId);
+                if(!$pro)
+                    return response()->json(['message'=>"this product not found"],404);
                 $newPro=[
-                    'id'=>$req->proId,
-                    'img'=>$req->proImg,
-                    'name'=>$req->proName,
-                    'price'=>$req->proPrice,
+                    'id'=>$pro->id,
+                    'img'=>$pro->imgs[0]->img,
+                    'name'=>session('lang')=='ar'?$pro->name:$pro->enName,
+                    'price'=>$pro->newPrice==0?$pro->oldPrice:$pro->newPrice,
                     'quantity'=>$req->quantity
                 ];
                 if ($req->session()->has('card')) {
@@ -95,7 +95,7 @@ class HomeController extends Controller
                 }
                 return redirect(config('APP_URL')."product/".$req->proId);
             } catch(Exception $err){
-                return response()->json(['message'=>$err->getMessage()]);
+                return response()->json(['message'=>$err->getMessage()],500);
             }
         }
 
@@ -315,6 +315,28 @@ class HomeController extends Controller
 
         public function confirmOrderPost(CustomerRequest $req){
             try{
+                
+                $lang=session('lang');
+                $country='';
+                if($lang=='ar')
+                    $country=Country::where('name',$req->city)->get()[0];
+                else
+                    $country=Country::where('enName',$req->city)->get()[0];
+                if(!$country){
+                    if($lang=='ar')
+                        $errMsg='المدينة غير موجودة';
+                    else
+                        $errMsg='the selected city not found';
+                    $req->session()->put('error',$errMsg);
+                    return redirect()->route('confirmOrder');
+                }
+                $category=$req->session()->get('card');
+                $finalPrice=0;
+                // $orderinf='';
+                for($i=0;$i<count($category);$i++){
+                    $finalPrice+=$category[$i]['price']*$category[$i]['quantity'];
+                }
+                $vat=($country->price->vat/100)*$finalPrice;
                 $req->validated();
                 $customer=new Customer();
                 $customer->email=$req->email;
@@ -324,8 +346,8 @@ class HomeController extends Controller
                 $customer->address=$req->address;
                 $customer->phone=$req->phone;
                 $customer->notics=$req->notics;
-                $customer->vat=$req->vat;
-                $customer->delivery=$req->delivery;
+                $customer->vat=$vat;
+                $customer->delivery=$country->price->delivery;
                 $cusId='';
                 // // ///// check
                 if (Auth::check()) {
@@ -336,11 +358,10 @@ class HomeController extends Controller
                     $cusId=$customer;
                 }
                 // // get email and ubove info then get card and send them
-                $category=$req->session()->get('card');
                 $a=array();
                 $data=array();
-                $finalPrice=0;
-                $orderinf='';
+                // $finalPrice=0;
+                // $orderinf='';
                 for($i=0;$i<count($category);$i++){
                     $a=array($category[$i]['id']=>[
                         'totalPrice'=>$category[$i]['price']*$category[$i]['quantity'],
@@ -354,21 +375,21 @@ class HomeController extends Controller
                         'quantity'=>$category[$i]['quantity'],
                         'unit_amount'=>$category[$i]['price']*1000
                     ]);
-                    $orderinf.="             ".$category[$i]['quantity']."X    ".$category[$i]['name']." \n";
-                    $finalPrice+=$category[$i]['price']*$category[$i]['quantity'];
+                    // $orderinf.="             ".$category[$i]['quantity']."X    ".$category[$i]['name']." \n";
+                    // $finalPrice+=$category[$i]['price']*$category[$i]['quantity'];
                     $cusId->products()->attach($a);
                 }
                 array_push($data,[
                     'name'=>"vat",
                     'quantity'=>1,
-                    'unit_amount'=>floatval($req->vat)*1000
+                    'unit_amount'=>floatval($vat)*1000
                 ]);
                 array_push($data,[
                     'name'=>"delivery",
                     'quantity'=>1,
-                    'unit_amount'=>floatval($req->delivery)*1000
+                    'unit_amount'=>floatval($country->price->delivery)*1000
                 ]);
-                $finalPrice=$finalPrice+floatval($req->delivery)+floatval($req->vat);
+                $finalPrice=$finalPrice+floatval($country->price->delivery)+floatval($vat);
                 // thawani
                 $headers=[
                     'thawani-api-key'=>'JJM93P5SRJSVMJz03QaoHSShfzn4aR',
@@ -406,25 +427,22 @@ class HomeController extends Controller
                 $res=$response->json();
                 $sessionId= $res['data']['session_id'];
                 $invId=$res['data']['invoice'];
-                $msg=
-                    "تاريخ الطلب ==>> ".now()."\n".
-                    "رقم الطلب ==>> ". $cusId->id." \n".
-                    "اشعار الدفع ==>> ".$customer->invoId.
-                    "الحساب ==>> ".$customer->email." \n".
-                    "الأسم الأول ==>> ".$customer->firstName." \n".
-                    "الكنية ==>> ".$customer->lastName." \n".
-                    "المدينة ==>> ".$customer->city." \n".
-                    "العنوان ==>> ".$customer->address." \n".
-                    "رقم الهاتف ==>> ".$customer->phone." \n".
-                    "ملاحظات ==>> \n".
-                    $customer->notics.
-                    " \n".
-                    "الطلب : \n".
-                    $orderinf.
-                    "\n". 
-                    "الضريبة ==>> ".$req->vat." OMR".
-                    "التوصيل ==>> ".$req->delivery." OMR".
-                    "السعر النهائي ==>> ".$finalPrice." OMR";
+                $msg=[
+                    "تاريخ الطلب" =>Carbon::now()->addHours(4),
+                    "رقم الطلب" => $cusId->id,
+                    "اشعار الدفع" => $invId,
+                    "الحساب" => $customer->email,
+                    "الأسم الأول" => $customer->firstName,
+                    "الكنية" => $customer->lastName,
+                    "المدينة" => $customer->city,
+                    "العنوان" => $customer->address,
+                    "رقم الهاتف" => $customer->phone,
+                    "ملاحظات" => $customer->notics,
+                    "الطلب" => $data,
+                    "الضريبة" => $vat,
+                    "التوصيل" => $country->price->delivery,
+                    "السعر النهائي" => $finalPrice
+                ];
                 $req->session()->put('invoicId',$invId);
                 $req->session()->put('msg',$msg);
                 $req->session()->put('orderId',$cusId->id);
@@ -465,10 +483,12 @@ class HomeController extends Controller
         }
 
         public function success(Request $req){
-            $help='';
+            $msg=$req->session()->get('msg');
+            $sendMsg=new SentMsgMail($msg);
             $orderId='';
             $invo='';
             $check=false;
+            $help=false;
             try{
                 // update order [add invoice id to it]
                 $invo=$req->session()->get('invoicId');
@@ -480,11 +500,16 @@ class HomeController extends Controller
                     $order->save();
                     $check=true;
                 }
-                $help=$req->session()->get('msg');
-                Telegram::sendMessage([
-                    'chat_id' => '6293673780',
-                    'text' =>$help,
-                ]);
+                // to admin
+                Mail::to('YASER.ALSAMSAM@gmail.com')->send($sendMsg);
+                $help=true;
+                // to customer
+                Mail::to($msg['الحساب'])->send($sendMsg);
+                //
+                // Telegram::sendMessage([
+                //     'chat_id' => '6293673780',
+                //     'text' =>$help,
+                // ]);
                 $req->session()->forget('invoicId');
                 $req->session()->forget('msg');
                 $req->session()->forget('orderId');
@@ -500,30 +525,37 @@ class HomeController extends Controller
                         $order->save();
                         $check=true;
                     }
-                    $help=$req->session()->get('msg');
                     try{
-                        Telegram::sendMessage([
-                            'chat_id' => '6293673780',
-                            'text' =>$help,
-                        ]);
+                        if(!$help)
+                            Mail::to('YASER.ALSAMSAM@gmail.com')->send($sendMsg);
+                        Mail::to($msg['الحساب'])->send($sendMsg);
+                        // Telegram::sendMessage([
+                        //     'chat_id' => '6293673780',
+                        //     'text' =>$msg,
+                        // ]);
                     } catch(Exception $err){
-                        Telegram::sendMessage([
-                            'chat_id' => '6293673780',
-                            'text' =>$help,
-                        ]);
+                        if(!$help)
+                            Mail::to('YASER.ALSAMSAM@gmail.com')->send($sendMsg);
+                        Mail::to($msg['الحساب'])->send($sendMsg);
+                        // Telegram::sendMessage([
+                        //     'chat_id' => '6293673780',
+                        //     'text' =>$msg,
+                        // ]);
                     }
-                }
+                } else
+                    if(!$help)
+                        Mail::to('YASER.ALSAMSAM@gmail.com')->send($sendMsg);
+                    Mail::to($msg['الحساب'])->send($sendMsg);
+                    // Telegram::sendMessage([
+                    //     //962019183
+                    //     'chat_id' => '6293673780',
+                    //     'text' =>$msg,
+                    // ]);
                 $req->session()->forget('invoicId');
                 $req->session()->forget('msg');
                 $req->session()->forget('orderId');
                 $req->session()->forget('quan');
                 $req->session()->forget('card');
-                if($help!='')
-                    Telegram::sendMessage([
-                        //962019183
-                        'chat_id' => '6293673780',
-                        'text' =>$help,
-                ]);
                 return response()->json(['message'=>$err->getMessage()]);
             }
         }

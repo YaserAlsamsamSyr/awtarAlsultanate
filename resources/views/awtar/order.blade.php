@@ -22,7 +22,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.jpg') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.png') }}">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -78,6 +78,8 @@
                                                     <p>{{ $item->enName }} x{{ $item->pivot->quantity }}</p>
                                                   @endforeach
                                             @endif
+                                           <h4>{{ __('confirmOrder.vat') }}</h4>
+                                           <h4>{{ __('confirmOrder.delivery') }}</h4>
                                            <h4>{{ __('order.total') }}</h4>
                                            <br>
                                            <p>{{ __('order.first_name') }}</p>
@@ -100,13 +102,15 @@
                                              $total=0;
                                            @endphp
                                            @foreach ($order as $item)
-                                              <p>{{ $item->pivot->totalPrice }} ORM</p>
+                                              <p>{{ $item->pivot->totalPrice }} OMR</p>
                                               @php
                                               $total+=$item->pivot->totalPrice;
                                             @endphp
                                             @endforeach
                 
-                                           <h4><span>{{ $total }}</span> ORM</h4>
+                                           <h4>{{ $myCustomers[0]->vat }} OMR</h4>
+                                           <h4>{{ $myCustomers[0]->delivery }} OMR</h4>
+                                           <h4><span>{{ $total }}</span> OMR</h4>
                                            <br>
                                            <p>{{ $myCustomers[0]->firstName }}</p>
                                            <p>{{ $myCustomers[0]->lastName }}</p>

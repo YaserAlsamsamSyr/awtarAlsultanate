@@ -15,7 +15,7 @@
     
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/register.css') }}" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.jpg') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/aawtar.png') }}">
       @if(session('lang') =="en") 
             <link href="{{ asset('css/EN/style.css') }}" rel="stylesheet">
             <style>
