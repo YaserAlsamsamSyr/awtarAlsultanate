@@ -6,7 +6,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\SendMsgController;
 
 Route::middleware('lang')->group(function(){
     Route::get('/',[HomeController::class,'home'])->name('index');
@@ -32,7 +31,6 @@ Route::middleware('lang')->group(function(){
     
     Route::middleware('auth')->group(function () {
         //admin
-        
         Route::get('/orders/notComplete',[adminController::class,'ordersNotComplete']);
         Route::get('/orders/noAccounts',[adminController::class,'ordersNoAccounts']);
         Route::get('/adminHome',[adminController::class,'aHome'])->name('adminHome');
@@ -51,7 +49,6 @@ Route::middleware('lang')->group(function(){
     require __DIR__.'/auth.php';
 });
 Route::get('/langToggle',[HomeController::class,'langToggle'])->name('toggle.lang');
-Route::get('/send-email', [SendMsgController::class, 'sendEmail']);
 
 Route::fallback(function(){
     return view('awtar.notFound');
