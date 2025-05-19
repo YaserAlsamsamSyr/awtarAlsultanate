@@ -501,7 +501,7 @@ class HomeController extends Controller
                     $check=true;
                 }
                 // to admin
-                Mail::to('YASER.ALSAMSAM@gmail.com')->send($sendMsg);
+                Mail::to(env('MAIL_USERNAME'))->send($sendMsg);
                 $help=true;
                 // to customer
                 Mail::to($msg['الحساب'])->send($sendMsg);
