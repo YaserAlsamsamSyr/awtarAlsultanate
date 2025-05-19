@@ -527,7 +527,7 @@ class HomeController extends Controller
                     }
                     try{
                         if(!$help)
-                            Mail::to('YASER.ALSAMSAM@gmail.com')->send($sendMsg);
+                            Mail::to(env('MAIL_USERNAME'))->send($sendMsg);
                         Mail::to($msg['الحساب'])->send($sendMsg);
                         // Telegram::sendMessage([
                         //     'chat_id' => '6293673780',
@@ -535,7 +535,7 @@ class HomeController extends Controller
                         // ]);
                     } catch(Exception $err){
                         if(!$help)
-                            Mail::to('YASER.ALSAMSAM@gmail.com')->send($sendMsg);
+                            Mail::to(env('MAIL_USERNAME'))->send($sendMsg);
                         Mail::to($msg['الحساب'])->send($sendMsg);
                         // Telegram::sendMessage([
                         //     'chat_id' => '6293673780',
@@ -544,7 +544,7 @@ class HomeController extends Controller
                     }
                 } else
                     if(!$help)
-                        Mail::to('YASER.ALSAMSAM@gmail.com')->send($sendMsg);
+                        Mail::to(env('MAIL_USERNAME'))->send($sendMsg);
                     Mail::to($msg['الحساب'])->send($sendMsg);
                     // Telegram::sendMessage([
                     //     //962019183
