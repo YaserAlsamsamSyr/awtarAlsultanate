@@ -331,12 +331,14 @@ class HomeController extends Controller
                     return redirect()->route('confirmOrder');
                 }
                 $category=$req->session()->get('card');
+                $productAmount=$req->session()->get('quan');
                 $finalPrice=0;
                 // $orderinf='';
                 for($i=0;$i<count($category);$i++){
                     $finalPrice+=$category[$i]['price']*$category[$i]['quantity'];
                 }
                 $vat=($country->price->vat/100)*$finalPrice;
+                $deliveryPrice=$country->price->delivery*$productAmount;
                 $req->validated();
                 $customer=new Customer();
                 $customer->email=$req->email;
@@ -347,7 +349,7 @@ class HomeController extends Controller
                 $customer->phone=$req->phone;
                 $customer->notics=$req->notics;
                 $customer->vat=$vat;
-                $customer->delivery=$country->price->delivery;
+                $customer->delivery=$deliveryPrice;
                 $cusId='';
                 // // ///// check
                 if (Auth::check()) {
@@ -389,7 +391,7 @@ class HomeController extends Controller
                     'quantity'=>1,
                     'unit_amount'=>floatval($country->price->delivery)*1000
                 ]);
-                $finalPrice=$finalPrice+floatval($country->price->delivery)+floatval($vat);
+                $finalPrice=$finalPrice+floatval($deliveryPrice)+floatval($vat);
                 // thawani
                 $headers=[
                     'thawani-api-key'=>'JJM93P5SRJSVMJz03QaoHSShfzn4aR',
@@ -440,7 +442,7 @@ class HomeController extends Controller
                     "ملاحظات" => $customer->notics,
                     "الطلب" => $data,
                     "الضريبة" => $vat,
-                    "التوصيل" => $country->price->delivery,
+                    "التوصيل" => $deliveryPrice,
                     "السعر النهائي" => $finalPrice
                 ];
                 $req->session()->put('invoicId',$invId);

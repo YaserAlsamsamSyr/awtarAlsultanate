@@ -236,11 +236,13 @@
                   let vat=Number(val.split("+")[0]);
                   let delivery=Number(val.split("+")[1]);
                   let price=Number(document.getElementById('firstPrice').textContent.split(" ")[0]);
+                  let totalAmount=document.getElementById('totalAmount').textContent;
+                  let deliveryPrice=delivery*Number(totalAmount);
                   vat=(vat/100)*price;
                   price+=vat;
-                  price+=delivery;
+                  price+=deliveryPrice;
                   document.getElementById('displayVat').textContent=vat+" OMR";
-                  document.getElementById('displayDelivery').textContent=delivery+" OMR";
+                  document.getElementById('displayDelivery').textContent=deliveryPrice+" OMR";
                   document.getElementById('displayFinalPrice').textContent=price+" OMR";
                   document.getElementById('vat').value=vat;
                   document.getElementById('delivery').value=delivery;

@@ -7,7 +7,7 @@
         <a class="nav-link text-color d-flex justify-content-center border-nav-part-2-element icon sh a-small" href="{{ route('viewCard') }}">
           <img src="{{ asset('images/footerAndNav/shippingIcon.png') }}" class="shipping-icon"/>
           <img src="{{ asset('images/footerAndNav/msg_icon.png') }}" class="msg-icon"/>
-          <p>
+          <p id="totalAmount">
             @if (session('quan'))
                 {{ session('quan') }}
             @endif
