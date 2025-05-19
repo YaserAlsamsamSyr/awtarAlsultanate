@@ -315,7 +315,6 @@ class HomeController extends Controller
 
         public function confirmOrderPost(CustomerRequest $req){
             try{
-                
                 $lang=session('lang');
                 $country='';
                 if($lang=='ar')
@@ -381,15 +380,18 @@ class HomeController extends Controller
                     // $finalPrice+=$category[$i]['price']*$category[$i]['quantity'];
                     $cusId->products()->attach($a);
                 }
-                array_push($data,[
-                    'name'=>"vat",
-                    'quantity'=>1,
-                    'unit_amount'=>floatval($vat)*1000
-                ]);
+                if($vat!=0)
+                    array_push($data,[
+                        'name'=>"vat",
+                        'quantity'=>1,
+                        'unit_amount'=>floatval($vat)*1000
+                    ]);
+                    
+                if($deliveryPrice!=0)
                 array_push($data,[
                     'name'=>"delivery",
                     'quantity'=>1,
-                    'unit_amount'=>floatval($country->price->delivery)*1000
+                    'unit_amount'=>$deliveryPrice*1000
                 ]);
                 $finalPrice=$finalPrice+floatval($deliveryPrice)+floatval($vat);
                 // thawani
